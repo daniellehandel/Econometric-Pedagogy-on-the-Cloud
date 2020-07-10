@@ -5,7 +5,7 @@
 
 ## Launching an instance
 <details>
-  <summary>Click to expand!</summary>
+  <summary>Click to expand</summary>
 
   <img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />
 
@@ -36,7 +36,7 @@
 
 ## Ananconda
 <details>
-  <summary>Click to expand!</summary>
+  <summary>Click to expand</summary>
   
   ###### Loading Anaconda
  
@@ -44,7 +44,7 @@
 
 ## R
 <details>
-  <summary>Click to expand!</summary>
+  <summary>Click to expand</summary>
   
   ###### Adding R 
  
@@ -52,7 +52,7 @@
 
 ## Stata
 <details>
-  <summary>Click to expand!</summary>
+  <summary>Click to expand</summary>
   
   ###### Adding Stata
 
