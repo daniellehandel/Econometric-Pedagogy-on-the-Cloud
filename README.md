@@ -41,6 +41,7 @@
   ###### Loading Anaconda
   
   The following directions are for use in the Bitvise (or other choise SSH software) terminal:
+  
   To request root access:
   
   ```console
@@ -56,9 +57,22 @@
   ```console
   ubuntu@ip-xx-xxx:~$ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
   ubuntu@ip-xx-xxx:~$ bash Anaconda3-2020.02-Linux-x86_64.sh
-  ubuntu@ip-xx-xxx:~$
   ```
+  When prompted with
+  ```console
+  [/root/anaconda3] >>>
+  ```
+  enter `/usr/anaconda3`
   
+  Refresh:
+  ```console
+  ubuntu@ip-xx-xxx:~$ source .bashrc
+  ```
+  Open a text editor (nano is used here):
+  
+  ```console
+  ubuntu@ip-xx-xxx:~$ nano /etc/profile
+  ```
  
 </details>
 
