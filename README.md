@@ -4,4 +4,4 @@
  Authors: Danielle V. Handel, Anson T. Y. Ho, Kim P. Huynh, David T. Jacho-Chávez, Carson H. Rea
 
 
-<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/1_nav_to_console_.gif" width="900" height="500" />
+<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />
