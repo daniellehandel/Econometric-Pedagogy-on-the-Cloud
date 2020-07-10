@@ -3,7 +3,17 @@
  
  Authors: Danielle V. Handel, Anson T. Y. Ho, Kim P. Huynh, David T. Jacho-Chávez, Carson H. Rea
 
-## Launching an instance
+<br>
+
+_________________________________________________________________________________________________________
+
+<br>
+
+The following are instructions for setting up a lab as used in Workflow 3.
+
+
+
+## Launching an instance via AWS
 <details>
   <summary>Click to expand</summary>
 
