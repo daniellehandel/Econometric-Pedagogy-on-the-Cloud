@@ -3,4 +3,5 @@
  
  Authors: Danielle V. Handel, Anson T. Y. Ho, Kim P. Huynh, David T. Jacho-Chávez, Carson H. Rea
 
-![Navigating to AWS Console] (1_nav_to_console_.gif)
+
+<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/1_nav_to_console_.gif" width="900" height="500" />
