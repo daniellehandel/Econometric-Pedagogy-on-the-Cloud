@@ -39,6 +39,26 @@
   <summary>Click to expand</summary>
   
   ###### Loading Anaconda
+  
+  The following directions are for use in the Bitvise (or other choise SSH software) terminal:
+  To request root access:
+  
+  ```console
+  ubuntu@ip-xx-xxx:~$ sudo -i
+  ```
+  After launching an instance with your selected cloud service provider, update the Ubuntu repository and upgrade packages by:
+  
+  ```console
+  ubuntu@ip-xx-xxx:~$ apt-get update
+  ubuntu@ip-xx-xxx:~$ apt-get upgrade
+  ```
+  To install Anaconda:
+  ```console
+  ubuntu@ip-xx-xxx:~$ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+  ubuntu@ip-xx-xxx:~$ bash Anaconda3-2020.02-Linux-x86_64.sh
+  ubuntu@ip-xx-xxx:~$
+  ```
+  
  
 </details>
 
@@ -47,6 +67,7 @@
   <summary>Click to expand</summary>
   
   ###### Adding R 
+  
  
 </details>
 
