@@ -7,8 +7,6 @@
 
 _________________________________________________________________________________________________________
 
-<br>
-
 ### Table of Contents
 1. [Overview](#overview)
 2. [Prerequisites](#prerequisites)
@@ -26,7 +24,9 @@ ________________________________________________________________________________
 ## Overview 
 <details>
   <summary>Click to expand</summary>
- 
+
+<br>
+
 The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted entirely in the cloud. Ultimately, students will be able to connect to the Lab with a username and password and have access to the distribution Anaconda for use of JupyterLab and Jupyter Notebooks with Python, R, and Stata kernels. 
 A Professor would be able to post any form of assignment for their students to be completed on the instance using the tools provided. A group video chat service provider such as MS teams or Google hangout can be used alongside for synchronous instruction.
 
@@ -40,6 +40,8 @@ The guide below corresponds to Workflow 3 outlined in “Econometric Pedagogy an
 ## Prerequisites
 <details>
   <summary>Click to expand</summary>
+
+<br>
  
 The guide assumes that the following steps have already been adhered to:
 
@@ -53,10 +55,12 @@ The guide assumes that the following steps have already been adhered to:
 <details>
   <summary>Click to expand</summary>
 
+  <br>
   <img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />
 
   Log into your AWS Educate account. The "My Classrooms" tab on the top banner in the interface directs to the complete list of classrooms supported on the account. From there,   select the desired classroom by clicking the blue "Go to classroom" button. The third party, Vocareum, will launch, allowing the management of the classroom. To launch an      instance, select "AWS console". TO launch the instance, select EC2 from the list of services AWS provides. 
 
+  <br>
   <img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/2_start_instance.gif" width="800" height="370" />
 
   Launching an instance supported by EC2 is a seven step process. Follow the following instructions to ensure the instance has the maximum security and memory for the free teir   offered by AWS. 
@@ -67,7 +71,7 @@ The guide assumes that the following steps have already been adhered to:
  
   Immediately continue to "Next: Add Storage".
 
-
+  <br>
   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/3_security_group.gif"  width="800" height="370" />
   
   Change the storage from the default to the maximum the free tier provides, 30 GiB. Continue to “Next: Add Tags”.
@@ -78,21 +82,21 @@ The SSH rule there by default will have the standard Port Range of 22 and a “C
 
 Given all steps have been followed by this point, select “Launch”.
 
-
+  <br>
   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/5_launch_and_key.gif"  width="800" height="370" />
   
   Selecting “Launch” will prompt the user to select an existing key pair or create a new one. A key pair serves as a sort of password to connect the instance to a SSH server or client. Name and download your key pair. 
 
 :warning: Do not lose the key, or all progress will be lost. Keep track of where the key is stored, as it will need to be accessed later.
 
-
+  <br>
   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/4_IP_into_bitvise.gif"  width="800" height="370" />
 
 The instance should now be visible in the EC2 homepage. Located towards the bottom of the screen, the description of the instance should be visible. Download and open Bitvise as an SSH client. Copy the IPv4 Public IP address and paste it into “Host” on Bitvise. Insert 22 as the port. 
 
 :bulb: MacOS users may choose to use the Terminus App off of the AppStore in lieu of Bitvise.
 
-
+  <br>
   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/6_put in key.gif"  width="800" height="370" />
   
   The proper username to connect Bitvise to the instance is “ubuntu”. Change the following line “Initial method” to Publickey. Select the proper key in from the newly created “client key” line. Click log in to selct the key downloaded earlier. An optional comment can be left for organization purposes if desired.
@@ -105,6 +109,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
 ## Anaconda
 <details>
   <summary>Click to expand</summary>
+
   
   #### Loading Anaconda <a name="loading-anaconda"></a>
   
@@ -141,6 +146,9 @@ Continue reading the “Anaconda” section to download the distribution onto th
   #enter the following:
   export PATH="/usr/anaconda3/bin:$PATH"
   ```
+  
+  <br>
+  
   #### JupyterHub: 
   
   ```console
@@ -207,6 +215,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
 <details>
   <summary>Click to expand</summary>
  
+  
   #### Adding R <a name="adding-r"></a>
   Install R:
   ```console
@@ -218,6 +227,8 @@ Continue reading the “Anaconda” section to download the distribution onto th
   #Start R
   ubuntu@ip-xx-xxx:~$ R
   ```
+  
+  <br>
   
   #### Update and install R kernel <a name="update-and-install-r-kernel"></a>
   ```r
@@ -260,6 +271,8 @@ Continue reading the “Anaconda” section to download the distribution onto th
 ## Disclaimer 
 <details>
   <summary>Click to expand</summary>
+ 
+   <br>
  
 The instructional guide is part of a demonstration used for “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists”. There is no guarantee this methodology works for others. For personal help, independently research any specific needs. 
 
