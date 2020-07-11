@@ -13,7 +13,7 @@ ________________________________________________________________________________
 [Overview](#overview)| [Prerequisites](#prerequisites)|  [Launching an instance via AWS](#lauching-an-instance-via-aws) | [Anaconda](#anaconda)| [R](#r) | [Stata](#stata)
 -|-|-|-|-|-
 
-## Overview <a name="overview"></a>
+## Overview 
 <details>
   <summary>Click to expand</summary>
  
@@ -29,7 +29,7 @@ Prerequisites
  
 </details>
 
-## Launching an instance via AWS
+## Launching an instance via AWS <a name="lauching-an-instance-via-aws"></a>
 <details>
   <summary>Click to expand</summary>
 
@@ -82,7 +82,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
 </details>
 
-## Ananconda
+## Anaconda
 <details>
   <summary>Click to expand</summary>
   
