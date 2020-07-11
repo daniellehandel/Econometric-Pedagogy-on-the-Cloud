@@ -10,7 +10,7 @@ ________________________________________________________________________________
 <br>
 
 
-[Overview](##Overview)| [Prerequisites](##Prerequisites)|  [Launching an instance via AWS](##Lauching-an-instance-via-AWS) | [Anaconda](##Anaconda)| [R](##R) | [Stata](##Stata)
+[Overview](##overview)| [Prerequisites](##prerequisites)|  [Launching an instance via AWS](##lauching-an-instance-via-aws) | [Anaconda](##anaconda)| [R](##r) | [Stata](##stata)
 -|-|-|-|-|-
 
 ## Overview
