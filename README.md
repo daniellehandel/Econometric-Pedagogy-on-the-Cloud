@@ -44,6 +44,8 @@ The guide assumes that the following steps have already been adhered to:
 * An up-to-date personal computer is available for use.
 * A classroom was created in AWS Educate.
 * Stata or the department’s IT services were contacted for the proper Stata licensing.  
+
+[Back to Top](#econometric-pedagogy)
  
 </details>
 
@@ -99,6 +101,8 @@ The instance should now be visible in the EC2 homepage. Located towards the bott
 
 The instance is now launched and hosted on a client. 
 Continue reading the “Anaconda” section to download the distribution onto the newly created instance. 
+
+[Back to Top](#econometric-pedagogy)
   
 </details>
 
@@ -205,6 +209,9 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ubuntu@ip-xx-xxx:~$ systemctl start jupyterhub.service
   ubuntu@ip-xx-xxx:~$ systemctl status jupyterhub.service
   ```
+  
+  [Back to Top](#econometric-pedagogy)
+  
 </details>
 
 ## R
@@ -251,6 +258,8 @@ Continue reading the “Anaconda” section to download the distribution onto th
   #When ready, quit
   q()
   ```
+  
+  [Back to Top](#econometric-pedagogy)
 
 </details>
 
@@ -261,6 +270,8 @@ Continue reading the “Anaconda” section to download the distribution onto th
   #### Adding Stata <a name="adding-stata"></a>
   Download Stata for Linux from https://www.stata.com/support/faqs/unix/install-download-on-linux/
   Download Stata kernel for Jupyter Notebook from https://kylebarron.dev/stata_kernel/
+  
+  [Back to Top](#econometric-pedagogy)
   
 </details>
 
@@ -277,6 +288,8 @@ AWS Educate and corresponding services are trademark of Amazon Web Services.
 Stata is trademark of Stata Corporation.
 
 Look into: Python, R, Jupyter Hub for open source citation. 
+
+[Back to Top](#econometric-pedagogy)
   
 </details>
 
