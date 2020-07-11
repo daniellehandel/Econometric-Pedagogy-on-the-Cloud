@@ -9,10 +9,25 @@ ________________________________________________________________________________
 
 <br>
 
-The following are instructions for setting up a lab as used in Workflow 3.
 
-[Launching an instance via AWS](##Lauching-an-instance-via-AWS) | [Anaconda](##Anaconda)| [R](##R) | [Stata](##Stata)
-----------------------------------------------------------------|-----------------------|----------|------------------
+[Overview](##Overview)| [Prerequisites](##Prerequisites)|  [Launching an instance via AWS](##Lauching-an-instance-via-AWS) | [Anaconda](##Anaconda)| [R](##R) | [Stata](##Stata)
+-|-|-|-|-|-
+
+## Overview
+<details>
+  <summary>Click to expand</summary>
+ 
+ The following are instructions for setting up a lab as used in Workflow 3.
+ 
+</details>
+
+## Prerequisites
+<details>
+  <summary>Click to expand</summary>
+ 
+Prerequisites
+ 
+</details>
 
 ## Launching an instance via AWS
 <details>
