@@ -11,7 +11,7 @@ ________________________________________________________________________________
 
 
 [Overview](#overview)| [Prerequisites](#prerequisites)|  [Launching an instance via AWS](#lauching-an-instance-via-aws) | [Anaconda](#anaconda)| [R](#r) | [Stata](#stata) | [Disclaimer](#disclaimer)
--|-|-|-|-|-|-
+
 
 ## Overview 
 <details>
