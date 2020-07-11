@@ -22,8 +22,6 @@ ________________________________________________________________________________
 7. [Disclaimer](#disclaimer)
 
 ## Overview 
-<details>
-  <summary>Click to expand</summary>
 
 <br>
 
@@ -34,8 +32,6 @@ The following instructions are guidelines used to successfully set up the servic
 
 The guide below corresponds to Workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists” which may be referred to for further details. 
 
- 
-</details>
 
 ## Prerequisites
 <details>
