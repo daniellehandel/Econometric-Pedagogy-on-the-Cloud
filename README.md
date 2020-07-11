@@ -17,7 +17,13 @@ ________________________________________________________________________________
 <details>
   <summary>Click to expand</summary>
  
- The following are instructions for setting up a lab as used in Workflow 3.
+The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted entirely in the cloud. Ultimately, students will be able to connect to the Lab with a username and password and have access to the distribution Anaconda for use of JupyterLab and Jupyter Notebooks with Python, R, and Stata kernels. 
+A Professor would be able to post any form of assignment for their students to be completed on the instance using the tools provided. A group video chat service provider such as MS teams or Google hangout can be used alongside for synchronous instruction.
+
+The following instructions are guidelines used to successfully set up the service documented above, although they can be modified for any particular teaching style or need.
+
+The guide below corresponds to Workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists” which may be referred to for further details. 
+
  
 </details>
 
@@ -25,7 +31,11 @@ ________________________________________________________________________________
 <details>
   <summary>Click to expand</summary>
  
-Prerequisites
+The guide assumes that the following steps have already been adhered to:
+
+* An up-to-date personal computer is available for use.
+* A classroom was created in AWS Educate.
+* Stata or the department’s IT services were contacted for the proper Stata licensing.  
  
 </details>
 
@@ -241,7 +251,13 @@ Continue reading the “Anaconda” section to download the distribution onto th
 <details>
   <summary>Click to expand</summary>
  
- Disclaimer
+The instructional guide is part of a demonstration used for “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists”. There is no guarantee this methodology works for others. For personal help, independently research any specific needs. 
+
+AWS Educate and corresponding services are trademark of Amazon Web Services.
+
+Stata is trademark of Stata Corporation.
+
+Look into: Python, R, Jupyter Hub for open source citation. 
   
 </details>
 
