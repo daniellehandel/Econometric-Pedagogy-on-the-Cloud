@@ -23,7 +23,6 @@ The following are instructions for setting up a lab as used in Workflow 3.
 
   <img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/2_start_instance.gif" width="800" height="370" />
 
-  Instruction
   Launching an instance supported by EC2 is a seven step process. Follow the following instructions to ensure the instance has the maximum security and memory for the free teir   offered by AWS. 
 
   First, select an Ubunto server as the desired Amazon Machine Image (AMI). 20.4 was selected in this demonstration, although any can be selcted, given Ubunto is the AMI. 
@@ -34,13 +33,36 @@ The following are instructions for setting up a lab as used in Workflow 3.
 
 
   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/3_security_group.gif"  width="800" height="370" />
+  
+  Change the storage from the default to the maximum the free tier provides, 30 GiB. Continue to “Next: Add Tags”.
+
+Tags are an optional feature to allow for categorization and organization. Continue to "Next: Configure Security Groups".
+
+The SSH rule there by default will have the standard Port Range of 22 and a “Custom” source. Change the source to “Anywhere” Add a second custom TCP security rule by clicking the “Add Rule” button. Modify the rule to have a port range of 8000; notice the source change to “Custom” from “Anywhere”. Add a description of “JupyterHub”. Continue to the final stage by clicking the blue “Review and Launch” button. 
+
+Given all steps have been followed by this point, select “Launch”.
+
 
   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/5_launch_and_key.gif"  width="800" height="370" />
+  
+  Selecting “Launch” will prompt the user to select an existing key pair or create a new one. A key pair serves as a sort of password to connect the instance to a SSH server or client. Name and download your key pair. 
+
+:warning: Do not lose the key, or all progress will be lost. Keep track of where the key is stored, as it will need to be accessed later.
+
 
   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/4_IP_into_bitvise.gif"  width="800" height="370" />
 
+The instance should now be visible in the EC2 homepage. Located towards the bottom of the screen, the description of the instance should be visible. Download and open Bitvise as an SSH client. Copy the IPv4 Public IP address and paste it into “Host” on Bitvise. Insert 22 as the port. 
+
+:bulb: MacOS users may choose to use the Terminus App off of the AppStore in lieu of Bitvise.
+
+
   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/6_put in key.gif"  width="800" height="370" />
-  master
+  
+  The proper username to connect Bitvise to the instance is “ubuntu”. Change the following line “Initial method” to Publickey. Select the proper key in from the newly created “client key” line. Click log in to selct the key downloaded earlier. An optional comment can be left for organization purposes if desired.
+
+The instance is now launched and hosted on a client. 
+Continue reading the “Anaconda” section to download the distribution onto the newly created instance. 
   
 </details>
 
