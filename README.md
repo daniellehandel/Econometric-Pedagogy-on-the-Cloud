@@ -9,9 +9,19 @@ ________________________________________________________________________________
 
 <br>
 
-
-[Overview](#overview)| [Prerequisites](#prerequisites)|  [Launching an instance via AWS](#lauching-an-instance-via-aws) | [Anaconda](#anaconda)| [R](#r) | [Stata](#stata) | [Disclaimer](#disclaimer)
-
+### Table of Contents
+1. [Overview](#overview)
+2. [Prerequisites](#prerequisites)
+3. [Launching an instance via AWS](#lauching-an-instance-via-aws)
+4. [Anaconda](#anaconda)
+   1. [Loading Anaconda](#loading-anaconda)
+   2. [JupyterHub](#jupyterhub)
+5. [R](#r)
+   1. [Adding R](#adding-r)
+   2. [Update and install R kernel](#update-and-install-r-kernel)
+6. [Stata](#stata)
+   1. [Adding Stata](#adding-stata)
+7. [Disclaimer](#disclaimer)
 
 ## Overview 
 <details>
@@ -96,7 +106,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
 <details>
   <summary>Click to expand</summary>
   
-  ###### Loading Anaconda
+  #### Loading Anaconda <a name="loading-anaconda"></a>
   
   The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
@@ -131,7 +141,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   #enter the following:
   export PATH="/usr/anaconda3/bin:$PATH"
   ```
-  Jupyter Hub:
+  #### JupyterHub: 
   
   ```console
   # Install jupyter hub 
@@ -197,7 +207,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
 <details>
   <summary>Click to expand</summary>
  
-  ###### Adding R 
+  #### Adding R <a name="adding-r"></a>
   Install R:
   ```console
   ubuntu@ip-xx-xxx:~$ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
@@ -209,7 +219,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ubuntu@ip-xx-xxx:~$ R
   ```
   
-  Update and add install R kernel to be used in Jupyter:
+  #### Update and install R kernel <a name="update-and-install-r-kernel"></a>
   ```r
   
   # update, without prompts for permission/clarification
@@ -241,7 +251,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
 <details>
   <summary>Click to expand</summary>
   
-  ###### Adding Stata
+  #### Adding Stata <a name="adding-stata"></a>
   Download Stata for Linux from https://www.stata.com/support/faqs/unix/install-download-on-linux/
   Download Stata kernel for Jupyter Notebook from https://kylebarron.dev/stata_kernel/
   
