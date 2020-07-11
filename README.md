@@ -10,8 +10,8 @@ ________________________________________________________________________________
 <br>
 
 
-[Overview](#overview)| [Prerequisites](#prerequisites)|  [Launching an instance via AWS](#lauching-an-instance-via-aws) | [Anaconda](#anaconda)| [R](#r) | [Stata](#stata)
--|-|-|-|-|-
+[Overview](#overview)| [Prerequisites](#prerequisites)|  [Launching an instance via AWS](#lauching-an-instance-via-aws) | [Anaconda](#anaconda)| [R](#r) | [Stata](#stata) | [Disclaimer](#disclaimer)
+-|-|-|-|-|-|-
 
 ## Overview 
 <details>
@@ -235,6 +235,13 @@ Continue reading the “Anaconda” section to download the distribution onto th
   Download Stata for Linux from https://www.stata.com/support/faqs/unix/install-download-on-linux/
   Download Stata kernel for Jupyter Notebook from https://kylebarron.dev/stata_kernel/
   
+</details>
+
+## Disclaimer 
+<details>
+  <summary>Click to expand</summary>
+ 
+ Disclaimer
   
 </details>
 
