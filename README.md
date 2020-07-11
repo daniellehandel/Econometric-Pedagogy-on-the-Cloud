@@ -194,7 +194,9 @@ The following are instructions for setting up a lab as used in Workflow 3.
   <summary>Click to expand</summary>
   
   ###### Adding Stata
-  Download Stata for Linux at https://www.stata.com/support/faqs/unix/install-download-on-linux/
-
+  Download Stata for Linux from https://www.stata.com/support/faqs/unix/install-download-on-linux/
+  Download Stata kernel for Jupyter Notebook from https://kylebarron.dev/stata_kernel/
+  
+  
 </details>
 
