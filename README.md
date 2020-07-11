@@ -13,7 +13,7 @@ ________________________________________________________________________________
 [Overview](##overview)| [Prerequisites](##prerequisites)|  [Launching an instance via AWS](##lauching-an-instance-via-aws) | [Anaconda](##anaconda)| [R](##r) | [Stata](##stata)
 -|-|-|-|-|-
 
-## Overview
+## Overview <a name="overview"></a>
 <details>
   <summary>Click to expand</summary>
  
