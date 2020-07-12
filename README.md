@@ -31,9 +31,9 @@ ________________________________________________________________________________
 
 <br>
 
-The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted entirely in the cloud. Ultimately, students will be able to connect to the lab via a web browser with a username and password and have access to JupyterLab and Jupyter Notebooks with Python, R, and Stata kernels. A group video chat service provider such as MS teams or Google hangout can be used alongside for synchronous instruction.
+The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to the lab via a web browser with a username and password and have access to JupyterLab and Jupyter Notebooks with Python, R, and Stata kernels. A group video chat service provider such as MS teams or Google hangout can be used alongside for synchronous instruction.
 
-The guide below corresponds to Workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
+The guide below corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
 
 ## Prerequisites
@@ -53,25 +53,25 @@ This guide assumes the following:
 
   <br>
   
-  This section details a method of launching an instance on AWS Educate's EC2 server. Demonstrational gifs are provided alongside the instructions, which feature the interface being used for this purpose. 
+  This section details a method of launching an instance on AWS Educate's EC2 server. Demonstrational gifs are provided alongside the instructions, which feature the interfaces being used for this purpose. 
   
   #### Customizing an Instance <a name="seven-steps"></a>
 
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />|
 |---|
 
-  Log into your AWS Educate account. The "My Classrooms" tab on the top banner in the interface directs to the complete list of classrooms supported on the account. From there,   select the desired classroom by clicking the blue "Go to classroom" button. The third party application, Vocareum, will launch, allowing the management of the classroom. To access cloud platform tools, select "AWS console." To launch an EC2 instance, select EC2 from the list of services AWS provides. 
+  Log into your AWS Educate account. The "My Classrooms" tab on the top banner in the interface directs to the complete list of classrooms supported on the account. From there, select the desired classroom by clicking the blue "Go to classroom" button. The third-party application, Vocareum, will launch, showing an overview of the classroom. To manage, select "AWS console." To launch the proper instance, select EC2 from the dropdown menu labeled "All services". 
+  
+  :bulb: Your browser may block pop-ups from Vocarem. 
 
   <br>
   
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/2_start_instance.gif" width="800" height="370" />|
 |---|
 
-  The following instructions detail the process of creating an instance with access to the tools necessary in an Econometrics classroom, including Anaconda, Jupyter Hub, Python, R, and Stata.  
+  Select an Ubuntu server as the desired Amazon Machine Image (AMI). This demonstration utilizes Ubuntu 20.4, though other Ubuntu servers will also be suitable. 
 
-  First, select an Ubuntu server as the desired Amazon Machine Image (AMI). This demonstration utilizes Ubuntu 20.4, though other Ubuntu servers will also be suitable. 
-
-  The next tab requests an instance type to be selected. The "general purpose" option will be preselected and is available with AWS's free tier. Click "Next: Configure Image" to   continue.
+  The next tab requests an instance type to be selected. The "general purpose" option will be preselected and is available with AWS's free tier. Click "Next: Configure Image" to continue.
  
   Immediately continue to "Next: Add Storage."
 
@@ -80,13 +80,13 @@ This guide assumes the following:
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/3_security_group.gif"  width="800" height="370" />|
 |---|
   
-  Change the storage from the default to the maximum the free tier provides, 30 GB. Continue to “Next: Add Tags”.
+  Change the storage from the default to the maximum the free tier provides, 30 GiB. Continue to “Next: Add Tags”.
 
 Tags are an optional feature to allow for categorization and organization. Continue to "Next: Configure Security Groups".
 
-The SSH rule there by default will have the standard Port Range of 22 and a “Custom” source. Change the source to “Anywhere” to allow students to access the instance. Add a second custom TCP security rule by clicking the “Add Rule” button. Modify the rule to have a port range of 8000; notice the source change to “Custom” from “Anywhere.” Add a description of “JupyterHub.” Continue to the final stage by clicking the blue “Review and Launch” button. 
+The default SSH rule will have the standard Port Range of 22 and a “Custom” source. Change the source to “Anywhere” to allow students to access the instance. Add a second custom TCP security rule by clicking the “Add Rule” button. Modify the rule to have a port range of 8000. Add a description of “JupyterHub.” Continue to the final stage by clicking the blue “Review and Launch” button. 
 
-Given all steps have been followed by this point, select “Launch”.
+Given that all steps have been followed by this point, select “Launch”.
 
   <br>
   
@@ -95,7 +95,7 @@ Given all steps have been followed by this point, select “Launch”.
   
   Selecting “Launch” will prompt the user to select an existing key pair or create a new one. A key pair serves as a password to connect the instance to a SSH server or client. Name and download your key pair. 
 
-:warning: Do not lose the key, or all progress will be lost. Keep track of where the key is stored, as it will need to be accessed later. :warning:
+:warning: Do not lose the key or all progress will be lost. Keep track of where the key is stored, as it will need to be accessed later. :warning:
 
   <br>
   
@@ -115,7 +115,7 @@ The instance should now be visible in the EC2 homepage. Located towards the bott
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/6_put in key.gif"  width="800" height="370" />|
 |---|
   
-  The proper username to connect Bitvise to the instance is “ubuntu”. Change the following line “Initial method” to Publickey. Select the proper key in from the newly created “client key” line. Click log in to selct the key downloaded earlier. An optional comment can be left for organization purposes if desired.
+  The proper username to connect Bitvise to the instance is “ubuntu." Change the following line “Initial method” to publickey. Select the proper key in from the newly created “client key” line. Click "Log In" to selct the key downloaded earlier. An optional comment can be left for organization purposes if desired.
 
 The instance is now launched and hosted on a client. 
 Continue reading the “Anaconda” section to download the distribution onto the newly created instance. 
@@ -134,7 +134,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ```console
   ubuntu@ip-xx-xxx:~$ sudo -i
   ```
-  After launching an instance with your selected cloud service provider, update the Ubuntu repository and upgrade packages by:
+  After launching an instance with your selected cloud service provider, update the Ubuntu repository and upgrade packages with:
   
   ```console
   ubuntu@ip-xx-xxx:~$ apt-get update
@@ -145,11 +145,12 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ubuntu@ip-xx-xxx:~$ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
   ubuntu@ip-xx-xxx:~$ bash Anaconda3-2020.02-Linux-x86_64.sh
   ```
-  When prompted with
+  When prompted with `[/root/anaconda3] >>>` 
+  
+  enter:
   ```console
-  [/root/anaconda3] >>>
+  /usr/anaconda3
   ```
-  enter `/usr/anaconda3`.
  
   ```console
   ubuntu@ip-xx-xxx:~$ source .bashrc
@@ -163,7 +164,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20anaconda%20path.png" width = "400" height = "400" />|
   |---|
   
-  Use <kbd>CTRL</kbd>+<kbd>O</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
+  Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   <br>
   
   #### JupyterHub: 
@@ -285,7 +286,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux    
   Download [Stata kernel](https://kylebarron.dev/stata_kernel/) for Jupyter Notebook  
  
- Uploading Stata
+ Uploading Stata:
   ```console
   # create a folder for your Stata installation file
   ubuntu@ip-xx-xxx:~$ mkdir /home/ubuntu/stata_source
@@ -308,7 +309,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  ubuntu@ip-xx-xxx:~$ apt install libtinfo5
   ```
  
- Add path to Stata
+ To add a path to Stata:
  
  ```console
  # open your nano document
@@ -319,7 +320,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20stata%20path.png" width = "400" height = "400" />|
  |---|
  
- Use <kbd>CTRL</kbd>+<kbd>O</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
+ Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
  
  #### Stata Kernel for Jupyter
  ```console
@@ -342,11 +343,11 @@ AWS Educate and corresponding services are trademark of Amazon Web Services.
 
 Stata is trademark of Stata Corporation.
 
-Python is developed on an open source license distributed by the Python Software Foundation.
+Python is developed on an open source license distributed by the [Python Software Foundation](https://www.python.org/psf/).
 
-R is offered on an open source license distributed by the R Foundation.
+R is offered on an open source license distributed by the [R Foundation](https://www.r-project.org/foundation/).
 
-JupyterHub is an open source platform developed and maintained by Project Jupyter.
+JupyterHub is an open source platform developed and maintained by [Project Jupyter](https://jupyter.org/).
 
 
 [Back to Top](#econometric-pedagogy)
