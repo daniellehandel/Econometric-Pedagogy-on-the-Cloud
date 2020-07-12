@@ -7,16 +7,20 @@
 
 _________________________________________________________________________________________________________
 
+<img align="right"
+     src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/workflow_3.png" 
+     width="600" height="460" />
+
 ### Table of Contents
 1. [Overview](#overview)
 2. [Prerequisites](#prerequisites)
-3. [Launching an instance via AWS](#lauching-an-instance-via-aws)
+3. [Launching an Instance via AWS](#lauching-an-instance-via-aws)
 4. [Anaconda](#anaconda)
    1. [Loading Anaconda](#loading-anaconda)
    2. [JupyterHub](#jupyterhub)
 5. [R](#r)
    1. [Adding R](#adding-r)
-   2. [Update and install R kernel](#update-and-install-r-kernel)
+   2. [Update and Install R Kernel](#update-and-install-r-kernel)
 6. [Stata](#stata)
    1. [Adding Stata](#adding-stata)
 7. [Disclaimer](#disclaimer)
@@ -49,7 +53,7 @@ The guide assumes that the following steps have already been adhered to:
  
 </details>
 
-## Launching an instance via AWS <a name="lauching-an-instance-via-aws"></a>
+## Launching an Instance via AWS <a name="lauching-an-instance-via-aws"></a>
 <details>
   <summary>Click to expand</summary>
 
@@ -245,7 +249,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   <br>
   
-  #### Update and install R kernel <a name="update-and-install-r-kernel"></a>
+  #### Update and Install R Kernel <a name="update-and-install-r-kernel"></a>
   ```r
   
   # update, without prompts for permission/clarification
