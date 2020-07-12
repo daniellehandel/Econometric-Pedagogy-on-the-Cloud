@@ -160,6 +160,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   Enter `export PATH="/usr/anaconda3/bin:$PATH"` into the bottom of the document as shown below.
   
+  <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20anaconda%20path.png" width = "400" height = "400" />
   
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   <br>
@@ -314,7 +315,9 @@ Continue reading the “Anaconda” section to download the distribution onto th
  ```
  Type `export PATH="/usr/local/stata16:$PATH"` into the bottom of the document as depicted below.
  
-   Use <kbd>CTRL</kbd>+<kbd>O</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
+ <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20stata%20path.png" width = "400" height = "400" />
+ 
+ Use <kbd>CTRL</kbd>+<kbd>O</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
  
  #### Stata Kernel for Jupyter
  ```console
