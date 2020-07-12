@@ -55,7 +55,7 @@ This guide assumes the following:
   
   This section details a method of launching an instance on AWS Educate's EC2 server. Demonstrational gifs are provided alongside the instructions, which feature the interface being used for this purpose. 
   
-  #### AWS Educate's Seven Step Process <a name="seven-steps"></a>
+  #### Customizing an Instance <a name="seven-steps"></a>
 
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />|
 |---|
@@ -156,11 +156,12 @@ Continue reading the “Anaconda” section to download the distribution onto th
  
   #Open a text editor (nano is used here):
   ubuntu@ip-xx-xxx:~$ nano /etc/profile
-  
-  #enter the following:
-  export PATH="/usr/anaconda3/bin:$PATH"
   ```
   
+  Enter `export PATH="/usr/anaconda3/bin:$PATH"` into the bottom of the document as shown below.
+  
+  
+  Use <kbd>CTRL</kbd>+<kbd>O</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   <br>
   
   #### JupyterHub: 
@@ -280,8 +281,48 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   #### Adding Stata <a name="adding-stata"></a>
   Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux    
-  Download [Stata kernel](https://kylebarron.dev/stata_kernel/) for Jupyter Notebook
-  
+  Download [Stata kernel](https://kylebarron.dev/stata_kernel/) for Jupyter Notebook  
+ 
+ Uploading Stata
+  ```console
+  # create a folder for your Stata installation file
+  ubuntu@ip-xx-xxx:~$ mkdir /home/ubuntu/stata_source
+  ```
+ Place your Stata for Linux installation file into this folder:
+ 
+ ```console
+ # Create directory where Stata should be installed
+ cd /usr/local
+ ubuntu@ip-xx-xxx:~$ mkdir stata16
+ ubuntu@ip-xx-xxx:~$ cd stata16
+ 
+ #install Stata- you will be prompted to enter license information
+ ubuntu@ip-xx-xxx:~$ /home/ubuntu/stata_source/install
+ 
+ #During installation, you will be prompted to run the following:
+ ubuntu@ip-xx-xxx:~$ ./stinit
+ 
+ #This is specific to Ubuntu
+ ubuntu@ip-xx-xxx:~$ apt install libtinfo5
+  ```
+ 
+ Add path to Stata
+ 
+ ```console
+ # open your nano document
+ ubuntu@ip-xx-xxx:~$ nano /etc/profile
+ ```
+ Type `export PATH="/usr/local/stata16:$PATH"` into the bottom of the document as depicted below.
+ 
+   Use <kbd>CTRL</kbd>+<kbd>O</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
+ 
+ #### Stata Kernel for Jupyter
+ ```console
+ python -m stata_kernel.install
+ 
+ # Copy configuration file to system configuration for all users
+ cp .stata_kernel.conf /etc/stata_kernel.conf 
+```
   
   
   [Back to Top](#econometric-pedagogy)
@@ -290,7 +331,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
 ## Disclaimer 
 
  
-The instructional guide is part of a demonstration used for “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists”. There is no guarantee this methodology works for others. For personal help, independently research any specific needs. 
+This instructional guide is part of a demonstration used for “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists”. There is no guarantee this methodology works for others. For specific needs or troubleshooting, independent research may be necessary. 
 
 AWS Educate and corresponding services are trademark of Amazon Web Services.
 
