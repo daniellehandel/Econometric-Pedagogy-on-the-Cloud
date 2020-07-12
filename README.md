@@ -15,7 +15,7 @@ ________________________________________________________________________________
 1. [Overview](#overview)
 2. [Prerequisites](#prerequisites)
 3. [Launching an Instance via AWS](#lauching-an-instance-via-aws)
-   1. [AWS Educate's Seven Step Process](#seven-steps)
+   1. [Customizing an Instance](#seven-steps)
    2. [Navigating Bitvise](#navigating-bitvise)
 4. [Anaconda](#anaconda)
    1. [Loading Anaconda](#loading-anaconda)
@@ -31,12 +31,9 @@ ________________________________________________________________________________
 
 <br>
 
-The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted entirely in the cloud. Ultimately, students will be able to connect to the Lab with a username and password and have access to the distribution Anaconda for use of JupyterLab and Jupyter Notebooks with Python, R, and Stata kernels. 
-A Professor would be able to post any form of assignment for their students to be completed on the instance using the tools provided. A group video chat service provider such as MS teams or Google hangout can be used alongside for synchronous instruction.
+The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted entirely in the cloud. Ultimately, students will be able to connect to the lab via a web browser with a username and password and have access to JupyterLab and Jupyter Notebooks with Python, R, and Stata kernels. A group video chat service provider such as MS teams or Google hangout can be used alongside for synchronous instruction.
 
-The following instructions are guidelines used to successfully set up the service documented above, although they can be modified for any particular teaching style or need.
-
-The guide below corresponds to Workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists” which may be referred to for further details. 
+The guide below corresponds to Workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
 
 ## Prerequisites
@@ -107,7 +104,9 @@ Given all steps have been followed by this point, select “Launch”.
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/4_IP_into_bitvise.gif"  width="800" height="370" />|
 |---|
 
-The instance should now be visible in the EC2 homepage. Located towards the bottom of the screen, the description of the instance should be visible. Download and open Bitvise as an SSH client. Copy the IPv4 Public IP address and paste it into “Host” on Bitvise. Insert 22 as the port. 
+Download [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) or any other appropriate SSH software. 
+
+The instance should now be visible in the EC2 homepage. Located towards the bottom of the screen, the description of the instance should be visible. Open Bitvise as an SSH client. Copy the IPv4 Public IP address and paste it into “Host” on Bitvise. Insert 22 as the port. 
 
 :bulb: MacOS users may choose to use the Terminus App in lieu of Bitvise.
 
@@ -280,8 +279,8 @@ Continue reading the “Anaconda” section to download the distribution onto th
  :bulb: Instructors should contact Stata to discuss the best licencing options. A Stata Labs licences may be best for this workflow, with the lab size corresponding to the number of students in the lab.
   
   #### Adding Stata <a name="adding-stata"></a>
-  Download Stata for Linux from https://www.stata.com/support/faqs/unix/install-download-on-linux/
-  Download Stata kernel for Jupyter Notebook from https://kylebarron.dev/stata_kernel/
+  Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux    
+  Download [Stata kernel](https://kylebarron.dev/stata_kernel/) for Jupyter Notebook
   
   
   
