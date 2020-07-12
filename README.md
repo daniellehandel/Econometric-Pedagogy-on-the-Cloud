@@ -97,7 +97,7 @@ Given all steps have been followed by this point, select “Launch”.
   
   Selecting “Launch” will prompt the user to select an existing key pair or create a new one. A key pair serves as a sort of password to connect the instance to a SSH server or client. Name and download your key pair. 
 
-:warning: Do not lose the key, or all progress will be lost. Keep track of where the key is stored, as it will need to be accessed later.
+:warning: Do not lose the key, or all progress will be lost. Keep track of where the key is stored, as it will need to be accessed later. :warning:
 
   <br>
   
@@ -282,10 +282,16 @@ Continue reading the “Anaconda” section to download the distribution onto th
 ## Stata
 <details>
   <summary>Click to expand</summary>
+ 
+ <br>
+ 
+ :bulb: Instructors should contact Stata to discuss the best licencing options. A Stata Labs licences may be best for this particular workflow, with the lab size corresponding to the number of students in the lab.
   
   #### Adding Stata <a name="adding-stata"></a>
   Download Stata for Linux from https://www.stata.com/support/faqs/unix/install-download-on-linux/
   Download Stata kernel for Jupyter Notebook from https://kylebarron.dev/stata_kernel/
+  
+  
   
   [Back to Top](#econometric-pedagogy)
   
