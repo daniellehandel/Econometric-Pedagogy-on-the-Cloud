@@ -297,7 +297,12 @@ AWS Educate and corresponding services are trademark of Amazon Web Services.
 
 Stata is trademark of Stata Corporation.
 
-Look into: Python, R, Jupyter Hub for open source citation. 
+Python is developed on an open source license distributed by the Python Software Foundation.
+
+R is offered on an open source license distributed by the R Foundation.
+
+JupyterHub is an open source platform developed and maintained by Project Jupyter.
+
 
 [Back to Top](#econometric-pedagogy)
   
