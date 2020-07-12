@@ -11,10 +11,12 @@ ________________________________________________________________________________
      src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/workflow_3.png" 
      width="600" height="460" />
 
-### Table of Contents
+## Table of Contents
 1. [Overview](#overview)
 2. [Prerequisites](#prerequisites)
 3. [Launching an Instance via AWS](#lauching-an-instance-via-aws)
+   1. [AWS Educate's Seven Step Process](#seven-steps)
+   2. [Navigating Bitvise](#navigating-bitvise)
 4. [Anaconda](#anaconda)
    1. [Loading Anaconda](#loading-anaconda)
    2. [JupyterHub](#jupyterhub)
@@ -58,6 +60,10 @@ The guide assumes that the following steps have already been adhered to:
   <summary>Click to expand</summary>
 
   <br>
+  
+  This section details a method of launching an instance on AWS Educate's EC2 server using a free teir. Demonstrational gifs are provided alongside the instructions, which feature the interface being used for this purpose. 
+  
+  #### AWS Educate's Seven Step Process <a name="seven-steps"></a>
 
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />|
 |---|
@@ -100,6 +106,8 @@ Given all steps have been followed by this point, select “Launch”.
 :warning: Do not lose the key, or all progress will be lost. Keep track of where the key is stored, as it will need to be accessed later. :warning:
 
   <br>
+  
+#### Navigating Bitvise <a name="navigating-bitvise"></a>
   
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/4_IP_into_bitvise.gif"  width="800" height="370" />|
 |---|
