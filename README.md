@@ -125,14 +125,15 @@ Continue reading the “Anaconda” section to download the distribution onto th
 
 ## Anaconda
   
-  #### Loading Anaconda <a name="loading-anaconda"></a>
-  
-  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  The following directions are for use in the Bitvise (or other choice SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
   To request root access:
   ```console
   ubuntu@ip-xx-xxx:~$ sudo -i
   ```
+  
+  #### Loading Anaconda <a name="loading-anaconda"></a>
+
   
   After launching an instance with your selected cloud service provider, update the Ubuntu repository and upgrade packages with:
   ```console
@@ -178,7 +179,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ubuntu@ip-xx-xxx:~$ conda update -n root conda
   ```
 
-  Update all packages in the current environment to the latest version :
+  Update all packages in the current environment to the latest version:
   ```console
   ubuntu@ip-xx-xxx:~$ conda update --all
   ubuntu@ip-xx-xxx:~$ conda install -c conda-forge jupyterhub
@@ -249,45 +250,61 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
 
 ## R
-
+   
+   The following directions are for use in the Bitvise (or other choice SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  
+  To request root access:
+  ```console
+  ubuntu@ip-xx-xxx:~$ sudo -i
+  ```
   
   #### Adding R <a name="adding-r"></a>
-  Install R:
+  To install R through Bitvise:
   ```console
   ubuntu@ip-xx-xxx:~$ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
   ubuntu@ip-xx-xxx:~$ add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
   ubuntu@ip-xx-xxx:~$ apt update
   ubuntu@ip-xx-xxx:~$ apt install r-base r-base-dev
+  ```
   
-  #Start R
+  Start R by typing:
+  ```console
   ubuntu@ip-xx-xxx:~$ R
   ```
   
   <br>
   
   #### Update and Install R Kernel <a name="update-and-install-r-kernel"></a>
-  ```r
   
-  # update, without prompts for permission/clarification
+  Update all packages in the current environment to the latest version, without prompts for permission:
+  ```r
   update.packages(ask = FALSE)
   install.packages('IRkernel', lib = '/usr/local/lib/R/site-library')
+  ```
   
-  #Make Jupyter see the newly installed R kernel by installing a kernel spec.
-  #For system-wide installation, set user to False in the installspec command:
-
+  Make Jupyter see the newly installed R kernel by installing a kernel spec. For system-wide installation, set user to False in the installspec command:
+  ```r
   IRkernel::installspec(user = FALSE)
+  ```
 
-  # Additional Ubuntu linux packages are needed for 'tidyverse' in R
+  Additional Ubuntu linux packages are needed for 'tidyverse' in R. Then install tidyverse for all users.
+  ```r
   apt install libcurl4-openssl-dev libssl-dev libxml2-dev
-
-  # Install tidyverse for all users
   install.packages("tidyverse", dependencies = TRUE, INSTALL_opts = '--no-lock')
-
-  # Examples of other packages
+  ```
+ 
+ <details>
+  <summary>:bulb: Examples of other packages</summary>
+ 
+  ```r
   install.packages("openxlsx", lib = '/usr/local/lib/R/site-library', dependencies = TRUE, INSTALL_opts = '--no-lock')
   install.packages("knitr", lib = '/usr/local/lib/R/site-library', dependencies = TRUE, INSTALL_opts = '--no-lock')
+  ```
   
-  #When ready, quit
+  </details>
+  
+  When ready, quit:
+  ```r
   q()
   ```
   
@@ -296,8 +313,14 @@ Continue reading the “Anaconda” section to download the distribution onto th
 
 ## Stata
 
+  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  
+  To request root access:
+  ```console
+  ubuntu@ip-xx-xxx:~$ sudo -i
+  ```
  
- :bulb: Instructors should contact Stata to discuss the best licencing options. A Stata Labs licences may be best for this workflow, with the lab size corresponding to the number of students in the lab.
+  :bulb: Instructors should contact Stata to discuss the best licencing options. A Stata Labs licences may be best for this workflow, with the lab size corresponding to the number of students in the lab.
   
   #### Adding Stata <a name="adding-stata"></a>
   Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux    
