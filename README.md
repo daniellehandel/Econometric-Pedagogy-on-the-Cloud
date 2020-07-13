@@ -57,7 +57,7 @@ This guide assumes the following:
   This section details a method of launching an instance on AWS Educate's EC2 server. Demonstrational gifs are provided alongside the instructions, which feature the interfaces being used for this purpose. 
   
   #### Customizing an Instance <a name="seven-steps"></a>
-
+ 
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />|
 |---|
 
@@ -165,8 +165,9 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   Enter `export PATH="/usr/anaconda3/bin:$PATH"` into the bottom of the document as shown below.
   
-  |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20anaconda%20path.png" width = "400" height = "400" />|
-  |---|
+  <p align="center">
+    <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20anaconda%20path.png" width = "400" height = "400" />
+  </p>
   
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   <br>
@@ -364,8 +365,9 @@ Continue reading the “Anaconda” section to download the distribution onto th
  export PATH="/usr/local/stata16:$PATH"
  ```
  
- |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20stata%20path.png" width = "400" height = "400" />|
- |---|
+ <p align="center">
+   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20stata%20path.png" width = "400" height = "400" />
+ </p>
  
  Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
  
