@@ -130,32 +130,34 @@ Continue reading the “Anaconda” section to download the distribution onto th
   The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
   To request root access:
-  
   ```console
   ubuntu@ip-xx-xxx:~$ sudo -i
   ```
-  After launching an instance with your selected cloud service provider, update the Ubuntu repository and upgrade packages with:
   
+  After launching an instance with your selected cloud service provider, update the Ubuntu repository and upgrade packages with:
   ```console
   ubuntu@ip-xx-xxx:~$ apt-get update
   ubuntu@ip-xx-xxx:~$ apt-get upgrade
   ```
+  
   To install Anaconda:
   ```console
   ubuntu@ip-xx-xxx:~$ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
   ubuntu@ip-xx-xxx:~$ bash Anaconda3-2020.02-Linux-x86_64.sh
   ```
-  When prompted with `[/root/anaconda3] >>>` 
+  When prompted with `[/root/anaconda3] >>>` enter:
   
-  enter:
   ```console
   /usr/anaconda3
   ```
  
+  In order for Anaconda to operate, the following command needs to be entered:
   ```console
   ubuntu@ip-xx-xxx:~$ source .bashrc
+  ```
  
-  #Open a text editor (nano is used here):
+  Open the profile in nano with the following command.
+  ```console
   ubuntu@ip-xx-xxx:~$ nano /etc/profile
   ```
   
@@ -169,42 +171,53 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   #### JupyterHub: 
   
+  Install [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/quickstart.html).
+ 
+  First, make sure conda is up to date by entering: 
   ```console
-  # Install jupyter hub 
-  # https://jupyterhub.readthedocs.io/en/stable/quickstart.html
-
-  # Update to the latest conda version
   ubuntu@ip-xx-xxx:~$ conda update -n root conda
+  ```
 
-  # Update all packages in the current environment to the latest version 
+  Update all packages in the current environment to the latest version :
+  ```console
   ubuntu@ip-xx-xxx:~$ conda update --all
   ubuntu@ip-xx-xxx:~$ conda install -c conda-forge jupyterhub
   ```
+  
+  A configuration file needs to be created for JupyterHub:
   ```console
-  # Create jupyter hub configuration file
   ubuntu@ip-xx-xxx:~$ mkdir /etc/jupyterhub/
   ubuntu@ip-xx-xxx:~$ cd /etc/jupyterhub/
   ubuntu@ip-xx-xxx:~$ jupyterhub --generate-config
-  ubuntu@ip-xx-xxx:~$ nano jupyterhub_config.py
-  
-  # enter the following in the file:
-  # open jupyter lab by default
-  c.Spawner.default_url = '/lab'
-  # allow admin to access other users' accounts 
-  c.JupyterHub.admin_access = True
-  # specify system user as administrator
-  c.Authenticator.admin_users = {'admin'}
-  # shutdown user servers on logout
-  c.JupyterHub.shutdown_on_logout = True
-  # prevent the user-owned configuration files from being loaded
-  c.Spawner.disable_user_config = True
-  
   ```
-  ```console
-  #
-  ubuntu@ip-xx-xxx:~$ nano /etc/jupyterhub/jupyterhub.service
   
-  #enter the following:
+  Using nano, access the newly created configuration file:
+  ```console
+  ubuntu@ip-xx-xxx:~$ nano jupyterhub_config.py
+  ```
+  
+  The configuration file will be modified to:
+  * Allow JupyterHub to be accessed by typing "lab" into the command line.
+  * Allow admin to access other users' accounts.
+  * Specify system user as administrator.
+  * Shutdown user servers on logout.
+  * Prevent the user-owned configuration files from being loaded.
+  
+  ```console
+  c.Spawner.default_url = '/lab'
+  c.JupyterHub.admin_access = True
+  c.Authenticator.admin_users = {'admin'}
+  c.JupyterHub.shutdown_on_logout = True
+  c.Spawner.disable_user_config = True
+  ```
+  
+  In nano, create and open a file with the following command.
+  ```console
+  ubuntu@ip-xx-xxx:~$ nano /etc/jupyterhub/jupyterhub.service
+  ```
+  
+  Copy and paste the following:
+  ```console
   [Unit]
   Description=JupyterHub
   After=syslog.target network.target
@@ -216,15 +229,19 @@ Continue reading the “Anaconda” section to download the distribution onto th
 
   [Install]
   WantedBy=multi-user.target
-  
   ```
-  Now, enable this:
+  
+  The following commands will enable the new file.
   ```console
   ubuntu@ip-xx-xxx:~$ ln -s /etc/jupyterhub/jupyterhub.service /etc/systemd/system/jupyterhub.service
 
   ubuntu@ip-xx-xxx:~$ systemctl daemon-reload
   ubuntu@ip-xx-xxx:~$ systemctl enable jupyterhub.service
   ubuntu@ip-xx-xxx:~$ systemctl start jupyterhub.service
+  ```
+  JupyterHub is now set up on the server.
+  Check its status with the following command (optional).
+  ```console
   ubuntu@ip-xx-xxx:~$ systemctl status jupyterhub.service
   ```
   
