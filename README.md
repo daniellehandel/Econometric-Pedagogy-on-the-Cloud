@@ -214,11 +214,11 @@ Continue reading the “Anaconda” section to download the distribution onto th
   * Prevent the user-owned configuration files from being loaded.
   
   ```console
-  c.Spawner.default_url = '/lab'
-  c.JupyterHub.admin_access = True
-  c.Authenticator.admin_users = {'admin'}
-  c.JupyterHub.shutdown_on_logout = True
-  c.Spawner.disable_user_config = True
+  ubuntu@ip-xx-xxx:~$ c.Spawner.default_url = '/lab'
+  ubuntu@ip-xx-xxx:~$ c.JupyterHub.admin_access = True
+  ubuntu@ip-xx-xxx:~$ c.Authenticator.admin_users = {'admin'}
+  ubuntu@ip-xx-xxx:~$ c.JupyterHub.shutdown_on_logout = True
+  ubuntu@ip-xx-xxx:~$ c.Spawner.disable_user_config = True
   ```
   
   In nano, create and open a file with the following command.
@@ -391,22 +391,18 @@ chmod 600 /srv/jupyterhub/jupyterhub_cookie_secret
   </details>
   
   <details>
-  <summary>:bulb: Optional: install nbgitpuller</summary>
+  <summary>:bulb: Optional packages</summary>
  
+  nbgitpuller:
   ```console
   conda install -c conda-forge nbgitpuller
 
-Use https://jupyterhub.github.io/nbgitpuller/link to generate link to git
+  Use https://jupyterhub.github.io/nbgitpuller/link to generate link to git
 
-http://18.215.104.126:8000/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fdjachoc%2FEmpirical-Methods-ML&app=lab
-
+  http://18.215.104.126:8000/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fdjachoc%2FEmpirical-Methods-ML&app=lab
   ```
- 
-  </details>
   
-  <details>
-  <summary>:bulb: Optional: install nbgrader</summary>
- 
+  nbgrader:
   ```console
   conda install -c conda-forge nbgrader
   ```
@@ -564,12 +560,12 @@ sudo systemctl restart nginx.service
  
  The follwoing line will allow Jupyter users to create and run documents with a Stata kernel.
  ```console
- python -m stata_kernel.install
+ ubuntu@ip-xx-xxx:~$ python -m stata_kernel.install
  ```
  
  Copy configuration file to system configuration for all users:
  ```console
- cp .stata_kernel.conf /etc/stata_kernel.conf 
+ ubuntu@ip-xx-xxx:~$ cp .stata_kernel.conf /etc/stata_kernel.conf 
  ```
   
   [Back to Top](#econometric-pedagogy)
