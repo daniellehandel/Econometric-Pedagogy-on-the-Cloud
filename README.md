@@ -117,6 +117,25 @@ The instance should now be visible in the EC2 homepage. Located towards the bott
 |---|
   
   The proper username to connect Bitvise to the instance is “ubuntu." Change the following line “Initial method” to publickey. Select the proper key in from the newly created “client key” line. Click "Log In" to selct the key downloaded earlier. An optional comment can be left for organization purposes if desired.
+  
+  The following directions are for use in the Bitvise (or other choice SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  
+  To request root access:
+  ```console
+  ubuntu@ip-xx-xxx:~$ sudo -i
+  ```
+  
+  After launching an instance with your selected cloud service provider, update the Ubuntu repository and upgrade packages with:
+  ```console
+  ubuntu@ip-xx-xxx:~$ apt-get update
+  ubuntu@ip-xx-xxx:~$ apt-get upgrade
+  ```
+  
+  To create a new administrator or student, respectively:
+  ```console
+  adduser admin
+  adduser student
+  ```
 
 The instance is now launched and hosted on a client. 
 Continue reading the “Anaconda” section to download the distribution onto the newly created instance. 
@@ -126,21 +145,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
 
 ## Anaconda
   
-  The following directions are for use in the Bitvise (or other choice SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
-  
-  To request root access:
-  ```console
-  ubuntu@ip-xx-xxx:~$ sudo -i
-  ```
-  
   #### Loading Anaconda <a name="loading-anaconda"></a>
-
-  
-  After launching an instance with your selected cloud service provider, update the Ubuntu repository and upgrade packages with:
-  ```console
-  ubuntu@ip-xx-xxx:~$ apt-get update
-  ubuntu@ip-xx-xxx:~$ apt-get upgrade
-  ```
   
   To install Anaconda:
   ```console
@@ -252,13 +257,8 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
 
 ## R
-   
-   The following directions are for use in the Bitvise (or other choice SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
-  To request root access:
-  ```console
-  ubuntu@ip-xx-xxx:~$ sudo -i
-  ```
+  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
   #### Adding R <a name="adding-r"></a>
   To install R through Bitvise:
@@ -317,11 +317,6 @@ Continue reading the “Anaconda” section to download the distribution onto th
 
   The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
-  To request root access:
-  ```console
-  ubuntu@ip-xx-xxx:~$ sudo -i
-  ```
- 
   :bulb: Instructors should contact Stata to discuss the best licencing options. A Stata Labs licences may be best for this workflow, with the lab size corresponding to the number of students in the lab.
   
   #### Adding Stata <a name="adding-stata"></a>
