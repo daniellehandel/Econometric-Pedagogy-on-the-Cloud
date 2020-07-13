@@ -255,6 +255,198 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ubuntu@ip-xx-xxx:~$ systemctl status jupyterhub.service
   ```
   
+  <details>
+  <summary>:bulb: Function under test</summary>
+ 
+  ```console
+  # GitHub OAuth 
+conda create -n jupyerhubenv python=3.6
+$ conda activate jupyterhubenv
+conda install -c conda-forge oauthenticator
+
+# Create dhparam.pem
+openssl dhparam -out /etc/jupyterhub/dhparam.pem 2048
+chmod 600 /etc/jupyterhub/dhparam.pem
+
+ln -s /etc/jupyterhub/dhparam.pem /etc/ssl/certs/dhparam.pem
+
+# Obtain SSL Certificates
+    sudo apt-get update
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository universe
+    sudo apt-get update
+
+Install Certbot
+
+Run this command on the command line on the machine to install Certbot.
+
+sudo apt-get install certbot
+sudo certbot certonly --webroot
+sudo certbot renew --dry-run
+
+ - Congratulations! Your certificate and chain have been sav
+   /etc/letsencrypt/live/test.atyho.info/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/test.atyho.info/privkey.pem
+
+apt install nginx
+
+nano /etc/nginx/sites-available/jupyterhub.conf
+
+# top-level http config for websocket headers
+# If Upgrade is defined, Connection = upgrade
+# If Upgrade is empty, Connection = close
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+# HTTP server to redirect all 80 traffic to SSL/HTTPS
+server {
+    listen 80;
+    #listen [::]:80;
+    server_name test.atyho.info;
+
+    # Tell all requests to port 80 to be 302 redirected to HTTPS
+    return 302 https://$host$request_uri;
+}
+
+# HTTPS server to handle JupyterHub
+server {
+    listen 443 ssl http2;
+    #listen [::]:443 ssl http2;
+    server_name test.atyho.info;
+
+    ssl_certificate /etc/letsencrypt/live/test.atyho.info/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/test.atyho.info/privkey.pem;
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
+#    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+#    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
+    ssl_prefer_server_ciphers on;
+
+    # HSTS (ngx_http_headers_module is required) (63072000 seconds)
+    add_header Strict-Transport-Security "max-age=63072000" always;
+    #add_header Strict-Transport-Security max-age=1576800;
+
+    # OCSP stapling
+    ssl_stapling on;
+    ssl_stapling_verify on;
+
+    # Managing literal requests to the JupyterHub front end
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        # websocket headers
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+
+    # Managing requests to verify letsencrypt host
+    location ~ /.well-known {
+        allow all;
+    }
+}
+
+unlink /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/jupyterhub.conf /etc/nginx/sites-enabled/jupyterhub.conf
+
+systemctl restart nginx.service
+
+# Force the proxy to only listen to connections to 127.0.0.1
+nano /etc/jupyterhub/jupyterhub_config.py
+c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
+c.LocalGitHubOAuthenticator.oauth_callback_url = 'https://test.atyho.info/hub/oauth_callback'
+
+# Don't forget to update GitHub OAuth settings!
+
+systemctl restart jupyterhub.service
+  ```
+ 
+  </details>
+  
+  <details>
+  <summary>:bulb: Generate cookie secret</summary>
+ 
+  ```console
+  mkdir /srv/jupyterhub
+openssl rand -hex 32 > /srv/jupyterhub/jupyterhub_cookie_secret
+
+nano /etc/jupyterhub/jupyterhub_config.py
+c.JupyterHub.cookie_secret_file = '/srv/jupyterhub/jupyterhub_cookie_secret'
+
+chmod 600 /srv/jupyterhub/jupyterhub_cookie_secret
+
+  ```
+ 
+  </details>
+  
+  <details>
+  <summary>:bulb: Optional: install nbgitpuller</summary>
+ 
+  ```console
+  conda install -c conda-forge nbgitpuller
+
+Use https://jupyterhub.github.io/nbgitpuller/link to generate link to git
+
+http://18.215.104.126:8000/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fdjachoc%2FEmpirical-Methods-ML&app=lab
+
+  ```
+ 
+  </details>
+  
+  <details>
+  <summary>:bulb: Optional: install nbgrader</summary>
+ 
+  ```console
+  conda install -c conda-forge nbgrader
+  ```
+ 
+  </details>
+  
+  <details>
+  <summary>:bulb: Setting up a reverse proxy</summary>
+ 
+  ```console
+  sudo nano /opt/jupyterhub/etc/jupyterhub/jupyterhub_config.py
+c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
+
+sudo apt install nginx
+sudo nano /etc/nginx/nginx.conf
+
+server{
+
+  location /jupyter/ {    
+    # NOTE important to also set base url of jupyterhub to /jupyter in its config
+    proxy_pass http://127.0.0.1:8000;
+
+    proxy_redirect   off;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+
+    # websocket headers
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+
+  }
+}
+
+sudo systemctl restart nginx.service
+  ```
+ 
+  </details>
+  
   [Back to Top](#econometric-pedagogy)
   
 
