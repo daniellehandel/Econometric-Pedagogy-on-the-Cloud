@@ -25,6 +25,7 @@ ________________________________________________________________________________
    2. [Update and Install R Kernel](#update-and-install-r-kernel)
 6. [Stata](#stata)
    1. [Adding Stata](#adding-stata)
+   2. [Stata Kernel for Jupyter](#stata-kernel)
 7. [Disclaimer](#disclaimer)
 
 ## Overview 
@@ -326,50 +327,59 @@ Continue reading the “Anaconda” section to download the distribution onto th
   Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux    
   Download [Stata kernel](https://kylebarron.dev/stata_kernel/) for Jupyter Notebook  
  
- Uploading Stata:
+ To upload Stata, create a folder for your Stata installation file:
   ```console
-  # create a folder for your Stata installation file
   ubuntu@ip-xx-xxx:~$ mkdir /home/ubuntu/stata_source
   ```
+  
  Place your Stata for Linux installation file into this folder:
- 
  ```console
- # Create directory where Stata should be installed
  cd /usr/local
  ubuntu@ip-xx-xxx:~$ mkdir stata16
  ubuntu@ip-xx-xxx:~$ cd stata16
+ ```
  
- #install Stata- you will be prompted to enter license information
+ Install Stata. Enter licensing information when prompted.
+ ```console
  ubuntu@ip-xx-xxx:~$ /home/ubuntu/stata_source/install
+ ```
  
- #During installation, you will be prompted to run the following:
+ During installation, you will be prompted to run the following. 
+ ```console
  ubuntu@ip-xx-xxx:~$ ./stinit
+ ```
  
- #This is specific to Ubuntu
+ Ubuntu users will be need to enter the following.
+ ```console
  ubuntu@ip-xx-xxx:~$ apt install libtinfo5
   ```
  
- To add a path to Stata:
- 
+ To add a path to Stata, open profile with nano:
  ```console
- # open your nano document
  ubuntu@ip-xx-xxx:~$ nano /etc/profile
  ```
- Type `export PATH="/usr/local/stata16:$PATH"` into the bottom of the document as depicted below.
+ 
+ Type the follwing into the bottom of the document as depicted below.
+ ```console
+ export PATH="/usr/local/stata16:$PATH"
+ ```
  
  |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20stata%20path.png" width = "400" height = "400" />|
  |---|
  
  Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
  
- #### Stata Kernel for Jupyter
+ #### Stata Kernel for Jupyter <a name="stata-kernel"></a>
+ 
+ The follwoing line will allow Jupyter users to create and run documents with a Stata kernel.
  ```console
  python -m stata_kernel.install
+ ```
  
- # Copy configuration file to system configuration for all users
+ Copy configuration file to system configuration for all users:
+ ```console
  cp .stata_kernel.conf /etc/stata_kernel.conf 
-```
-  
+ ```
   
   [Back to Top](#econometric-pedagogy)
   
