@@ -17,16 +17,17 @@ ________________________________________________________________________________
 3. [Launching an Instance via AWS](#lauching-an-instance-via-aws)
    1. [Customizing an Instance](#seven-steps)
    2. [Navigating Bitvise](#navigating-bitvise)
-4. [Anaconda](#anaconda)
+4. [GitHub](#github)
+5. [Anaconda](#anaconda)
    1. [Loading Anaconda](#loading-anaconda)
    2. [JupyterHub](#jupyterhub)
-5. [R](#r)
+6. [R](#r)
    1. [Adding R](#adding-r)
    2. [Update and Install R Kernel](#update-and-install-r-kernel)
-6. [Stata](#stata)
+7. [Stata](#stata)
    1. [Adding Stata](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
-7. [Disclaimer](#disclaimer)
+8. [Disclaimer](#disclaimer)
 
 ## Overview 
 
@@ -141,7 +142,12 @@ The instance is now launched and hosted on a client.
 Continue reading the “Anaconda” section to download the distribution onto the newly created instance. 
 
 [Back to Top](#econometric-pedagogy)
+
+## GitHub
+
+  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
+  [Back to Top](#econometric-pedagogy)
 
 ## Anaconda
 
