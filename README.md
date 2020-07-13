@@ -170,7 +170,10 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ubuntu@ip-xx-xxx:~$ nano /etc/profile
   ```
   
-  Enter `export PATH="/usr/anaconda3/bin:$PATH"` into the bottom of the document as shown below.
+  Enter the follwoing into the bottom of the document as shown below.
+  ```
+  export PATH="/usr/anaconda3/bin:$PATH
+  ```
   
   <p align="center">
     <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20anaconda%20path.png" width = "400" height = "400" />
@@ -226,7 +229,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ubuntu@ip-xx-xxx:~$ nano /etc/jupyterhub/jupyterhub.service
   ```
   
-  Copy and paste the following:
+  Copy and paste the following into the document as depicted below:
   ```console
   [Unit]
   Description=JupyterHub
@@ -240,6 +243,11 @@ Continue reading the “Anaconda” section to download the distribution onto th
   [Install]
   WantedBy=multi-user.target
   ```
+  <p align="center">
+   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/jupytergnu.PNG" width = "650" height = "400" />
+ </p>
+  
+  Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   
   The following commands will enable the new file.
   ```console
@@ -546,7 +554,7 @@ sudo systemctl restart nginx.service
  ```
  
  Type the follwing into the bottom of the document as depicted below.
- ```console
+ ```
  export PATH="/usr/local/stata16:$PATH"
  ```
  
