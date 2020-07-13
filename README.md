@@ -133,8 +133,8 @@ The instance should now be visible in the EC2 homepage. Located towards the bott
   
   To create a new administrator or student, respectively:
   ```console
-  adduser admin
-  adduser student
+  ubuntu@ip-xx-xxx:~$ adduser admin
+  ubuntu@ip-xx-xxx:~$ adduser student
   ```
 
 The instance is now launched and hosted on a client. 
@@ -144,6 +144,8 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
 
 ## Anaconda
+
+  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
   #### Loading Anaconda <a name="loading-anaconda"></a>
   
@@ -155,7 +157,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   When prompted with `[/root/anaconda3] >>>` enter:
   
   ```console
-  /usr/anaconda3
+  ubuntu@ip-xx-xxx:~$ /usr/anaconda3
   ```
  
   In order for Anaconda to operate, the following command needs to be entered:
