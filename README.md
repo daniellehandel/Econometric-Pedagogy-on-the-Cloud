@@ -17,16 +17,16 @@ ________________________________________________________________________________
 3. [Launching an Instance via AWS](#lauching-an-instance-via-aws)
    1. [Customizing an Instance](#seven-steps)
    2. [Navigating Bitvise](#navigating-bitvise)
-4. [GitHub](#github)
-5. [Anaconda](#anaconda)
+4. [Anaconda](#anaconda)
    1. [Loading Anaconda](#loading-anaconda)
    2. [JupyterHub](#jupyterhub)
-6. [R](#r)
+5. [R](#r)
    1. [Adding R](#adding-r)
    2. [Update and Install R Kernel](#update-and-install-r-kernel)
-7. [Stata](#stata)
+6. [Stata](#stata)
    1. [Adding Stata](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
+7. [Optional GitHub Intergration](#github-intergration)
 8. [Disclaimer](#disclaimer)
 
 ## Overview 
@@ -143,11 +143,6 @@ Continue reading the “Anaconda” section to download the distribution onto th
 
 [Back to Top](#econometric-pedagogy)
 
-## GitHub
-
-  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
-  
-  [Back to Top](#econometric-pedagogy)
 
 ## Anaconda
 
@@ -269,8 +264,141 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ubuntu@ip-xx-xxx:~$ systemctl status jupyterhub.service
   ```
   
+  [Back to Top](#econometric-pedagogy)
+  
+
+## R
+  
+  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  
+  #### Adding R <a name="adding-r"></a>
+  To install R through Bitvise:
+  ```console
+  ubuntu@ip-xx-xxx:~$ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+  ubuntu@ip-xx-xxx:~$ add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+  ubuntu@ip-xx-xxx:~$ apt update
+  ubuntu@ip-xx-xxx:~$ apt install r-base r-base-dev
+  ```
+  
+  Start R by typing:
+  ```console
+  ubuntu@ip-xx-xxx:~$ R
+  ```
+  
+  <br>
+  
+  #### Update and Install R Kernel <a name="update-and-install-r-kernel"></a>
+  
+  Update all packages in the current environment to the latest version, without prompts for permission:
+  ```r
+  update.packages(ask = FALSE)
+  install.packages('IRkernel', lib = '/usr/local/lib/R/site-library')
+  ```
+  
+  Make Jupyter see the newly installed R kernel by installing a kernel spec. For system-wide installation, set user to False in the installspec command:
+  ```r
+  IRkernel::installspec(user = FALSE)
+  ```
+
+  Additional Ubuntu linux packages are needed for 'tidyverse' in R. Then install tidyverse for all users.
+  ```r
+  apt install libcurl4-openssl-dev libssl-dev libxml2-dev
+  install.packages("tidyverse", dependencies = TRUE, INSTALL_opts = '--no-lock')
+  ```
+ 
+ <details>
+  <summary>:bulb: Examples of other packages</summary>
+ 
+  ```r
+  install.packages("openxlsx", lib = '/usr/local/lib/R/site-library', dependencies = TRUE, INSTALL_opts = '--no-lock')
+  install.packages("knitr", lib = '/usr/local/lib/R/site-library', dependencies = TRUE, INSTALL_opts = '--no-lock')
+  ```
+  
+  </details>
+  
+  When ready, quit:
+  ```r
+  q()
+  ```
+  
+  [Back to Top](#econometric-pedagogy)
+
+
+## Stata
+
+  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  
+  :bulb: Instructors should contact Stata to discuss the best licencing options. A Stata Labs licences may be best for this workflow, with the lab size corresponding to the number of students in the lab.
+  
+  #### Adding Stata <a name="adding-stata"></a>
+  Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux    
+  Download [Stata kernel](https://kylebarron.dev/stata_kernel/) for Jupyter Notebook  
+ 
+ To upload Stata, create a folder for your Stata installation file:
+  ```console
+  ubuntu@ip-xx-xxx:~$ mkdir /home/ubuntu/stata_source
+  ```
+  
+ Place your Stata for Linux installation file into this folder:
+ ```console
+ cd /usr/local
+ ubuntu@ip-xx-xxx:~$ mkdir stata16
+ ubuntu@ip-xx-xxx:~$ cd stata16
+ ```
+ 
+ Install Stata. Enter licensing information when prompted.
+ ```console
+ ubuntu@ip-xx-xxx:~$ /home/ubuntu/stata_source/install
+ ```
+ 
+ During installation, you will be prompted to run the following. 
+ ```console
+ ubuntu@ip-xx-xxx:~$ ./stinit
+ ```
+ 
+ Ubuntu users will be need to enter the following.
+ ```console
+ ubuntu@ip-xx-xxx:~$ apt install libtinfo5
+  ```
+ 
+ To add a path to Stata, open profile with nano:
+ ```console
+ ubuntu@ip-xx-xxx:~$ nano /etc/profile
+ ```
+ 
+ Type the follwing into the bottom of the document as depicted below.
+ ```
+ export PATH="/usr/local/stata16:$PATH"
+ ```
+ 
+ <p align="center">
+   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20stata%20path.png" width = "400" height = "400" />
+ </p>
+ 
+ Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
+ 
+ #### Stata Kernel for Jupyter <a name="stata-kernel"></a>
+ 
+ The follwoing line will allow Jupyter users to create and run documents with a Stata kernel.
+ ```console
+ ubuntu@ip-xx-xxx:~$ python -m stata_kernel.install
+ ```
+ 
+ Copy configuration file to system configuration for all users:
+ ```console
+ ubuntu@ip-xx-xxx:~$ cp .stata_kernel.conf /etc/stata_kernel.conf 
+ ```
+  
+  [Back to Top](#econometric-pedagogy)
+  
+## Optional GitHub Intergration <a name="github-intergration"></a>
+
+  This section provides an advanced guide to intergrating GitHub with the server. While much of GitHub's functioanlity is sacraficed in this method, an instructor is saved from having to add each student and admin individually; instead, students can log in using their GitHub accounts. As a reminder, a student can set up a GitHub account for free if she or he does not already have on set up. 
+
+  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  
   <details>
-  <summary>:bulb: Function under test</summary>
+    <summary>:bulb: Function under test</summary>
  
   ```console
   # GitHub OAuth 
@@ -457,130 +585,6 @@ sudo systemctl restart nginx.service
  
   </details>
   
-  [Back to Top](#econometric-pedagogy)
-  
-
-## R
-  
-  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
-  
-  #### Adding R <a name="adding-r"></a>
-  To install R through Bitvise:
-  ```console
-  ubuntu@ip-xx-xxx:~$ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-  ubuntu@ip-xx-xxx:~$ add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
-  ubuntu@ip-xx-xxx:~$ apt update
-  ubuntu@ip-xx-xxx:~$ apt install r-base r-base-dev
-  ```
-  
-  Start R by typing:
-  ```console
-  ubuntu@ip-xx-xxx:~$ R
-  ```
-  
-  <br>
-  
-  #### Update and Install R Kernel <a name="update-and-install-r-kernel"></a>
-  
-  Update all packages in the current environment to the latest version, without prompts for permission:
-  ```r
-  update.packages(ask = FALSE)
-  install.packages('IRkernel', lib = '/usr/local/lib/R/site-library')
-  ```
-  
-  Make Jupyter see the newly installed R kernel by installing a kernel spec. For system-wide installation, set user to False in the installspec command:
-  ```r
-  IRkernel::installspec(user = FALSE)
-  ```
-
-  Additional Ubuntu linux packages are needed for 'tidyverse' in R. Then install tidyverse for all users.
-  ```r
-  apt install libcurl4-openssl-dev libssl-dev libxml2-dev
-  install.packages("tidyverse", dependencies = TRUE, INSTALL_opts = '--no-lock')
-  ```
- 
- <details>
-  <summary>:bulb: Examples of other packages</summary>
- 
-  ```r
-  install.packages("openxlsx", lib = '/usr/local/lib/R/site-library', dependencies = TRUE, INSTALL_opts = '--no-lock')
-  install.packages("knitr", lib = '/usr/local/lib/R/site-library', dependencies = TRUE, INSTALL_opts = '--no-lock')
-  ```
-  
-  </details>
-  
-  When ready, quit:
-  ```r
-  q()
-  ```
-  
-  [Back to Top](#econometric-pedagogy)
-
-
-## Stata
-
-  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
-  
-  :bulb: Instructors should contact Stata to discuss the best licencing options. A Stata Labs licences may be best for this workflow, with the lab size corresponding to the number of students in the lab.
-  
-  #### Adding Stata <a name="adding-stata"></a>
-  Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux    
-  Download [Stata kernel](https://kylebarron.dev/stata_kernel/) for Jupyter Notebook  
- 
- To upload Stata, create a folder for your Stata installation file:
-  ```console
-  ubuntu@ip-xx-xxx:~$ mkdir /home/ubuntu/stata_source
-  ```
-  
- Place your Stata for Linux installation file into this folder:
- ```console
- cd /usr/local
- ubuntu@ip-xx-xxx:~$ mkdir stata16
- ubuntu@ip-xx-xxx:~$ cd stata16
- ```
- 
- Install Stata. Enter licensing information when prompted.
- ```console
- ubuntu@ip-xx-xxx:~$ /home/ubuntu/stata_source/install
- ```
- 
- During installation, you will be prompted to run the following. 
- ```console
- ubuntu@ip-xx-xxx:~$ ./stinit
- ```
- 
- Ubuntu users will be need to enter the following.
- ```console
- ubuntu@ip-xx-xxx:~$ apt install libtinfo5
-  ```
- 
- To add a path to Stata, open profile with nano:
- ```console
- ubuntu@ip-xx-xxx:~$ nano /etc/profile
- ```
- 
- Type the follwing into the bottom of the document as depicted below.
- ```
- export PATH="/usr/local/stata16:$PATH"
- ```
- 
- <p align="center">
-   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20stata%20path.png" width = "400" height = "400" />
- </p>
- 
- Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
- 
- #### Stata Kernel for Jupyter <a name="stata-kernel"></a>
- 
- The follwoing line will allow Jupyter users to create and run documents with a Stata kernel.
- ```console
- ubuntu@ip-xx-xxx:~$ python -m stata_kernel.install
- ```
- 
- Copy configuration file to system configuration for all users:
- ```console
- ubuntu@ip-xx-xxx:~$ cp .stata_kernel.conf /etc/stata_kernel.conf 
- ```
   
   [Back to Top](#econometric-pedagogy)
   
