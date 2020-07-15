@@ -392,6 +392,11 @@ Continue reading the “Anaconda” section to download the distribution onto th
  ```console
  ubuntu@ip-xx-xxx:~$ cp .stata_kernel.conf /etc/stata_kernel.conf 
  ```
+ Ensure that the stata_kernel is installed correctly:
+ ```console
+ ubuntu@ip-xx-xxx:~$ nano .stata_kernel.conf
+ ```
+ 
   
   [Back to Top](#econometric-pedagogy)
   
