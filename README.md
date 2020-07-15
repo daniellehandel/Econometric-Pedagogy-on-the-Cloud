@@ -371,7 +371,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  ```
  
  Type the follwing into the bottom of the document as depicted below.
- ```
+ ```console
  export PATH="/usr/local/stata16:$PATH"
  ```
  
@@ -385,16 +385,22 @@ Continue reading the “Anaconda” section to download the distribution onto th
  
  The follwoing line will allow Jupyter users to create and run documents with a Stata kernel.
  ```console
+ ubuntu@ip-xx-xxx:~$ pip install stata_kernel
  ubuntu@ip-xx-xxx:~$ python -m stata_kernel.install
- ```
- 
- Copy configuration file to system configuration for all users:
- ```console
- ubuntu@ip-xx-xxx:~$ cp .stata_kernel.conf /etc/stata_kernel.conf 
  ```
  Ensure that the stata_kernel is installed correctly:
  ```console
  ubuntu@ip-xx-xxx:~$ nano .stata_kernel.conf
+ ```
+ You should see:
+ 
+  <p align="center">
+   <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/stata_kernel.PNG" width = "400" height = "400" />
+ </p>
+ 
+  Copy configuration file to system configuration for all users:
+ ```console
+ ubuntu@ip-xx-xxx:~$ cp .stata_kernel.conf /etc/stata_kernel.conf 
  ```
  
   
