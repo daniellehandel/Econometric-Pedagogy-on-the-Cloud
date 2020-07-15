@@ -335,8 +335,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   :bulb: Instructors should contact Stata to discuss the best licencing options. A Stata Labs licences may be best for this workflow, with the lab size corresponding to the number of students in the lab.
   
   #### Adding Stata <a name="adding-stata"></a>
-  Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux    
-  Download [Stata kernel](https://kylebarron.dev/stata_kernel/) for Jupyter Notebook  
+  Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux  
  
  To upload Stata, create a folder for your Stata installation file:
   ```console
@@ -370,7 +369,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  ubuntu@ip-xx-xxx:~$ nano /etc/profile
  ```
  
- Type the follwing into the bottom of the document as depicted below.
+ Type the following into the bottom of the document as depicted below.
  ```console
  export PATH="/usr/local/stata16:$PATH"
  ```
@@ -408,7 +407,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
 ## Optional GitHub Intergration <a name="github-intergration"></a>
 
-  This section provides an advanced guide to intergrating GitHub with the server. While much of GitHub's functioanlity is sacraficed in this method, an instructor is saved from having to add each student and admin individually; instead, students can log in using their GitHub accounts. As a reminder, a student can set up a GitHub account for free if she or he does not already have on set up. 
+  This section provides an advanced guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, which means that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free.
 
   The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
@@ -417,7 +416,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  
   ```console
   # GitHub OAuth 
-conda create -n jupyerhubenv python=3.6
+ubuntu@ip-xx-xxx:~$ conda create -n jupyerhubenv python=3.6
 $ conda activate jupyterhubenv
 conda install -c conda-forge oauthenticator
 
