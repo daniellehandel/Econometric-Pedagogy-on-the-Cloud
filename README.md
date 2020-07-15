@@ -14,20 +14,20 @@ ________________________________________________________________________________
 ## Table of Contents
 1. [Overview](#overview)
 2. [Functionality](#functionality)
-3. [Prerequisites](#prerequisites)
-4. [Launching an Instance via AWS](#lauching-an-instance-via-aws)
+3. [Pre-requisites](#prerequisites)
+4. [AWS: Instance Launching](#lauching-instance)
    1. [Customizing an Instance](#seven-steps)
    2. [Navigating Bitvise](#navigating-bitvise)
 5. [Anaconda](#anaconda)
-   1. [Loading Anaconda](#loading-anaconda)
-   2. [JupyterHub](#jupyterhub)
+   1. [Anaconda Installation](#loading-anaconda)
+   2. [JupyterHub Installation and Configuration](#jupyterhub)
 6. [R](#r)
-   1. [Adding R](#adding-r)
+   1. [R Installation](#adding-r)
    2. [Update and Install R Kernel](#update-and-install-r-kernel)
 7. [Stata](#stata)
-   1. [Adding Stata](#adding-stata)
+   1. [Stata Installation](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
-8. [Optional GitHub Intergration](#github-intergration)
+8. [(Optional) GitHub Integration](#github-integration)
 9. [Disclaimer](#disclaimer)
 
 ## Overview 
@@ -42,20 +42,24 @@ The guide below corresponds to workflow 3 outlined in “Econometric Pedagogy an
 
 This section will outline the functionality of the server after the below steps are completed. For more detail, including other possible workflows for cloud-based learning in Economentrics, view Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists.
 
-## Prerequisites
+## Pre-requisites
 
 <br>
  
-This guide assumes the following:
+To begin launching an instance, the following pre-requisites are required:
 
-* An up-to-date personal computer is available for use.
-* A classroom was created in AWS Educate.
-* Stata or the department’s IT services were contacted for the proper Stata licensing.  
+(1) Hardware: Personal computer with internet connection.
+(2) Software:
+    a. SSH Clinet (BitVise recommended).
+    b. Stata license (contact your department's IT service).
+(3) Cloud Service:
+    a. A classroom in AWS Educate.
+    b. GitHub account (optional).
 
 [Back to Top](#econometric-pedagogy)
  
 
-## Launching an Instance via AWS <a name="lauching-an-instance-via-aws"></a>
+## AWS: Instance Launching <a name="lauching-instance"></a>
 
   <br>
   
@@ -110,11 +114,9 @@ Given that all steps have been followed by this point, select “Launch”.
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/4_IP_into_bitvise.gif"  width="800" height="370" />|
 |---|
 
-Download [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) or any other appropriate SSH software. 
+Download [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) (Windows) or [Terminus App](https://termius.com/). 
 
 The instance should now be visible in the EC2 homepage. Located towards the bottom of the screen, the description of the instance should be visible. Open Bitvise as an SSH client. Copy the IPv4 Public IP address and paste it into “Host” on Bitvise. Insert 22 as the port. 
-
-:bulb: MacOS users may choose to use the Terminus App in lieu of Bitvise.
 
   <br>
   
@@ -152,7 +154,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
 
   The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
-  #### Loading Anaconda <a name="loading-anaconda"></a>
+  #### Anaconda Installation <a name="loading-anaconda"></a>
   
   To install Anaconda:
   ```console
@@ -181,13 +183,13 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ```
   
   <p align="center">
-    <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20anaconda%20path.png" width = "400" height = "400" />
+    <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20anaconda%20path.png" width = "350" height = "400" />
   </p>
   
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   <br>
   
-  #### JupyterHub: 
+  #### JupyterHub Installation and Configuration <a name="jupyterhub"></a>
   
   Install [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/quickstart.html).
  
@@ -229,10 +231,28 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ubuntu@ip-xx-xxx:~$ c.Spawner.disable_user_config = True
   ```
   
-  In nano, create and open a file with the following command.
+  In [nano](https://www.nano-editor.org/), create and open a file with the following command.
   ```console
   ubuntu@ip-xx-xxx:~$ nano /etc/jupyterhub/jupyterhub.service
   ```
+  
+  <details>
+    <summary>:bulb: What is nano?</summary>
+    <br>
+ 
+   Nano is the default text editor for Ubuntu. This program will be used throughout the tutorial to edit the configuration files of the needed software to allow its integration into a classroom setting. 
+   
+   Although there are many shortcuts included in this text editor, the most important for the use of this project are the commands <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> which will overwrite a document and <kbd>CTRL</kbd>+<kbd>X</kbd> which will exit the editor.
+   
+   If you are using MacOS or Linux, nano may already be installed on your machine. To check, type the following line of code in the command line:
+   
+   ```console
+   nano --version
+   ```
+   
+   If the output shows a version number, nano is already installed.
+   
+  </details>
   
   Copy and paste the following into the document as depicted below:
   ```console
@@ -275,7 +295,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
-  #### Adding R <a name="adding-r"></a>
+  #### R Installation <a name="adding-r"></a>
   To install R through Bitvise:
   ```console
   ubuntu@ip-xx-xxx:~$ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
@@ -334,7 +354,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   :bulb: Instructors should contact Stata to discuss the best licencing options. A Stata Labs licences may be best for this workflow, with the lab size corresponding to the number of students in the lab.
   
-  #### Adding Stata <a name="adding-stata"></a>
+  #### Stata Installation <a name="adding-stata"></a>
   Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux  
  
  To upload Stata, create a folder for your Stata installation file:
@@ -405,7 +425,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   [Back to Top](#econometric-pedagogy)
   
-## Optional GitHub Intergration <a name="github-intergration"></a>
+## (Optional) GitHub Integration <a name="github-integration"></a>
 
   This section provides an advanced guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, which means that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free.
 
@@ -606,17 +626,17 @@ sudo systemctl restart nginx.service
 ## Disclaimer 
 
  
-This instructional guide is part of a demonstration used for “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists”. There is no guarantee this methodology works for others. For specific needs or troubleshooting, independent research may be necessary. 
+This instructional guide is part of a demonstration used for “*Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists*”. There is no guarantee this methodology works for others. For specific needs or troubleshooting, independent research may be necessary. 
 
-AWS Educate and corresponding services are trademark of Amazon Web Services.
+**AWS Educate and corresponding services are trademark of [Amazon Web Services](https://aws.amazon.com/).**
 
-Stata is trademark of Stata Corporation.
+**Stata is trademark of [Stata Corporation](https://www.stata.com/).**
 
-Python is developed on an open source license distributed by the [Python Software Foundation](https://www.python.org/psf/).
+**Python is developed on an open source license distributed by the [Python Software Foundation](https://www.python.org/psf/).**
 
-R is offered on an open source license distributed by the [R Foundation](https://www.r-project.org/foundation/).
+**R is offered on an open source license distributed by the [R Foundation](https://www.r-project.org/foundation/).**
 
-JupyterHub is an open source platform developed and maintained by [Project Jupyter](https://jupyter.org/).
+**JupyterHub is an open source platform developed and maintained by [Project Jupyter](https://jupyter.org/).**
 
 
 [Back to Top](#econometric-pedagogy)
