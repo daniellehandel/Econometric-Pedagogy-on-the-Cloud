@@ -1,7 +1,7 @@
 
 # Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists <a name="econometric-pedagogy"></a>
  
- Authors: Danielle V. Handel, Anson T. Y. Ho, Kim P. Huynh, David T. Jacho-Chávez, Carson H. Rea
+[Danielle V. Handel](https://www.linkedin.com/in/danielle-handel-134b53173/), [Anson T. Y. Ho](http://www.atyho.info), [Kim P. Huynh](https://www.bankofcanada.ca/profile/kim-huynh/), [David T. Jacho-Chávez](https://www.davidjachochavez.org/), [Carson H. Rea](https://www.linkedin.com/in/carson-rea-979062198/)
 
 <br>
 
