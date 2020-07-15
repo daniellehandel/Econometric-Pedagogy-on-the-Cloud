@@ -13,22 +13,21 @@ ________________________________________________________________________________
 
 ## Table of Contents
 1. [Overview](#overview)
-2. [Functionality](#functionality)
-3. [Pre-requisites](#prerequisites)
-4. [AWS: Instance Launching](#lauching-instance)
+2. [Pre-requisites](#pre-requisites)
+3. [AWS: Instance Launching](#lauching-instance)
    1. [Customizing an Instance](#seven-steps)
    2. [Navigating Bitvise](#navigating-bitvise)
-5. [Anaconda](#anaconda)
+4. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
    2. [JupyterHub Installation and Configuration](#jupyterhub)
-6. [R](#r)
+5. [R](#r)
    1. [R Installation](#adding-r)
    2. [Update and Install R Kernel](#update-and-install-r-kernel)
-7. [Stata](#stata)
+6. [Stata](#stata)
    1. [Stata Installation](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
-8. [(Optional) GitHub Integration](#github-integration)
-9. [Disclaimer](#disclaimer)
+7. [(Optional) GitHub Integration](#github-integration)
+8. [Disclaimer](#disclaimer)
 
 ## Overview 
 
@@ -38,9 +37,6 @@ The following instructions document a step-by-step guide to setting up a virtual
 
 The guide below corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
-## Functionality
-
-This section will outline the functionality of the server after the below steps are completed. For more detail, including other possible workflows for cloud-based learning in Economentrics, view Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists.
 
 ## Pre-requisites
 
