@@ -33,7 +33,7 @@ ________________________________________________________________________________
 
 <br>
 
-The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to the lab via a web browser with a username and password and have access to JupyterLab and Jupyter Notebooks with Python, R, and Stata kernels. A group video chat service provider such as MS teams or Google hangout can be used alongside for synchronous instruction.
+The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/)), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
 The guide below corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
