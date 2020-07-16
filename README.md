@@ -28,13 +28,13 @@ ________________________________________________________________________________
    2. [Stata Kernel for Jupyter](#stata-kernel)
 7. [(Optional) GitHub Integration](#github-integration)
    1. [GitHub Authentication](#authentication)
-   2. [Generate Cookie Secret](#cookie-secret)
-   3. [Optional GitHub Extensions and Packages](#packages)
+   2. [(Optional) Using a Custom URL](#custom-url)
+   3. [Generate Cookie Secret](#cookie-secret)
+   4. [Optional GitHub Extensions and Packages](#packages)
       1. [GitHib Extension](#extension)
       2. [nbgitpuller](#nbgitpuller)
       3. [nbgrader](#nbgrader)
-   4. [Setting Up a Reverse Proxy](#reverse-proxy)
-7. [(Optional) Using a Custom URL](#custom-url)
+   5. [Setting Up a Reverse Proxy](#reverse-proxy)
 8. [Disclaimer](#disclaimer)
 
 ## Overview 
