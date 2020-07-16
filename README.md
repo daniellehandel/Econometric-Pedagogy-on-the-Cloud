@@ -34,6 +34,7 @@ ________________________________________________________________________________
       2. [nbgitpuller](#nbgitpuller)
       3. [nbgrader](#nbgrader)
    4. [Setting Up a Reverse Proxy](#reverse-proxy)
+7. [(Optional) Using a Custom URL](#custom-url)
 8. [Disclaimer](#disclaimer)
 
 ## Overview 
@@ -557,6 +558,18 @@ c.LocalGitHubOAuthenticator.oauth_callback_url = 'https://test.atyho.info/hub/oa
 systemctl restart jupyterhub.service
 
 ```
+
+#### Optional: Use a Custom URL <a name="custom-url"></a>
+
+Instructors may use Amazon Web Services, a university domain, or any other domain service to add a custom to URL so that students will not need to memorize a random string of numbers. This demonstration uses [Google Domains](https://domains.google/). With an existing custom domain, you may add the lab as a sub-domain as done below. This tutorial assumes an existing domain has been registered with Google Domains. Visit the [Google Domains Learning Center](https://domains.google/learning-center/) for more information on this. 
+
+|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/domain_assign.gif" width="800" height="370" />|
+|---|
+
+Navigate to the "Domain Name Servers," then to "Custom resource records." Enter the desired name (jupyterlab, econlab, etc.). Then enter the IP4 address of your instance.
+
+:exclamation: This will take up to 48 hours to update and begin serving as a functioning URL.
+
 
 #### Generate Cookie Secret <a name="cookie-secret"></a>
 ```console
