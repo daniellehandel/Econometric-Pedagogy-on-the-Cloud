@@ -27,6 +27,13 @@ ________________________________________________________________________________
    1. [Stata Installation](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
 7. [(Optional) GitHub Integration](#github-integration)
+   1. [GitHub Authentication](#authentication)
+   2. [Generate Cookie Secret](#cookie-secret)
+   3. [Optional GitHub Extensions and Packages](#packages)
+      1. [GitHib Extension](#extension)
+      2. [nbgitpuller](#nbgitpuller)
+      3. [nbgrader](#nbgrader)
+   4. [Setting Up a Reverse Proxy](#reverse-proxy)
 8. [Disclaimer](#disclaimer)
 
 ## Overview 
@@ -423,18 +430,24 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
 ## (Optional) GitHub Integration <a name="github-integration"></a>
 
-  This section provides an advanced guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, which means that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free.
+  This section provides a guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, which means that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free. An advanced understanding of and comfort with use of the command line is recommended before attempting.
 
   The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
-  <details>
-    <summary>:bulb: Function under test</summary>
- 
-  ```console
-  # GitHub OAuth 
-ubuntu@ip-xx-xxx:~$ conda create -n jupyerhubenv python=3.6
-$ conda activate jupyterhubenv
+
+#### GitHub Authentication <a name="authentication"></a>
+
+```console
+# GitHub OAuth 
 conda install -c conda-forge oauthenticator
+
+from oauthenticator.github import LocalGitHubOAuthenticator
+c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator
+c.LocalGitHubOAuthenticator.oauth_callback_url = 'https://test.atyho.info/hub/oauth_callback'
+c.LocalGitHubOAuthenticator.client_id = '294472fe46eb7ac33069'
+c.LocalGitHubOAuthenticator.client_secret = '7a43ff29a766a7a508e7fb8c2b15e15c932ff529'
+c.LocalGitHubOAuthenticator.create_system_users = True
+c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
 
 # Create dhparam.pem
 openssl dhparam -out /etc/jupyterhub/dhparam.pem 2048
@@ -448,18 +461,18 @@ ln -s /etc/jupyterhub/dhparam.pem /etc/ssl/certs/dhparam.pem
     sudo add-apt-repository universe
     sudo apt-get update
 
-Install Certbot
+# Install Certbot 
+# https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx
+# Run this command on the command line on the machine to install Certbot.
 
-Run this command on the command line on the machine to install Certbot.
-
-sudo apt-get install certbot
-sudo certbot certonly --webroot
+sudo apt-get install certbot python3-certbot-nginx
+sudo certbot certonly --nginx
 sudo certbot renew --dry-run
 
  - Congratulations! Your certificate and chain have been sav
-   /etc/letsencrypt/live/test.atyho.info/fullchain.pem
+   /etc/letsencrypt/live/jupyter.atyho.info/fullchain.pem
    Your key file has been saved at:
-   /etc/letsencrypt/live/test.atyho.info/privkey.pem
+   /etc/letsencrypt/live/jupyter.atyho.info/privkey.pem
 
 apt install nginx
 
@@ -542,50 +555,50 @@ c.LocalGitHubOAuthenticator.oauth_callback_url = 'https://test.atyho.info/hub/oa
 # Don't forget to update GitHub OAuth settings!
 
 systemctl restart jupyterhub.service
-  ```
- 
-  </details>
-  
-  <details>
-  <summary>:bulb: Generate cookie secret</summary>
- 
-  ```console
-  mkdir /srv/jupyterhub
+
+```
+
+#### Generate Cookie Secret <a name="cookie-secret"></a>
+```console
+
+mkdir /srv/jupyterhub
 openssl rand -hex 32 > /srv/jupyterhub/jupyterhub_cookie_secret
 
 nano /etc/jupyterhub/jupyterhub_config.py
 c.JupyterHub.cookie_secret_file = '/srv/jupyterhub/jupyterhub_cookie_secret'
 
 chmod 600 /srv/jupyterhub/jupyterhub_cookie_secret
+```
 
-  ```
- 
-  </details>
-  
-  <details>
-  <summary>:bulb: Optional packages</summary>
- 
-  nbgitpuller:
+#### Optional GitHub Extensions and Packages <a name="packages"></a>
+
+  ###### GitHub Extension <a name="extension"></a>
   ```console
+
+  jupyter labextension install @jupyterlab/github
+  systemctl restart jupyterhub.service
+  ```
+
+  ###### nbgitpuller
+  ```console
+
   conda install -c conda-forge nbgitpuller
 
   Use https://jupyterhub.github.io/nbgitpuller/link to generate link to git
 
   http://18.215.104.126:8000/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fdjachoc%2FEmpirical-Methods-ML&app=lab
   ```
-  
-  nbgrader:
+
+  ###### nbgrader
   ```console
   conda install -c conda-forge nbgrader
   ```
- 
-  </details>
-  
-  <details>
-  <summary>:bulb: Setting up a reverse proxy</summary>
- 
-  ```console
-  sudo nano /opt/jupyterhub/etc/jupyterhub/jupyterhub_config.py
+
+
+#### Setting Up a Reverse Proxy <a name="reverse-proxy"></a>
+```console
+
+sudo nano /opt/jupyterhub/etc/jupyterhub/jupyterhub_config.py
 c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
 
 sudo apt install nginx
@@ -611,9 +624,7 @@ server{
 }
 
 sudo systemctl restart nginx.service
-  ```
- 
-  </details>
+```
   
   
   [Back to Top](#econometric-pedagogy)
