@@ -526,8 +526,7 @@ Generate an SSL Certificate using Certbot.
     $ add-apt-repository universe
     $ apt-get update
 ```
-Install [Certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx)
-Run these commands on the command line on the machine to install Certbot.
+Install [Certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx).
 
 ```console
 $ apt-get install certbot python3-certbot-nginx
