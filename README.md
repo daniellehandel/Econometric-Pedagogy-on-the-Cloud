@@ -208,6 +208,17 @@ Continue reading the “Anaconda” section to download the distribution onto th
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   <br>
   
+  Anaconda is now installed. Anaconda is a popular python distribution which comes with many packages needed for data science along with the open-source package managemnet system, conda. 
+  
+  <details>
+    <summary>:bulb: Why is conda important?</summary>
+    <br>
+ 
+  Conda will allows the downloading and managment of packages through use of the command `conda`. This command will appear throughout the guide and facilitate the remainder of the set-up. 
+   
+  </details>
+  
+  
   #### JupyterHub Installation and Configuration <a name="jupyterhub"></a>
   
   Install [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/quickstart.html).
