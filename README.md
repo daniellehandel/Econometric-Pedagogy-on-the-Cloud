@@ -37,6 +37,8 @@ ________________________________________________________________________________
 
 The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/)), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
+Optionally, this guide concludes with a method of integrating GitHub as to expidite the process of adding users for instructors. This method is for those with an advanced uderstanding of the command line. 
+
 The guide below corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
 
@@ -141,6 +143,8 @@ The instance should now be visible in the EC2 homepage. Located towards the bott
   $ adduser admin
   $ adduser student
   ```
+  
+  :bulb: To avoid having to add users and admin individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
 
 The instance is now launched and hosted on a client. 
 Continue reading the “Anaconda” section to download the distribution onto the newly created instance. 
