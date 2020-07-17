@@ -27,7 +27,7 @@ ________________________________________________________________________________
    1. [Stata Installation](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
 7. [(Optional) GitHub Extensions and Packages](#packages)
-8. [(Optional)GitHub Authentication](#github-authentication)
+8. [(Optional) GitHub Authentication](#github-authentication)
 9. [Setting Up a Reverse Proxy](#reverse-proxy)
 10. [Disclaimer](#disclaimer)
 
