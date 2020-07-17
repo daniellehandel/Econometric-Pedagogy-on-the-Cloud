@@ -26,16 +26,10 @@ ________________________________________________________________________________
 6. [Stata](#stata)
    1. [Stata Installation](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
-7. [(Optional) GitHub Integration](#github-integration)
-   1. [GitHub Authentication](#authentication)
-   2. [(Optional) Using a Custom URL](#custom-url)
-   3. [Generate Cookie Secret](#cookie-secret)
-   4. [Optional GitHub Extensions and Packages](#packages)
-      1. [GitHib Extension](#extension)
-      2. [nbgitpuller](#nbgitpuller)
-      3. [nbgrader](#nbgrader)
-   5. [Setting Up a Reverse Proxy](#reverse-proxy)
-8. [Disclaimer](#disclaimer)
+7. [(Optional) GitHub Extensions and Packages](#packages)
+8. [(Optional)GitHub Authentication](#authentication)
+9. [Setting Up a Reverse Proxy](#reverse-proxy)
+10. [Disclaimer](#disclaimer)
 
 ## Overview 
 
@@ -440,7 +434,10 @@ This will allow students to access Github repositories directly through a search
  <details>
     <summary>Expand</summary>
     <br>
-  
+  Contents
+ <br>
+  1. [GitHub Extension](#extension)
+  2. [nbgrader](#nbgrader)
 
   ###### GitHub Extension <a name="extension"></a>
   ```console
@@ -466,7 +463,14 @@ This will allow students to access Github repositories directly through a search
  <details>
     <summary>Expand</summary>
     <br>
-  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+ Contents
+ <br>
+1. [Generate Cookie Secret](#cookie-secret)
+2. [Add a Custom Domain](#custom-url)
+3. [Secure Your Lab](#secure-lab)
+4. [Add GitHub Authentication](#authentication)
+
+The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
 
  #### Generate Cookie Secret <a name="cookie-secret"></a>
 Encrypt the your lab's [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) for security purposes.
@@ -498,8 +502,7 @@ Navigate to the "Domain Name Servers," then to "Custom resource records." Enter 
 
 :warning: This will take up to 48 hours to update and begin serving as a functioning URL. :warning:
 
-```
-#### Secure your Lab
+#### Secure Your Lab <a name="secure-lab"></a>
 The following instructions will allow the inclusion of "https://" in your lab address, ensuring the security needed to utilize GitHub authorizations and sign-ins.
 
 ```console
@@ -638,7 +641,7 @@ $ systemctl restart nginx.service
 
 ```
 
-#### GitHub Authentication <a name="authentication"></a>
+#### Add GitHub Authentication <a name="authentication"></a>
 Execute the following to set up a method for students to sign in using GitHub.
 
 From your GitHub account, navigate to the Developer Settings. Choose OAth Apps and create a New OAth app. Enter the corresponding information. Enter [https://YOUR-URL/hub/oauth_callback]() as the Authorization callback URL, being careful to replace YOUR-URL with the link to your lab.
