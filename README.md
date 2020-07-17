@@ -192,7 +192,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
    
   </details>
   
-  Enter the follwoing into the bottom of the document as shown below.
+  Enter the following into the bottom of the document as shown below.
   ```
   export PATH="/usr/anaconda3/bin:$PATH
   ```
@@ -458,7 +458,7 @@ This will allow students to access Github repositories directly through a search
   
 ## (Optional) GitHub Integration <a name="github-integration"></a>
 
-  This section provides a guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, which means that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free. An advanced understanding of and comfort with use of the command line is recommended before attempting.
+  This section provides a guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, meaning that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free. An advanced understanding of the command line is recommended before attempting.
 
  <details>
     <summary>Expand</summary>
@@ -668,7 +668,11 @@ c.LocalGitHubOAuthenticator.create_system_users = True
 c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
 ```
 It should look like this:
-:warning: Notice that you may also change the admin username to your GitHub username. :warning:
+:warning: Notice that you may also change the admin username to your GitHub username to allow administrative access. :warning:
+
+<p align="center">
+    <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/oath_editor.png" width = "350" height = "400" />
+  </p>
 
 Reboot the server. 
 ```console
