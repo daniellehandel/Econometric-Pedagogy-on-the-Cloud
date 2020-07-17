@@ -27,7 +27,7 @@ ________________________________________________________________________________
    1. [Stata Installation](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
 7. [(Optional) GitHub Extensions and Packages](#packages)
-8. [(Optional)GitHub Authentication](#authentication)
+8. [(Optional)GitHub Authentication](#github-authentication)
 9. [Setting Up a Reverse Proxy](#reverse-proxy)
 10. [Disclaimer](#disclaimer)
 
@@ -456,7 +456,7 @@ This will allow students to access Github repositories directly through a search
   ```
  </details>
   
-## (Optional) GitHub Integration <a name="github-integration"></a>
+## (Optional) GitHub Integration <a name="github-authentication"></a>
 
   This section provides a guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, meaning that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free. An advanced understanding of the command line is recommended before attempting.
 
@@ -468,7 +468,7 @@ Contents
 1. [Generate Cookie Secret](#cookie-secret)
 2. [Add a Custom Domain](#custom-url)
 3. [Secure Your Lab](#secure-lab)
-4. [Add GitHub Authentication](#authentication)
+4. [Add GitHub Authentication](#authentication-final)
 
 The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
 
@@ -641,7 +641,7 @@ $ systemctl restart nginx.service
 
 ```
 
-#### Add GitHub Authentication <a name="authentication"></a>
+#### Add GitHub Authentication <a name="authentication-final"></a>
 Execute the following to set up a method for students to sign in using GitHub.
 
 From your GitHub account, navigate to the Developer Settings. Choose OAth Apps and create a New OAth app. Enter the corresponding information. Enter [https://YOUR-URL/hub/oauth_callback]() as the Authorization callback URL, being careful to replace YOUR-URL with the link to your lab.
@@ -671,7 +671,7 @@ It should look like this:
 :warning: Notice that you may also change the admin username to your GitHub username to allow administrative access. :warning:
 
 <p align="center">
-    <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/oath_editor.png" width = "350" height = "400" />
+    <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/oath_editor.png" width = "500" height = "500" />
   </p>
 
 Reboot the server. 
