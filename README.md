@@ -28,8 +28,7 @@ ________________________________________________________________________________
    2. [Stata Kernel for Jupyter](#stata-kernel)
 7. [(Optional) GitHub Extensions and Packages](#packages)
 8. [(Optional) GitHub Authentication](#github-authentication)
-9. [Setting Up a Reverse Proxy](#reverse-proxy)
-10. [Disclaimer](#disclaimer)
+9. [Disclaimer](#disclaimer)
 
 ## Overview 
 
@@ -490,6 +489,7 @@ Contents
 2. [Add a Custom Domain](#custom-url)
 3. [Secure Your Lab](#secure-lab)
 4. [Add GitHub Authentication](#authentication-final)
+5. [Setting Up a Reverse Proxy](#reverse-proxy)
 
 The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
 
@@ -715,19 +715,27 @@ Reboot the server.
 $ systemctl restart jupyterhub.service
 ```
 
- </details>
-
-
-
 #### Setting Up a Reverse Proxy <a name="reverse-proxy"></a>
+
+A reverse proxy is an added level of security which connects externel servers to internel clinets while hiding ip addresses from being veiwed externally. This guide uses [nginx](https://www.nginx.com/) as its reverse proxy server.
+
+Begin by opening jupyterhub's configuration file in nano.
 ```console
+$ nano /opt/jupyterhub/etc/jupyterhub/jupyterhub_config.py
+```
 
-sudo nano /opt/jupyterhub/etc/jupyterhub/jupyterhub_config.py
+```
 c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
+```
 
-sudo apt install nginx
-sudo nano /etc/nginx/nginx.conf
+Install nginx and open its configuration file in nano.
+```console
+$ apt install nginx
+$ nano /etc/nginx/nginx.conf
+```
 
+Copy and paste the follwoing text:
+```
 server{
 
   location /jupyter/ {    
@@ -746,10 +754,14 @@ server{
 
   }
 }
+```
 
-sudo systemctl restart nginx.service
+To finish, restart the server.
+```console
+$ systemctl restart nginx.service
 ```
   
+  </details>
   
   [Back to Top](#econometric-pedagogy)
   
