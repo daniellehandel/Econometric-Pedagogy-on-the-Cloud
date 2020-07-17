@@ -752,6 +752,8 @@ This instructional guide is part of a demonstration used for “*Econometric Ped
 
 **Stata is trademark of [Stata Corporation](https://www.stata.com/).**
 
+**Google Domain is trademark of [Google](https://www.google.com/).**
+
 **Python is developed on an open source license distributed by the [Python Software Foundation](https://www.python.org/psf/).**
 
 **R is offered on an open source license distributed by the [R Foundation](https://www.r-project.org/foundation/).**
