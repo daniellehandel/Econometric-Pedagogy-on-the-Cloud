@@ -470,25 +470,45 @@ c.LocalGitHubOAuthenticator.client_secret = '7a43ff29a766a7a508e7fb8c2b15e15c932
 c.LocalGitHubOAuthenticator.create_system_users = True
 c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
 
-# Create dhparam.pem
-openssl dhparam -out /etc/jupyterhub/dhparam.pem 2048
-chmod 600 /etc/jupyterhub/dhparam.pem
+```
 
-ln -s /etc/jupyterhub/dhparam.pem /etc/ssl/certs/dhparam.pem
+#### Secure your Lab
+The following instructions will allow the inclusion of "https://" in your lab address, ensuring the security needed to utilize GitHub authorizations and sign-ins.
 
-# Obtain SSL Certificates
-    sudo apt-get update
-    sudo apt-get install software-properties-common
-    sudo add-apt-repository universe
-    sudo apt-get update
+```console
 
-# Install Certbot 
-# https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx
-# Run this command on the command line on the machine to install Certbot.
+# Create a key 
+$ openssl dhparam -out /etc/jupyterhub/dhparam.pem 2048
 
-sudo apt-get install certbot python3-certbot-nginx
-sudo certbot certonly --nginx
-sudo certbot renew --dry-run
+#Make it so that only the administrator can edit
+$ chmod 600 /etc/jupyterhub/dhparam.pem
+
+#Link this file to the system folder
+$ ln -s /etc/jupyterhub/dhparam.pem /etc/ssl/certs/dhparam.pem
+
+```
+Generate an SSL Certificate using Certbot.
+```console
+
+# Update Ubuntu and install the necessary software
+    $ apt-get update
+    $ apt-get install software-properties-common
+    $ add-apt-repository universe
+    $ apt-get update
+```
+Install [Certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx)
+Run these commands on the command line on the machine to install Certbot.
+
+```console
+$ apt-get install certbot python3-certbot-nginx
+
+#Add this line so you do not need to shut down the server before proceeding
+$ certbot certonly --nginx
+```
+
+Navigate to the AWS Console. Go to the Security Groups settings to edit the inbound rules. Add "HTTP" and save. 
+```console
+$ certbot renew --dry-run
 
  - Congratulations! Your certificate and chain have been sav
    /etc/letsencrypt/live/jupyter.atyho.info/fullchain.pem
