@@ -133,19 +133,19 @@ The instance should now be visible in the EC2 homepage. Located towards the bott
   
   To request root access:
   ```console
-  ubuntu@ip-xx-xxx:~$ sudo -i
+  $ sudo -i
   ```
   
   After launching an instance with your selected cloud service provider, update the Ubuntu repository and upgrade packages with:
   ```console
-  ubuntu@ip-xx-xxx:~$ apt-get update
-  ubuntu@ip-xx-xxx:~$ apt-get upgrade
+  $ apt-get update
+  $ apt-get upgrade
   ```
   
   To create a new administrator or student, respectively:
   ```console
-  ubuntu@ip-xx-xxx:~$ adduser admin
-  ubuntu@ip-xx-xxx:~$ adduser student
+  $ adduser admin
+  $ adduser student
   ```
 
 The instance is now launched and hosted on a client. 
@@ -162,24 +162,41 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   To install Anaconda:
   ```console
-  ubuntu@ip-xx-xxx:~$ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
-  ubuntu@ip-xx-xxx:~$ bash Anaconda3-2020.02-Linux-x86_64.sh
+  $ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+  $ bash Anaconda3-2020.02-Linux-x86_64.sh
   ```
-  When prompted with `[/root/anaconda3] >>>` enter:
+  When prompted with `[/root/anaconda3] >>>`, enter:
   
   ```console
-  ubuntu@ip-xx-xxx:~$ /usr/anaconda3
+  $ /usr/anaconda3
   ```
  
-  In order for Anaconda to operate, the following command needs to be entered:
+  In order for Anaconda to operate, refresh:
   ```console
-  ubuntu@ip-xx-xxx:~$ source .bashrc
+  $ source .bashrc
   ```
  
-  Open the profile in nano with the following command.
+  Open the profile in [nano](https://www.nano-editor.org/).
   ```console
-  ubuntu@ip-xx-xxx:~$ nano /etc/profile
+  $ nano /etc/profile
   ```
+    <details>
+    <summary>:bulb: What is nano?</summary>
+    <br>
+ 
+   Nano is the default text editor for Ubuntu. This program will be used throughout the tutorial to edit the configuration files of the needed software, enabling full integration into the lab interface. 
+   
+   Although there are many shortcuts included in this text editor, the most important for use in this project are the commands <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> which will overwrite a document and <kbd>CTRL</kbd>+<kbd>X</kbd> which will exit the editor.
+   
+   If you are using MacOS or Linux, nano may already be installed on your machine. To check, type the following line of code in the command line:
+   
+   ```console
+   nano --version
+   ```
+   
+   If the output shows a version number, nano is already installed.
+   
+  </details>
   
   Enter the follwoing into the bottom of the document as shown below.
   ```
@@ -199,64 +216,51 @@ Continue reading the “Anaconda” section to download the distribution onto th
  
   First, make sure conda is up to date by entering: 
   ```console
-  ubuntu@ip-xx-xxx:~$ conda update -n root conda
+  $ conda update -n root conda
   ```
 
   Update all packages in the current environment to the latest version:
   ```console
-  ubuntu@ip-xx-xxx:~$ conda update --all
-  ubuntu@ip-xx-xxx:~$ conda install -c conda-forge jupyterhub
+  $ conda update --all
+  $ conda install -c conda-forge jupyterhub
   ```
   
-  A configuration file needs to be created for JupyterHub:
+  Create the JupyterHub configuration file:
   ```console
-  ubuntu@ip-xx-xxx:~$ mkdir /etc/jupyterhub/
-  ubuntu@ip-xx-xxx:~$ cd /etc/jupyterhub/
-  ubuntu@ip-xx-xxx:~$ jupyterhub --generate-config
+  $ mkdir /etc/jupyterhub/
+  $ cd /etc/jupyterhub/
+  $ jupyterhub --generate-config
   ```
   
   Using nano, access the newly created configuration file:
   ```console
-  ubuntu@ip-xx-xxx:~$ nano jupyterhub_config.py
+  $ nano jupyterhub_config.py
   ```
   
-  The configuration file will be modified to:
-  * Allow JupyterHub to be accessed by typing "lab" into the command line.
-  * Allow admin to access other users' accounts.
-  * Specify system user as administrator.
-  * Shutdown user servers on logout.
-  * Prevent the user-owned configuration files from being loaded.
+  Copy and paste the following into the configuration file:
   
   ```console
-  ubuntu@ip-xx-xxx:~$ c.Spawner.default_url = '/lab'
-  ubuntu@ip-xx-xxx:~$ c.JupyterHub.admin_access = True
-  ubuntu@ip-xx-xxx:~$ c.Authenticator.admin_users = {'admin'}
-  ubuntu@ip-xx-xxx:~$ c.JupyterHub.shutdown_on_logout = True
-  ubuntu@ip-xx-xxx:~$ c.Spawner.disable_user_config = True
-  ```
+  #Allow JupyterHub to be accessed by typing "lab" into the command line.
+  c.Spawner.default_url = '/lab'
   
-  In [nano](https://www.nano-editor.org/), create and open a file with the following command.
+  #Allow admin to access other users' accounts
+  c.JupyterHub.admin_access = True
+  
+  #Specify system user as administrator
+  c.Authenticator.admin_users = {'admin'}
+  
+  #Shutdown user servers on logout
+  c.JupyterHub.shutdown_on_logout = True
+  
+  #Prevent the user-owned configuration files from being loaded
+  c.Spawner.disable_user_config = True
+  ```
+  Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
+  
+  In nano, create and open a file to configure JupyterHub's functionality.
   ```console
-  ubuntu@ip-xx-xxx:~$ nano /etc/jupyterhub/jupyterhub.service
+  $ nano /etc/jupyterhub/jupyterhub.service
   ```
-  
-  <details>
-    <summary>:bulb: What is nano?</summary>
-    <br>
- 
-   Nano is the default text editor for Ubuntu. This program will be used throughout the tutorial to edit the configuration files of the needed software to allow its integration into a classroom setting. 
-   
-   Although there are many shortcuts included in this text editor, the most important for the use of this project are the commands <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> which will overwrite a document and <kbd>CTRL</kbd>+<kbd>X</kbd> which will exit the editor.
-   
-   If you are using MacOS or Linux, nano may already be installed on your machine. To check, type the following line of code in the command line:
-   
-   ```console
-   nano --version
-   ```
-   
-   If the output shows a version number, nano is already installed.
-   
-  </details>
   
   Copy and paste the following into the document as depicted below:
   ```console
@@ -278,18 +282,18 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   
-  The following commands will enable the new file.
+  Enable the new file.
   ```console
-  ubuntu@ip-xx-xxx:~$ ln -s /etc/jupyterhub/jupyterhub.service /etc/systemd/system/jupyterhub.service
+  $ ln -s /etc/jupyterhub/jupyterhub.service /etc/systemd/system/jupyterhub.service
 
-  ubuntu@ip-xx-xxx:~$ systemctl daemon-reload
-  ubuntu@ip-xx-xxx:~$ systemctl enable jupyterhub.service
-  ubuntu@ip-xx-xxx:~$ systemctl start jupyterhub.service
+  $ systemctl daemon-reload
+  $ systemctl enable jupyterhub.service
+  $ systemctl start jupyterhub.service
   ```
   JupyterHub is now set up on the server.
-  Check its status with the following command (optional).
+  Check its status (optional).
   ```console
-  ubuntu@ip-xx-xxx:~$ systemctl status jupyterhub.service
+  $ systemctl status jupyterhub.service
   ```
   
   [Back to Top](#econometric-pedagogy)
@@ -302,15 +306,15 @@ Continue reading the “Anaconda” section to download the distribution onto th
   #### R Installation <a name="adding-r"></a>
   To install R through Bitvise:
   ```console
-  ubuntu@ip-xx-xxx:~$ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-  ubuntu@ip-xx-xxx:~$ add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
-  ubuntu@ip-xx-xxx:~$ apt update
-  ubuntu@ip-xx-xxx:~$ apt install r-base r-base-dev
+  $ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+  $ add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+  $ apt update
+  $ apt install r-base r-base-dev
   ```
   
-  Start R by typing:
+  Start R:
   ```console
-  ubuntu@ip-xx-xxx:~$ R
+  $ R
   ```
   
   <br>
@@ -356,36 +360,36 @@ Continue reading the “Anaconda” section to download the distribution onto th
 
   The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
-  :bulb: Instructors should contact Stata to discuss the best licencing options. A Stata Labs licences may be best for this workflow, with the lab size corresponding to the number of students in the lab.
+  :bulb: Instructors should contact Stata to discuss the best licensing options. A Stata Labs license may be best for this workflow, with the lab size corresponding to the number of students in the lab.
   
   #### Stata Installation <a name="adding-stata"></a>
   Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux  
  
  To upload Stata, create a folder for your Stata installation file:
   ```console
-  ubuntu@ip-xx-xxx:~$ mkdir /home/ubuntu/stata_source
+ $ mkdir /home/ubuntu/stata_source
   ```
   
  Place your Stata for Linux installation file into this folder:
  ```console
  cd /usr/local
- ubuntu@ip-xx-xxx:~$ mkdir stata16
- ubuntu@ip-xx-xxx:~$ cd stata16
+ $ mkdir stata16
+ $ cd stata16
  ```
  
  Install Stata. Enter licensing information when prompted.
  ```console
- ubuntu@ip-xx-xxx:~$ /home/ubuntu/stata_source/install
+ $ /home/ubuntu/stata_source/install
  ```
  
  During installation, you will be prompted to run the following. 
  ```console
- ubuntu@ip-xx-xxx:~$ ./stinit
+ $ ./stinit
  ```
  
  Ubuntu users will be need to enter the following.
  ```console
- ubuntu@ip-xx-xxx:~$ apt install libtinfo5
+ $ apt install libtinfo5
   ```
  
  To add a path to Stata, open profile with nano:
@@ -408,12 +412,12 @@ Continue reading the “Anaconda” section to download the distribution onto th
  
  The follwoing line will allow Jupyter users to create and run documents with a Stata kernel.
  ```console
- ubuntu@ip-xx-xxx:~$ pip install stata_kernel
+ $ pip install stata_kernel
  ubuntu@ip-xx-xxx:~$ python -m stata_kernel.install
  ```
  Ensure that the stata_kernel is installed correctly:
  ```console
- ubuntu@ip-xx-xxx:~$ nano .stata_kernel.conf
+ $ nano .stata_kernel.conf
  ```
  You should see:
  
@@ -423,7 +427,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  
   Copy configuration file to system configuration for all users:
  ```console
- ubuntu@ip-xx-xxx:~$ cp .stata_kernel.conf /etc/stata_kernel.conf 
+ $ cp .stata_kernel.conf /etc/stata_kernel.conf 
  ```
  
   
@@ -434,7 +438,23 @@ Continue reading the “Anaconda” section to download the distribution onto th
   This section provides a guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, which means that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free. An advanced understanding of and comfort with use of the command line is recommended before attempting.
 
   The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+
+
+#### Optional GitHub Extensions and Packages <a name="packages"></a>
+
+This will allow students to access Github repositories directly through a search function within the lab. 
+
+  ###### GitHub Extension <a name="extension"></a>
+  ```console
+  # Install the extension for JupyterLab
+  $ jupyter labextension install @jupyterlab/github
   
+  # Restart to ensure recognition of the new extension
+  $ systemctl restart jupyterhub.service
+  
+  #Fully enable the GitHub viewing extension
+  $ conda install -c conda install -c conda-forge jupyter-github
+  ```
 
 #### GitHub Authentication <a name="authentication"></a>
 
@@ -588,18 +608,13 @@ chmod 600 /srv/jupyterhub/jupyterhub_cookie_secret
   ###### GitHub Extension <a name="extension"></a>
   ```console
 
-  jupyter labextension install @jupyterlab/github
-  systemctl restart jupyterhub.service
-  ```
+  $ jupyter labextension install @jupyterlab/github
+  
+  $ systemctl restart jupyterhub.service
+  
+  $ conda install -c conda install -c conda-forge jupyter-github
 
-  ###### nbgitpuller
-  ```console
 
-  conda install -c conda-forge nbgitpuller
-
-  Use https://jupyterhub.github.io/nbgitpuller/link to generate link to git
-
-  http://18.215.104.126:8000/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fdjachoc%2FEmpirical-Methods-ML&app=lab
   ```
 
   ###### nbgrader
