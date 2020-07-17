@@ -46,13 +46,13 @@ The guide below corresponds to workflow 3 outlined in “Econometric Pedagogy an
  
 To begin launching an instance, the following pre-requisites are required:
 
-(1) Hardware: Personal computer with internet connection.
-(2) Software:
-    a. SSH Clinet (BitVise recommended).
-    b. Stata license (contact your department's IT service).
-(3) Cloud Service:
-    a. A classroom in AWS Educate.
-    b. GitHub account (optional).
+1. Hardware: Personal computer with internet connection.
+2. Software:
+   1. SSH Clinet (BitVise recommended).
+   2. Stata license (contact your department's IT service).
+3. Cloud Service:
+   1. A classroom in AWS Educate.
+   2. GitHub account (optional).
 
 [Back to Top](#econometric-pedagogy)
  
@@ -429,7 +429,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
 
 ## (Optional) GitHub Extensions and Packages <a name="packages"></a>
 
-This will allow students to access Github repositories directly through a search function within the lab. 
+The optional packages showcased below personalize your server to expidite online instruction. 
 
  <details>
     <summary>Expand</summary>
@@ -440,6 +440,9 @@ This will allow students to access Github repositories directly through a search
   2. [nbgrader](#nbgrader)
 
   ###### GitHub Extension <a name="extension"></a>
+  
+  This extension will show up on a side bar of the students interface. When clicked, students can gain access to public repositories, such as notebook based assignments. Through use of the server's terminal, a student can also access private repositories. 
+  
   ```console
   # Install the extension for JupyterLab
   $ jupyter labextension install @jupyterlab/github
@@ -451,6 +454,9 @@ This will allow students to access Github repositories directly through a search
   $ conda install -c conda install -c conda-forge jupyter-github
   ```
   ###### nbgrader
+  
+  The package [nbgrader](https://nbgrader.readthedocs.io/en/stable/) helps streamline the grading process for instructors using jupyter notebooks. Notebook based assignments can be created, collected, and returned with little hassle. 
+  
   ```console
   conda install -c conda-forge nbgrader
   ```
@@ -458,7 +464,7 @@ This will allow students to access Github repositories directly through a search
   
 ## (Optional) GitHub Integration <a name="github-authentication"></a>
 
-  This section provides a guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, meaning that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free. An advanced understanding of the command line is recommended before attempting.
+  This section provides a guide to allowing the server to use GitHub credidentials in the log-in process. By entering in their GitHub log-in information, students can access and use the server, without the instructor having to manually enter each user and admin. As a reminder, a student can set up a GitHub account for free. An advanced understanding of the command line is recommended before attempting.
 
  <details>
     <summary>Expand</summary>
@@ -504,6 +510,8 @@ Navigate to the "Domain Name Servers," then to "Custom resource records." Enter 
 
 #### Secure Your Lab <a name="secure-lab"></a>
 The following instructions will allow the inclusion of "https://" in your lab address, ensuring the security needed to utilize GitHub authorizations and sign-ins.
+
+:warning: By allowing students to log in with their GitHub credientials, the server is much more vulnerable. It is highly recommended the following steps are followed so "https://" can be included in your lab address to protect against outside threats. :warning:
 
 ```console
 
@@ -670,11 +678,12 @@ c.LocalGitHubOAuthenticator.create_system_users = True
 c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
 ```
 It should look like this:
-:warning: Notice that you may also change the admin username to your GitHub username to allow administrative access. :warning:
 
 <p align="center">
     <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/oath_editor.png" width = "500" height = "500" />
-  </p>
+</p>
+
+:warning: Notice that you may also change the admin username to your GitHub username to allow administrative access. :warning:
 
 Reboot the server. 
 ```console
