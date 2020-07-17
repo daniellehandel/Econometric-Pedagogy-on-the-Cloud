@@ -646,6 +646,9 @@ Execute the following to set up a method for students to sign in using GitHub.
 
 From your GitHub account, navigate to the Developer Settings. Choose OAth Apps and create a New OAth app. Enter the corresponding information. Enter [https://YOUR-URL/hub/oauth_callback]() as the Authorization callback URL, being careful to replace YOUR-URL with the link to your lab.
 
+|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/github_oath.gif" width="800" height="370" />|
+|---|
+
 ```console
 # Install GitHub OAuth 
 conda install -c conda-forge oauthenticator
