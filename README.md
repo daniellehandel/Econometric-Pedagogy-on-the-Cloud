@@ -178,7 +178,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ```console
   $ nano /etc/profile
   ```
-    <details>
+  <details>
     <summary>:bulb: What is nano?</summary>
     <br>
  
@@ -504,6 +504,16 @@ $ chmod 600 /srv/jupyterhub/jupyterhub_cookie_secret
 #### Add a Custom Domain <a name="custom-url"></a>
 
 Instructors may use Amazon Web Services, a university domain, or any other domain service to add a custom domain, which is necessary for setting up GitHub authentication. This demonstration uses [Google Domains](https://domains.google/). With an existing custom domain, you may add the lab as a sub-domain as done below. This tutorial assumes an existing domain has been registered with Google Domains. Visit the [Google Domains Learning Center](https://domains.google/learning-center/) for more information on this. 
+
+  <details>
+    <summary>:bulb: What is a sub-domain?</summary>
+    <br>
+ 
+  A sub-domain is an additional section of a domain that can help organize, specify, or navigate to different websites under a single primary domain.
+  
+  For example, while navigating from a website `www.example.com` to its store, you may see the domain change to `store.example.com`. This shortens the domain and makes it easier for you and your students to remember. The following method requires a domain to aquire the proper safety features.
+   
+  </details>
 
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/domain_assign.gif" width="800" height="370" />|
 |---|
