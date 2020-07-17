@@ -435,7 +435,7 @@ This will allow students to access Github repositories directly through a search
     <summary>Expand</summary>
     <br>
   Contents
- <br>
+ 
   1. [GitHub Extension](#extension)
   2. [nbgrader](#nbgrader)
 
@@ -463,8 +463,8 @@ This will allow students to access Github repositories directly through a search
  <details>
     <summary>Expand</summary>
     <br>
- Contents
- <br>
+Contents
+ 
 1. [Generate Cookie Secret](#cookie-secret)
 2. [Add a Custom Domain](#custom-url)
 3. [Secure Your Lab](#secure-lab)
