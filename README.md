@@ -427,7 +427,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   [Back to Top](#econometric-pedagogy)
 
-#### Optional GitHub Extensions and Packages <a name="packages"></a>
+## (Optional) GitHub Extensions and Packages <a name="packages"></a>
 
 This will allow students to access Github repositories directly through a search function within the lab. 
 
