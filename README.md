@@ -410,7 +410,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  
  #### Stata Kernel for Jupyter <a name="stata-kernel"></a>
  
- The follwoing line will allow Jupyter users to create and run documents with a Stata kernel.
+ The following line will allow Jupyter users to create and run documents with a Stata kernel.
  ```console
  $ pip install stata_kernel
  ubuntu@ip-xx-xxx:~$ python -m stata_kernel.install
@@ -432,17 +432,15 @@ Continue reading the “Anaconda” section to download the distribution onto th
  
   
   [Back to Top](#econometric-pedagogy)
-  
-## (Optional) GitHub Integration <a name="github-integration"></a>
-
-  This section provides a guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, which means that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free. An advanced understanding of and comfort with use of the command line is recommended before attempting.
-
-  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
-
 
 #### Optional GitHub Extensions and Packages <a name="packages"></a>
 
 This will allow students to access Github repositories directly through a search function within the lab. 
+
+ <details>
+    <summary>Expand</summary>
+    <br>
+  
 
   ###### GitHub Extension <a name="extension"></a>
   ```console
@@ -455,23 +453,52 @@ This will allow students to access Github repositories directly through a search
   #Fully enable the GitHub viewing extension
   $ conda install -c conda install -c conda-forge jupyter-github
   ```
+  ###### nbgrader
+  ```console
+  conda install -c conda-forge nbgrader
+  ```
+ </details>
+  
+## (Optional) GitHub Integration <a name="github-integration"></a>
 
-#### GitHub Authentication <a name="authentication"></a>
+  This section provides a guide to intergrating GitHub with the server. This allows students to log into the lab using their GitHub login information, which means that instructors will not have to manually enter each user. As a reminder, a student can set up a GitHub account for free. An advanced understanding of and comfort with use of the command line is recommended before attempting.
 
+ <details>
+    <summary>Expand</summary>
+    <br>
+  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+
+ #### Generate Cookie Secret <a name="cookie-secret"></a>
+Encrypt the your lab's [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) for security purposes.
 ```console
-# GitHub OAuth 
-conda install -c conda-forge oauthenticator
+# Create a new directory
+$ mkdir /srv/jupyterhub
 
-from oauthenticator.github import LocalGitHubOAuthenticator
-c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator
-c.LocalGitHubOAuthenticator.oauth_callback_url = 'https://test.atyho.info/hub/oauth_callback'
-c.LocalGitHubOAuthenticator.client_id = '294472fe46eb7ac33069'
-c.LocalGitHubOAuthenticator.client_secret = '7a43ff29a766a7a508e7fb8c2b15e15c932ff529'
-c.LocalGitHubOAuthenticator.create_system_users = True
-c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
+# Generate a random number and save it as the cookie secret
+$ openssl rand -hex 32 > /srv/jupyterhub/jupyterhub_cookie_secret
 
+$ Open JupyterHub's configuration file
+$ nano /etc/jupyterhub/jupyterhub_config.py
+
+# Copy the following and add it to the file:
+c.JupyterHub.cookie_secret_file = '/srv/jupyterhub/jupyterhub_cookie_secret'
+
+# Ensure that only the administrator can read and write the cookie secret
+$ chmod 600 /srv/jupyterhub/jupyterhub_cookie_secret
 ```
 
+#### Add a Custom Domain <a name="custom-url"></a>
+
+Instructors may use Amazon Web Services, a university domain, or any other domain service to add a custom domain, which is necessary for setting up GitHub authentication. This demonstration uses [Google Domains](https://domains.google/). With an existing custom domain, you may add the lab as a sub-domain as done below. This tutorial assumes an existing domain has been registered with Google Domains. Visit the [Google Domains Learning Center](https://domains.google/learning-center/) for more information on this. 
+
+|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/domain_assign.gif" width="800" height="370" />|
+|---|
+
+Navigate to the "Domain Name Servers," then to "Custom resource records." Enter the desired name (jupyterlab, econlab, etc.). Then enter the IP4 address of your instance.
+
+:warning: This will take up to 48 hours to update and begin serving as a functioning URL. :warning:
+
+```
 #### Secure your Lab
 The following instructions will allow the inclusion of "https://" in your lab address, ensuring the security needed to utilize GitHub authorizations and sign-ins.
 
@@ -501,24 +528,38 @@ Run these commands on the command line on the machine to install Certbot.
 
 ```console
 $ apt-get install certbot python3-certbot-nginx
+```
 
+Navigate to the AWS Console. Go to the Security Groups settings and select your instance. Edit the inbound rules. Add "HTTP" and save. 
+
+|<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/http_security.gif"  width="800" height="370" />|
+|---|
+
+```console
 #Add this line so you do not need to shut down the server before proceeding
 $ certbot certonly --nginx
 ```
-
-Navigate to the AWS Console. Go to the Security Groups settings to edit the inbound rules. Add "HTTP" and save. 
+You will be prompted to enter an email and a domain (the newly added custom domain, for example: "jupyterlab.professorx.com")
 ```console
 $ certbot renew --dry-run
+```
 
+You should see:
  - Congratulations! Your certificate and chain have been sav
-   /etc/letsencrypt/live/jupyter.atyho.info/fullchain.pem
+   /etc/letsencrypt/live/your-domain/fullchain.pem
    Your key file has been saved at:
-   /etc/letsencrypt/live/jupyter.atyho.info/privkey.pem
+   /etc/letsencrypt/live/your-domain/privkey.pem
 
-apt install nginx
-
-nano /etc/nginx/sites-available/jupyterhub.conf
-
+Install nginx so you do not have to type ":8000" at the end of the URL. 
+```console
+$ apt install nginx
+```
+Create a new configuration file to create the certificate on the nginx server.
+```console
+$ nano /etc/nginx/sites-available/jupyterhub.conf
+```
+Copy and paste the following code into this file, being careful to modify the text to include your domain wherever "YOUR-DOMAIN" is present.
+```
 # top-level http config for websocket headers
 # If Upgrade is defined, Connection = upgrade
 # If Upgrade is empty, Connection = close
@@ -531,7 +572,7 @@ map $http_upgrade $connection_upgrade {
 server {
     listen 80;
     #listen [::]:80;
-    server_name test.atyho.info;
+    server_name YOUR-DOMAIN;
 
     # Tell all requests to port 80 to be 302 redirected to HTTPS
     return 302 https://$host$request_uri;
@@ -541,7 +582,7 @@ server {
 server {
     listen 443 ssl http2;
     #listen [::]:443 ssl http2;
-    server_name test.atyho.info;
+    server_name YOUR-DOMAIN;
 
     ssl_certificate /etc/letsencrypt/live/test.atyho.info/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/test.atyho.info/privkey.pem;
@@ -582,65 +623,57 @@ server {
         allow all;
     }
 }
-
-unlink /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/jupyterhub.conf /etc/nginx/sites-enabled/jupyterhub.conf
-
-systemctl restart nginx.service
-
-# Force the proxy to only listen to connections to 127.0.0.1
-nano /etc/jupyterhub/jupyterhub_config.py
-c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
-c.LocalGitHubOAuthenticator.oauth_callback_url = 'https://test.atyho.info/hub/oauth_callback'
-
-# Don't forget to update GitHub OAuth settings!
-
-systemctl restart jupyterhub.service
-
 ```
 
-#### Optional: Use a Custom URL <a name="custom-url"></a>
-
-Instructors may use Amazon Web Services, a university domain, or any other domain service to add a custom to URL so that students will not need to memorize a random string of numbers. This demonstration uses [Google Domains](https://domains.google/). With an existing custom domain, you may add the lab as a sub-domain as done below. This tutorial assumes an existing domain has been registered with Google Domains. Visit the [Google Domains Learning Center](https://domains.google/learning-center/) for more information on this. 
-
-|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/domain_assign.gif" width="800" height="370" />|
-|---|
-
-Navigate to the "Domain Name Servers," then to "Custom resource records." Enter the desired name (jupyterlab, econlab, etc.). Then enter the IP4 address of your instance.
-
-:exclamation: This will take up to 48 hours to update and begin serving as a functioning URL.
-
-
-#### Generate Cookie Secret <a name="cookie-secret"></a>
+Link this new configuration file
 ```console
+# Unlink the default file
+$ unlink /etc/nginx/sites-enabled/default
 
-mkdir /srv/jupyterhub
-openssl rand -hex 32 > /srv/jupyterhub/jupyterhub_cookie_secret
+# Link the new file
+$ ln -s /etc/nginx/sites-available/jupyterhub.conf /etc/nginx/sites-enabled/jupyterhub.conf
 
-nano /etc/jupyterhub/jupyterhub_config.py
-c.JupyterHub.cookie_secret_file = '/srv/jupyterhub/jupyterhub_cookie_secret'
+# Restart nginx
+$ systemctl restart nginx.service
 
-chmod 600 /srv/jupyterhub/jupyterhub_cookie_secret
 ```
 
-#### Optional GitHub Extensions and Packages <a name="packages"></a>
+#### GitHub Authentication <a name="authentication"></a>
+Execute the following to set up a method for students to sign in using GitHub.
 
-  ###### GitHub Extension <a name="extension"></a>
-  ```console
+From your GitHub account, navigate to the Developer Settings. Choose OAth Apps and create a New OAth app. Enter the corresponding information. Enter [https://YOUR-URL/hub/oauth_callback]() as the Authorization callback URL, being careful to replace YOUR-URL with the link to your lab.
 
-  $ jupyter labextension install @jupyterlab/github
-  
-  $ systemctl restart jupyterhub.service
-  
-  $ conda install -c conda install -c conda-forge jupyter-github
+```console
+# Install GitHub OAuth 
+conda install -c conda-forge oauthenticator
 
+# Open the JupyterHub configuration file
+$ nano /etc/jupyterhub/jupyterhub_config.py
+```
+Enter the following into the file, being careful to replace the URL, Client ID, and Client Secret with your own. The Client ID and Client Secret can be found on the page of the GitHub "app" created above.
 
-  ```
+```console
+from oauthenticator.github import LocalGitHubOAuthenticator
+c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator
+c.LocalGitHubOAuthenticator.oauth_callback_url = 'YOUR-URL/hub/oauth_callback'
+c.LocalGitHubOAuthenticator.client_id = 'YOUR CLIENT ID'
+c.LocalGitHubOAuthenticator.client_secret = 'YOUR CLIENT SECRET'
 
-  ###### nbgrader
-  ```console
-  conda install -c conda-forge nbgrader
-  ```
+#This line means that it will no longer be necessary to manually add new users.
+c.LocalGitHubOAuthenticator.create_system_users = True
+
+c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
+```
+It should look like this:
+:warning: Notice that you may also change the admin username to your GitHub username. :warning:
+
+Reboot the server. 
+```console
+$ systemctl restart jupyterhub.service
+```
+
+ </details>
+
 
 
 #### Setting Up a Reverse Proxy <a name="reverse-proxy"></a>
