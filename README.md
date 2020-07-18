@@ -37,7 +37,7 @@ ________________________________________________________________________________
 
 The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/)), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
-Optionally, this guide concludes with a method of integrating GitHub as to expidite the process of adding users for instructors. This method is for those with an advanced uderstanding of the command line. 
+Optionally, this guide concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is for those with an advanced uderstanding of the command line. 
 
 The guide below corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
@@ -72,7 +72,7 @@ To begin launching an instance, the following pre-requisites are required:
 
   Log into your AWS Educate account. The "My Classrooms" tab on the top banner in the interface directs to the complete list of classrooms supported on the account. From there, select the desired classroom by clicking the blue "Go to classroom" button. The third-party application, Vocareum, will launch, showing an overview of the classroom. To manage, select "AWS console." To launch the proper instance, select EC2 from the dropdown menu labeled "All services". 
   
-  :bulb: Your browser may block pop-ups from Vocarem. 
+  :bulb: Your browser may block pop-ups from Vocareum. 
 
   <br>
   
@@ -90,7 +90,7 @@ To begin launching an instance, the following pre-requisites are required:
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/3_security_group.gif"  width="800" height="370" />|
 |---|
   
-  Change the storage from the default to the maximum the free tier provides, 30 GiB. Continue to “Next: Add Tags”.
+  Change the storage from the default to the maximum the free tier provides, 30 GB. Continue to “Next: Add Tags”.
 
 Tags are an optional feature to allow for categorization and organization. Continue to "Next: Configure Security Groups".
 
@@ -119,7 +119,7 @@ Given that all steps have been followed by this point, select “Launch”.
  
    An SSH key serves as the "password" which connects the server to the SSH client. This demonstration suggests the use of Bitvise, although other clients, such as the Terminus App for Mac users, can serve as substitutions. 
    
-   :warning: It is important to keep the key private and safe on your local computer. Loosing the key will prevent the server from functioning. Sharing the key could leave the server vulnerable :warning:
+   :warning: It is important to keep the key private and safe on your local computer. Losing the key will prevent the server from functioning. Sharing the key could leave the server vulnerable :warning:
    
   </details>
 
@@ -139,7 +139,7 @@ Navigate to the Elastic IP configuration on the Amazon EC2 Console. Opt to alloc
 
 Download [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) (Windows) or [Terminus App](https://termius.com/). 
 
-The instance should now be visible in the EC2 homepage. Located towards the bottom of the screen, the description of the instance should be visible. Open Bitvise as an SSH client. Copy the IPv4 Public IP address and paste it into “Host” on Bitvise. Insert 22 as the port. 
+The instance should now be visible in the EC2 homepage. The description of the instance and the IP address should now be visible at the bottom of the instance page. Open Bitvise as an SSH client. Copy the IPv4 Public IP address from the instance page in EC2 and paste it into “Host” on Bitvise. Insert 22 as the port. 
 
   <br>
   
@@ -167,6 +167,7 @@ The instance should now be visible in the EC2 homepage. Located towards the bott
   $ adduser student
   ```
   
+  You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move.  
   :bulb: To avoid having to add users and admin individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
 
 The instance is now launched and hosted on a client. 
@@ -237,7 +238,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
     <summary>:bulb: Why is conda important?</summary>
     <br>
  
-  Conda will allows the downloading and managment of packages through use of the command `conda`. This command will appear throughout the guide and facilitate the remainder of the set-up. 
+  The installation of Conda will allow the downloading and managment of packages through use of the command `conda`. This command will appear throughout the guide and facilitate the remainder of the set-up. 
    
   </details>
   
@@ -246,7 +247,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   Install [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/quickstart.html).
  
-  First, make sure conda is up to date by entering: 
+  First, make sure conda is up to date: 
   ```console
   $ conda update -n root conda
   ```
@@ -364,7 +365,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   IRkernel::installspec(user = FALSE)
   ```
 
-  Additional Ubuntu linux packages are needed for 'tidyverse' in R. Then install tidyverse for all users.
+  Additional Ubuntu linux packages are needed for 'tidyverse' in R. Then install tidyverse for all users:
   ```r
   apt install libcurl4-openssl-dev libssl-dev libxml2-dev
   install.packages("tidyverse", dependencies = TRUE, INSTALL_opts = '--no-lock')
@@ -409,7 +410,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  $ cd stata16
  ```
  
- Install Stata. Enter licensing information when prompted.
+ Install Stata. Enter licensing information when prompted:
  ```console
  $ /home/ubuntu/stata_source/install
  ```
@@ -442,7 +443,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  
  #### Stata Kernel for Jupyter <a name="stata-kernel"></a>
  
- The following line will allow Jupyter users to create and run documents with a Stata kernel.
+ Allow Jupyter users to create and run Stata files in Jupyter Notebooks with a Stata kernel:
  ```console
  $ pip install stata_kernel
  ubuntu@ip-xx-xxx:~$ python -m stata_kernel.install
@@ -574,7 +575,7 @@ $ chmod 600 /etc/jupyterhub/dhparam.pem
 $ ln -s /etc/jupyterhub/dhparam.pem /etc/ssl/certs/dhparam.pem
 
 ```
-Generate an SSL Certificate using Certbot.
+Generate an SSL Certificate using Certbot:
 ```console
 
 # Update Ubuntu and install the necessary software
@@ -583,7 +584,7 @@ Generate an SSL Certificate using Certbot.
     $ add-apt-repository universe
     $ apt-get update
 ```
-Install [Certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx).
+Install [Certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx):
 
 ```console
 $ apt-get install certbot python3-certbot-nginx
@@ -599,9 +600,6 @@ Navigate to the AWS Console. Go to the Security Groups settings and select your 
 $ certbot certonly --nginx
 ```
 You will be prompted to enter an email and a domain (the newly added custom domain, for example: "jupyterlab.professorx.com")
-```console
-$ certbot renew --dry-run
-```
 
 You should see:
  - Congratulations! Your certificate and chain have been sav
@@ -609,11 +607,11 @@ You should see:
    Your key file has been saved at:
    /etc/letsencrypt/live/your-domain/privkey.pem
 
-Install nginx so you do not have to type ":8000" at the end of the URL. 
+Install nginx so you do not have to type ":8000" at the end of the URL: 
 ```console
 $ apt install nginx
 ```
-Create a new configuration file to create the certificate on the nginx server.
+Create a new configuration file to create the certificate on the nginx server:
 ```console
 $ nano /etc/nginx/sites-available/jupyterhub.conf
 ```
@@ -684,7 +682,7 @@ server {
 }
 ```
 
-Link this new configuration file
+Link this new configuration file:
 ```console
 # Unlink the default file
 $ unlink /etc/nginx/sites-enabled/default
@@ -734,7 +732,7 @@ It should look like this:
 
 :warning: Notice that you may also change the admin username to your GitHub username to allow administrative access. :warning:
 
-Reboot the server. 
+Reboot the server:
 ```console
 $ systemctl restart jupyterhub.service
 ```
@@ -743,7 +741,7 @@ $ systemctl restart jupyterhub.service
 
 A reverse proxy is an added level of security which connects externel servers to internel clinets while hiding ip addresses from being veiwed externally. This guide uses [nginx](https://www.nginx.com/) as its reverse proxy server.
 
-Begin by opening jupyterhub's configuration file in nano.
+Begin by opening JupyterHub's configuration file in nano:
 ```console
 $ nano /opt/jupyterhub/etc/jupyterhub/jupyterhub_config.py
 ```
@@ -752,7 +750,7 @@ $ nano /opt/jupyterhub/etc/jupyterhub/jupyterhub_config.py
 c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
 ```
 
-Install nginx and open its configuration file in nano.
+Install nginx and open its configuration file in nano:
 ```console
 $ apt install nginx
 $ nano /etc/nginx/nginx.conf
@@ -780,7 +778,7 @@ server{
 }
 ```
 
-To finish, restart the server.
+To finish, restart the server:
 ```console
 $ systemctl restart nginx.service
 ```
