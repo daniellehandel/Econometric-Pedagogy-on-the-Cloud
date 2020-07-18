@@ -289,20 +289,20 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   Copy and paste the following into the configuration file:
   
-  ```console
-  #Allow JupyterHub to be accessed by typing "lab" into the command line.
+  ```
+  # Allow JupyterHub to be accessed by typing "lab" into the command line.
   c.Spawner.default_url = '/lab'
   
-  #Allow admin to access other users' accounts
+  # Allow admin to access other users' accounts
   c.JupyterHub.admin_access = True
   
-  #Specify system user as administrator
+  # Specify system user as administrator
   c.Authenticator.admin_users = {'admin'}
   
-  #Shutdown user servers on logout
+  # Shutdown user servers on logout
   c.JupyterHub.shutdown_on_logout = True
   
-  #Prevent the user-owned configuration files from being loaded
+  # Prevent the user-owned configuration files from being loaded
   c.Spawner.disable_user_config = True
   ```
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
@@ -313,7 +313,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   ```
   
   Copy and paste the following into the document as depicted below:
-  ```console
+  ```
   [Unit]
   Description=JupyterHub
   After=syslog.target network.target
@@ -422,7 +422,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
  Place your Stata for Linux installation file into this folder:
  ```console
- cd /usr/local
+ $ cd /usr/local
  $ mkdir stata16
  $ cd stata16
  ```
@@ -444,11 +444,11 @@ Continue reading the “Anaconda” section to download the distribution onto th
  
  To add a path to Stata, open profile with nano:
  ```console
- ubuntu@ip-xx-xxx:~$ nano /etc/profile
+ $ nano /etc/profile
  ```
  
  Type the following into the bottom of the document as depicted below.
- ```console
+ ```
  export PATH="/usr/local/stata16:$PATH"
  ```
  
@@ -463,7 +463,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  Allow Jupyter users to create and run Stata files in Jupyter Notebooks with a Stata kernel:
  ```console
  $ pip install stata_kernel
- ubuntu@ip-xx-xxx:~$ python -m stata_kernel.install
+ $ python -m stata_kernel.install
  ```
  Ensure that the stata_kernel is installed correctly:
  ```console
@@ -497,7 +497,7 @@ The optional packages showcased below personalize your server to expidite online
 
   ###### GitHub Extension <a name="extension"></a>
   
-  This extension will show up on a side bar of the students interface. When clicked, students can gain access to public repositories, such as notebook based assignments. Through use of the server's terminal, a student can also access private repositories. 
+  This extension will show up on a side bar of the students interface. When clicked, students can gain access to public repositories, such as notebook based assignments.
   
   ```console
   # Install the extension for JupyterLab
@@ -506,7 +506,7 @@ The optional packages showcased below personalize your server to expidite online
   # Restart to ensure recognition of the new extension
   $ systemctl restart jupyterhub.service
   
-  #Fully enable the GitHub viewing extension
+  # Fully enable the GitHub viewing extension
   $ conda install -c conda install -c conda-forge jupyter-github
   ```
   ###### nbgrader
@@ -514,7 +514,7 @@ The optional packages showcased below personalize your server to expidite online
   The package [nbgrader](https://nbgrader.readthedocs.io/en/stable/) helps streamline the grading process for instructors using jupyter notebooks. Notebook based assignments can be created, collected, and returned with little hassle. 
   
   ```console
-  conda install -c conda-forge nbgrader
+  $ conda install -c conda-forge nbgrader
   ```
  </details>
   
@@ -546,11 +546,15 @@ $ openssl rand -hex 32 > /srv/jupyterhub/jupyterhub_cookie_secret
 
 $ Open JupyterHub's configuration file
 $ nano /etc/jupyterhub/jupyterhub_config.py
+```
 
-# Copy the following and add it to the file:
+Copy the following and add it to the file:
+```
 c.JupyterHub.cookie_secret_file = '/srv/jupyterhub/jupyterhub_cookie_secret'
+```
 
-# Ensure that only the administrator can read and write the cookie secret
+Ensure that only the administrator can read and write the cookie secret:
+```console
 $ chmod 600 /srv/jupyterhub/jupyterhub_cookie_secret
 ```
 
@@ -585,10 +589,10 @@ The following instructions will allow the inclusion of "https://" in your lab ad
 # Create a key 
 $ openssl dhparam -out /etc/jupyterhub/dhparam.pem 2048
 
-#Make it so that only the administrator can edit
+# Make it so that only the administrator can edit
 $ chmod 600 /etc/jupyterhub/dhparam.pem
 
-#Link this file to the system folder
+# Link this file to the system folder
 $ ln -s /etc/jupyterhub/dhparam.pem /etc/ssl/certs/dhparam.pem
 
 ```
@@ -596,10 +600,10 @@ Generate an SSL Certificate using Certbot:
 ```console
 
 # Update Ubuntu and install the necessary software
-    $ apt-get update
-    $ apt-get install software-properties-common
-    $ add-apt-repository universe
-    $ apt-get update
+$ apt-get update
+$ apt-get install software-properties-common
+$ add-apt-repository universe
+$ apt-get update
 ```
 Install [Certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx):
 
@@ -613,7 +617,7 @@ Navigate to the AWS Console. Go to the Security Groups settings and select your 
 |---|
 
 ```console
-#Add this line so you do not need to shut down the server before proceeding
+# Add this line so you do not need to shut down the server before proceeding
 $ certbot certonly --nginx
 ```
 You will be prompted to enter an email and a domain (the newly added custom domain, for example: "jupyterlab.professorx.com")
@@ -658,8 +662,8 @@ server {
     #listen [::]:443 ssl http2;
     server_name YOUR-DOMAIN;
 
-    ssl_certificate /etc/letsencrypt/live/test.atyho.info/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/test.atyho.info/privkey.pem;
+    ssl_certificate YOUR-DOMAIN;
+    ssl_certificate_key YOUR-DOMAIN;
     ssl_session_timeout 1d;
     ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
 #    ssl_session_cache shared:SSL:50m;
@@ -722,21 +726,21 @@ From your GitHub account, navigate to the Developer Settings. Choose OAth Apps a
 
 ```console
 # Install GitHub OAuth 
-conda install -c conda-forge oauthenticator
+$ conda install -c conda-forge oauthenticator
 
 # Open the JupyterHub configuration file
 $ nano /etc/jupyterhub/jupyterhub_config.py
 ```
-Enter the following into the file, being careful to replace the URL, Client ID, and Client Secret with your own. The Client ID and Client Secret can be found on the page of the GitHub "app" created above.
+Copy and paste the following into the file, being careful to replace the URL, Client ID, and Client Secret with your own. The Client ID and Client Secret can be found on the page of the GitHub "app" created above.
 
-```console
+```
 from oauthenticator.github import LocalGitHubOAuthenticator
 c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator
 c.LocalGitHubOAuthenticator.oauth_callback_url = 'YOUR-URL/hub/oauth_callback'
 c.LocalGitHubOAuthenticator.client_id = 'YOUR CLIENT ID'
 c.LocalGitHubOAuthenticator.client_secret = 'YOUR CLIENT SECRET'
 
-#This line means that it will no longer be necessary to manually add new users.
+# This line means that it will no longer be necessary to manually add new users.
 c.LocalGitHubOAuthenticator.create_system_users = True
 
 c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
