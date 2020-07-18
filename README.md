@@ -50,7 +50,7 @@ To begin launching an instance, the following pre-requisites are required:
 
 1. Hardware: Personal computer with internet connection.
 2. Software:
-   1. SSH Clinet (BitVise recommended).
+   1. SSH Client (BitVise recommended).
    2. Stata license (contact your department's IT service).
 3. Cloud Service:
    1. A classroom in AWS Educate.
@@ -63,7 +63,7 @@ To begin launching an instance, the following pre-requisites are required:
 
   <br>
   
-  This section details a method of launching an instance on AWS Educate's EC2 server. Demonstrational gifs are provided alongside the instructions, which feature the interfaces being used for this purpose. 
+  This section details a method of launching an instance on AWS Educate's EC2 server. Demonstrational gifs are provided alongside the instructions to aid in navigating the complex interfaces.
   
   #### Customizing an Instance <a name="seven-steps"></a>
  
@@ -109,7 +109,7 @@ Given that all steps have been followed by this point, select “Launch”.
 
   <br>
   
-#### Creating an Elastic IP Address
+#### Creating an Elastic IP Address <a name="elastic-ip"></a>
 
   An instructor may choose to turn off the server periodically to avoid billing when little to no traffic is expected. An [elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html) ensures the original SSH key will function.
   
@@ -117,11 +117,18 @@ Given that all steps have been followed by this point, select “Launch”.
     <summary>:bulb: What is an SSH key?</summary>
     <br>
  
-   An SSH key serves as the "password" which connects the server to the SSH client. This demonstration suggests the use of Bitvise, although other clients, such as the Terminus App for Mac users, can be substituted. 
+   An SSH key serves as the "password" which connects the server to the SSH client. This demonstration suggests the use of Bitvise, although other clients, such as the Terminus App for Mac users, can serve as substitutions. 
    
    :warning: It is important to keep the key private and safe on your local computer. Loosing the key will prevent the server from functioning. Sharing the key could leave the server vulnerable :warning:
    
   </details>
+
+|<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/allocate_elastic.gif"  width="800" height="370" />|
+|---|
+
+Navigate to the Elastic IP configuration on the Amazon EC2 Console. Opt to allocate an elastic IP address from Amazon's pool of IPv4 addresses. Then, choose to associate this new address and select your instance. You will now have a different IP address for your lab. 
+
+:warning: Typing this new IP address appended with ":8000" into your browser will bring you to your lab. It may be useful to do this to check the functionality of your lab after each step. :warning:
 
   <br>
   
