@@ -538,6 +538,9 @@ The optional packages showcased below personalize your server to expidite online
   ```console
   $ conda install -c conda-forge nbgrader
   ```
+  
+  [Back to Top](#econometric-pedagogy)
+  
  </details>
   
 ## (Optional) GitHub Integration <a name="github-authentication"></a>
@@ -779,9 +782,9 @@ Reboot the server:
 $ systemctl restart jupyterhub.service
 ```
   
-  </details>
-  
   [Back to Top](#econometric-pedagogy)
+  
+  </details>
   
 
 ## Disclaimer 
