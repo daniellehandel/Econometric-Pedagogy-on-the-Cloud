@@ -531,7 +531,6 @@ Contents
 2. [Add a Custom Domain](#custom-url)
 3. [Secure Your Lab](#secure-lab)
 4. [Add GitHub Authentication](#authentication-final)
-5. [Setting Up a Reverse Proxy](#reverse-proxy)
 
 The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
 
@@ -756,52 +755,6 @@ It should look like this:
 Reboot the server:
 ```console
 $ systemctl restart jupyterhub.service
-```
-
-#### Setting Up a Reverse Proxy <a name="reverse-proxy"></a>
-
-A reverse proxy is an added level of security which connects externel servers to internel clinets while hiding ip addresses from being veiwed externally. This guide uses [nginx](https://www.nginx.com/) as its reverse proxy server.
-
-Begin by opening JupyterHub's configuration file in nano:
-```console
-$ nano /opt/jupyterhub/etc/jupyterhub/jupyterhub_config.py
-```
-
-```
-c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
-```
-
-Install nginx and open its configuration file in nano:
-```console
-$ apt install nginx
-$ nano /etc/nginx/nginx.conf
-```
-
-Copy and paste the follwoing text:
-```
-server{
-
-  location /jupyter/ {    
-    # NOTE important to also set base url of jupyterhub to /jupyter in its config
-    proxy_pass http://127.0.0.1:8000;
-
-    proxy_redirect   off;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-
-    # websocket headers
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection $connection_upgrade;
-
-  }
-}
-```
-
-To finish, restart the server:
-```console
-$ systemctl restart nginx.service
 ```
   
   </details>
