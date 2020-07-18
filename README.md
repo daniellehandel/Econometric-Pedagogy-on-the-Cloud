@@ -16,8 +16,7 @@ ________________________________________________________________________________
 2. [Pre-requisites](#pre-requisites)
 3. [AWS: Instance Launching](#lauching-instance)
    1. [Customizing an Instance](#seven-steps)
-   2. [Creating an Elastic IP Adress](#elastic-ip)
-   3. [Navigating Bitvise](#navigating-bitvise)
+   2. [Navigating Bitvise](#navigating-bitvise)
 4. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
    2. [JupyterHub Installation and Configuration](#jupyterhub)
@@ -104,16 +103,8 @@ Given that all steps have been followed by this point, select “Launch”.
 |---|
   
   Selecting “Launch” will prompt the user to select an existing key pair or create a new one. A key pair serves as a password to connect the instance to a SSH server or client. Name and download your key pair. 
-
-:warning: Do not lose the key or all progress will be lost. Keep track of where the key is stored, as it will need to be accessed later. :warning:
-
-  <br>
   
-#### Creating an Elastic IP Address <a name="elastic-ip"></a>
-
-  An instructor may choose to turn off the server periodically to avoid billing when little to no traffic is expected. An [elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html) ensures the original SSH key will function.
-  
-  <details>
+   <details>
     <summary>:bulb: What is an SSH key?</summary>
     <br>
  
@@ -122,6 +113,8 @@ Given that all steps have been followed by this point, select “Launch”.
    :warning: It is important to keep the key private and safe on your local computer. Losing the key will prevent the server from functioning. Sharing the key could leave the server vulnerable :warning:
    
   </details>
+
+  An instructor may choose to turn off the server periodically to avoid billing when little to no traffic is expected. An [elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html) ensures the original SSH key will function after the server is turned off and on.
 
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/allocate_elastic.gif"  width="800" height="370" />|
 |---|
