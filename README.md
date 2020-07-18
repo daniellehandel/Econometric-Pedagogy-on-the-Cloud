@@ -74,7 +74,7 @@ To begin launching an instance, the following pre-requisites are required:
   :bulb: Your browser may block pop-ups from Vocareum. 
   
   <details>
-    <summary>What is an instance?</summary>
+    <summary>:bulb: What is an instance?</summary>
     <br>
      
   An instance in AWS is a type of virtual envirnoment. There are several types that AWS provides depending on the intended purpose; this demonstration walks through the launching of a free-tier EC2 instance. These instances are secure, scalible, and affordable. More information can be found in the [EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) on the AWS website.
