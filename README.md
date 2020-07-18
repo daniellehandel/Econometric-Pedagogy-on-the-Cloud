@@ -17,7 +17,8 @@ ________________________________________________________________________________
 3. [AWS: Instance Launching](#lauching-instance)
    1. [Customizing an Instance](#seven-steps)
    2. [(Important) Elastic IP Address Assignment](#elastic-ip)
-   2. [Navigating Bitvise](#navigating-bitvise)
+   3. [Navigating Bitvise](#navigating-bitvise)
+   4. [(Important) First Time Login](#1st-login)
 4. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
    2. [JupyterHub Installation and Configuration](#jupyterhub)
@@ -194,6 +195,22 @@ The instance will now be visible in the EC2 homepage. The description of the ins
 
 The instance is now launched and hosted on a client. 
 Continue reading the “Anaconda” section to download the distribution onto the newly created instance. 
+
+#### (Important) First Time Login <a name="1st-login"></a>
+
+  Specification of the system user as an admin is needed in the beginning of the set up so that the user is able to access the JupyterHub server from a web-browser for the first time only. Users can then be created manually. Alternitively, the [GitHub Authentication](#github-authentication) provides a guide to giving students the ability to login to the server with their GitHub credientials. This alternitive technique is more difficult to integrate and requires additional security precautions. 
+  
+  Create a user. The example code below adds a user `admin1`.
+  
+  ```console
+  $ adduser admin1
+  $ nano jupyterhub_config.py
+  ```
+  
+  Add this user to the list of authorized administrators to be the JupyterHub administrator in the JupyterHub configuration file using nano.
+  ```
+  c.Authenticator.admin_users = {'admin1'}
+  ```
 
 [Back to Top](#econometric-pedagogy)
 
