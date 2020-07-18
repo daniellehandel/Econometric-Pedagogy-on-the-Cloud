@@ -34,8 +34,6 @@ ________________________________________________________________________________
 
 ## Overview 
 
-<br>
-
 The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
 The demonstration concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is optional, and is recommended for those with an advanced uderstanding of the command line. 
@@ -44,8 +42,6 @@ The demonstration corresponds to workflow 3 outlined in “Econometric Pedagogy 
 
 
 ## Pre-requisites
-
-<br>
  
 To begin launching an instance, the following pre-requisites are required:
 
@@ -61,8 +57,6 @@ To begin launching an instance, the following pre-requisites are required:
  
 
 ## AWS: Instance Launching <a name="lauching-instance"></a>
-
-  <br>
   
   This section details a method of launching an instance on AWS Educate's EC2 server. Written instruction can be found below the corresponding demonstrational gif.
   
@@ -789,7 +783,6 @@ $ systemctl restart jupyterhub.service
 
 ## Disclaimer 
 
- 
 This instructional guide is part of a demonstration used for “*Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists*”. There is no guarantee this methodology works for others. For specific needs or troubleshooting, independent research may be necessary. 
 
 **AWS Educate and corresponding services are trademark of [Amazon Web Services](https://aws.amazon.com/).**
