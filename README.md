@@ -34,11 +34,11 @@ ________________________________________________________________________________
 
 <br>
 
-The following instructions document a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/)), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
+The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
-Optionally, this guide concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is for those with an advanced uderstanding of the command line. 
+The demonstration concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is optional, and is recommended for those with an advanced uderstanding of the command line. 
 
-The guide below corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
+The demonstration corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
 
 ## Pre-requisites
@@ -62,38 +62,54 @@ To begin launching an instance, the following pre-requisites are required:
 
   <br>
   
-  This section details a method of launching an instance on AWS Educate's EC2 server. Demonstrational gifs are provided alongside the instructions to aid in navigating the complex interfaces.
+  This section details a method of launching an instance on AWS Educate's EC2 server. Written instruction can be found below the corresponding demonstrational gif.
   
   #### Customizing an Instance <a name="seven-steps"></a>
  
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />|
 |---|
 
-  Log into your AWS Educate account. The "My Classrooms" tab on the top banner in the interface directs to the complete list of classrooms supported on the account. From there, select the desired classroom by clicking the blue "Go to classroom" button. The third-party application, Vocareum, will launch, showing an overview of the classroom. To manage, select "AWS console." To launch the proper instance, select EC2 from the dropdown menu labeled "All services". 
+  Log into your **AWS Educate** account. The "My Classrooms" tab on the top banner in the interface directs to the complete list of classrooms created on the account. From there, select the desired classroom by clicking the blue "Go to classroom" button. The third-party application, Vocareum, will launch, showing an overview of the classroom. To manage, select "AWS console." To launch the proper instance, select **EC2** from the dropdown menu labeled "All services". 
   
   :bulb: Your browser may block pop-ups from Vocareum. 
-
+  
+  <details>
+    <summary>What is an instance?</summary>
+    <br>
+     
+  An instance in AWS is a type of virtual envirnoment. There are several types that AWS provides depending on the intended purpose; this demonstration walks through the launching of a free-tier EC2 instance. These instances are secure, scalible, and affordable. More information can be found in the [EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) on the AWS website.
+     
+  </details>
+ 
   <br>
   
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/2_start_instance.gif" width="800" height="370" />|
 |---|
 
-  Select an Ubuntu server as the desired Amazon Machine Image (AMI). This demonstration utilizes Ubuntu 20.4, though other Ubuntu servers will also be suitable. 
+  Select an Ubuntu server as the desired Amazon Machine Image (AMI). This demonstration selects **Ubuntu 20.4**, though other Ubuntu servers will also be suitable. 
 
-  The next tab requests an instance type to be selected. The "general purpose" option will be preselected and is available with AWS's free tier. Click "Next: Configure Image" to continue.
+  The next tab requests an instance type to be selected. The "general purpose" option will be preselected and is available with AWS's free tier. Click **"Next: Configure Image"** to continue.
  
-  Immediately continue to "Next: Add Storage."
+  Immediately continue to **"Next: Add Storage."**
 
   <br>
   
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/3_security_group.gif"  width="800" height="370" />|
 |---|
   
-  Change the storage from the default to the maximum the free tier provides, 30 GB. Continue to “Next: Add Tags”.
+Change the storage from the default to the maximum the free tier provides, **30 GiB**. Continue to **“Next: Add Tags”.**
 
-Tags are an optional feature to allow for categorization and organization. Continue to "Next: Configure Security Groups".
+Tags are optional metadata that describe the instance for categorization and organization purposes. To add a tag, the "Add a tag" button is located on the bottom left. Otherwise, continue to **"Next: Configure Security Groups".** 
 
-The default SSH rule will have the standard Port Range of 22 and a “Custom” source. Change the source to “Anywhere” to allow students to access the instance. Add a second custom TCP security rule by clicking the “Add Rule” button. Modify the rule to have a port range of 8000. Add a description of “JupyterHub.” Continue to the final stage by clicking the blue “Review and Launch” button. 
+The default SSH rule will have the standard port range of 22 and a “Custom” source. Change the source to “Anywhere” to allow students to access the instance. Add a second custom TCP security rule by clicking the “Add Rule” button. Modify the rule to have a port range of 8000. Add a description of “JupyterHub.” Continue to the final stage by clicking the blue “Review and Launch” button. 
+
+   <details>
+    <summary>:bulb: What is port range?</summary>
+    <br>
+ 
+   A port is a designated number that specifies a network service for operating systems. This are tied to IP address and comunicate the purpose of the network. A port range of 22 is standard for the use of SSH (Secure Shell) clients, which is the method of this demonstration. The TCP (Transmission Control Protocol) port range of 8000 relates users who attempt to find the server to the appropiate designated space. 
+   
+   </details>
 
 Given that all steps have been followed by this point, select “Launch”.
 
@@ -112,7 +128,7 @@ Given that all steps have been followed by this point, select “Launch”.
    
    :warning: It is important to keep the key private and safe on your local computer. Losing the key will prevent the server from functioning. Sharing the key could leave the server vulnerable :warning:
    
-  </details>
+   </details>
 
   An instructor may choose to turn off the server periodically to avoid billing when little to no traffic is expected. An [elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html) ensures the original SSH key will function after the server is turned off and on.
 
@@ -121,7 +137,7 @@ Given that all steps have been followed by this point, select “Launch”.
 
 Navigate to the Elastic IP configuration on the Amazon EC2 Console. Opt to allocate an elastic IP address from Amazon's pool of IPv4 addresses. Then, choose to associate this new address and select your instance. You will now have a different IP address for your lab. 
 
-:warning: Typing this new IP address appended with ":8000" into your browser will bring you to your lab. It may be useful to do this to check the functionality of your lab after each step. :warning:
+:bulb: Typing this new IP address appended with ":8000" into your browser will bring you to your lab. It may be useful to do this to check the functionality of your lab after each step.
 
   <br>
   
@@ -130,16 +146,24 @@ Navigate to the Elastic IP configuration on the Amazon EC2 Console. Opt to alloc
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/4_IP_into_bitvise.gif"  width="800" height="370" />|
 |---|
 
-Download [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) (Windows) or [Terminus App](https://termius.com/). 
+Download [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) (Windows) or [Terminus App](https://termius.com/) (MacOS). 
 
-The instance should now be visible in the EC2 homepage. The description of the instance and the IP address should now be visible at the bottom of the instance page. Open Bitvise as an SSH client. Copy the IPv4 Public IP address from the instance page in EC2 and paste it into “Host” on Bitvise. Insert 22 as the port. 
+   <details>
+    <summary>:bulb: What is an SSH Client?</summary>
+    <br>
+ 
+   An SSH client, such as Bitvise, allows nerwork services to operate securely over an insecure network. 
+   
+   </details>
+
+The instance will now be visible in the EC2 homepage. The description of the instance and the IP address can be found at the bottom of the instance page. Open Bitvise as an SSH client. Copy the IPv4 Public IP address from the instance page in EC2 and paste it into “Host” on Bitvise. Insert 22 as the port. 
 
   <br>
   
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/6_put in key.gif"  width="800" height="370" />|
 |---|
   
-  The proper username to connect Bitvise to the instance is “ubuntu." Change the following line “Initial method” to publickey. Select the proper key in from the newly created “client key” line. Click "Log In" to selct the key downloaded earlier. An optional comment can be left for organization purposes if desired.
+  Enter "ubuntu" as the username. Change the following line “Initial method” to publickey. Select the key associated with the elastic IP in the “client key” line. Click "Log In" to selct the key downloaded earlier. An optional comment can be left for organization purposes if desired.
   
   The following directions are for use in the Bitvise (or other choice SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
