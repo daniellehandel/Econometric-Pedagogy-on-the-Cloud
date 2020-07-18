@@ -16,6 +16,7 @@ ________________________________________________________________________________
 2. [Pre-requisites](#pre-requisites)
 3. [AWS: Instance Launching](#lauching-instance)
    1. [Customizing an Instance](#seven-steps)
+   2. [(Important) Elastic IP Address Assignment](#elastic-ip)
    2. [Navigating Bitvise](#navigating-bitvise)
 4. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
@@ -114,11 +115,10 @@ The default SSH rule will have the standard port range of 22 and a “Custom” 
 Given that all steps have been followed by this point, select “Launch”.
 
   <br>
-  
-|<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/5_launch_and_key.gif"  width="800" height="370" />|
-|---|
-  
-  Selecting “Launch” will prompt the user to select an existing key pair or create a new one. A key pair serves as a password to connect the instance to a SSH server or client. Name and download your key pair. 
+
+#### (Important) Elastic IP Address Assignment <a name="elastic-ip"></a>
+
+  This section will demonstrate the proper set-up required for securing an elastic (or static) IP address. An IP address of this veriaty is needed so no new SSH authentication keys are needed when re-starting the server. 
   
    <details>
     <summary>:bulb: What is an SSH key?</summary>
@@ -130,7 +130,12 @@ Given that all steps have been followed by this point, select “Launch”.
    
    </details>
 
-  An instructor may choose to turn off the server periodically to avoid billing when little to no traffic is expected. An [elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html) ensures the original SSH key will function after the server is turned off and on.
+|<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/5_launch_and_key.gif"  width="800" height="370" />|
+|---|
+  
+  Selecting “Launch” will prompt the user to select an existing SSH key pair or create a new one. A key pair serves as a password to connect the instance to a SSH server or client. Name and download your key pair. 
+
+  An instructor may choose to turn off the server periodically to avoid billing when little to no traffic is expected. An [elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html) ensures the original SSH key will function after the server is re-started.
 
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/allocate_elastic.gif"  width="800" height="370" />|
 |---|
