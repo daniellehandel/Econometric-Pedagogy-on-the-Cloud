@@ -134,8 +134,6 @@ The default SSH rule will have the standard port range of 22 and a “Custom” 
 
 Given that all steps have been followed by this point, select “Launch”.
 
-  <br>
-
 #### (Important) Elastic IP Address Assignment <a name="elastic-ip"></a>
 
   This section will demonstrate the proper set-up required for securing an elastic (or static) IP address. An IP address of this veriaty is needed so no new SSH authentication keys are needed when re-starting the server. 
@@ -163,8 +161,6 @@ Given that all steps have been followed by this point, select “Launch”.
 Navigate to the Elastic IP configuration on the Amazon EC2 Console. Opt to allocate an elastic IP address from Amazon's pool of IPv4 addresses. Then, choose to associate this new address and select your instance. You will now have a different IP address for your lab. 
 
 :bulb: Typing this new IP address appended with ":8000" into your browser will bring you to your lab. It may be useful to do this to check the functionality of your lab after each step.
-
-  <br>
   
 #### Navigating Bitvise <a name="navigating-bitvise"></a>
   
@@ -191,6 +187,8 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   Enter "ubuntu" as the username. Change the following line “Initial method” to publickey. Select the key associated with the elastic IP in the “client key” line. Click "Log In" to selct the key downloaded earlier. An optional comment can be left for organization purposes if desired.
   
   :warning: <b>Ensure that the address copied and entered into the host field corresponds with the new elastic IP address.</b> :warning:
+  
+  <br>
   
   The following directions are for use in the Bitvise (or other choice SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
