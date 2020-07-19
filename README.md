@@ -290,9 +290,7 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to down
   
   #### JupyterHub Installation and Configuration <a name="jupyterhub"></a>
   
-  Install [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/quickstart.html).
- 
-  First, make sure conda is up to date: 
+  To install [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/quickstart.html), first make sure conda is up to date: 
   ```console
   $ conda update -n root conda
   ```
