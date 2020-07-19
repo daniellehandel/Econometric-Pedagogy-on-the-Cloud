@@ -100,7 +100,7 @@ To begin launching an instance, the following pre-requisites are required:
     <summary>:bulb: What is an instance?</summary>
     <br>
      
-  An instance in AWS is a type of virtual envirnoment. There are several types that AWS provides depending on the intended purpose; this demonstration walks through the launching of a free-tier EC2 instance. These instances are secure, scalible, and affordable. More information can be found in the [EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) on the AWS website.
+  An instance in AWS is a type of virtual envirnoment. There are several types that AWS provides depending on the intended purpose; this demonstration walks through the launching of a free-tier EC2 instance. More information can be found in the [EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) on the AWS website.
      
   </details>
   
@@ -113,7 +113,7 @@ To begin launching an instance, the following pre-requisites are required:
 
   Select an Ubuntu server as the desired Amazon Machine Image (AMI). This demonstration selects **Ubuntu 20.4**, though other Ubuntu servers will also be suitable. 
 
-  The next tab requests an instance type to be selected. The "general purpose" option will be preselected and is available with AWS's free tier. Click **"Next: Configure Image"** to continue.
+  Select the "general purpose" instance type, which is available with AWS's free tier. Click **"Next: Configure Image"** to continue.
  
   Immediately continue to **"Next: Add Storage."**
 
@@ -122,7 +122,7 @@ To begin launching an instance, the following pre-requisites are required:
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/3_security_group.gif"  width="800" height="370" />|
 |---|
   
-Change the storage from the default to the maximum the free tier provides, **30 GiB**. Continue to **“Next: Add Tags”.**
+Change the storage from the default to the maximum the free tier provides, **30 GB**. Continue to **“Next: Add Tags”.**
 
 Tags are optional metadata that describe the instance for categorization and organization purposes. To add a tag, the "Add a tag" button is located on the bottom left. Otherwise, continue to **"Next: Configure Security Groups".** 
 
@@ -132,15 +132,15 @@ The default SSH rule will have the standard port range of 22 and a “Custom” 
     <summary>:bulb: What is port range?</summary>
     <br>
  
-   A port is a designated number that specifies a network service for operating systems. This are tied to IP address and comunicate the purpose of the network. A port range of 22 is standard for the use of SSH (Secure Shell) clients, which is the method of this demonstration. The TCP (Transmission Control Protocol) port range of 8000 relates users who attempt to find the server to the appropiate designated space. 
+   A port is a designated number that specifies a network service for operating systems. These are tied to the IP address and comunicate the purpose of the network. A port range of 22 is standard for use with an SSH (Secure Shell) client, which will be utilized in this demonstration. The TCP (Transmission Control Protocol) port range of 8000 relates users who attempt to find the server to the appropiate designated space. 
    
    </details>
 
-Given that all steps have been followed by this point, select “Launch”.
+Now, “Launch”.
 
 #### (Important) Elastic IP Address Assignment <a name="elastic-ip"></a>
 
-  This section will demonstrate the proper set-up required for securing an elastic (or static) IP address. An IP address of this veriaty is needed so no new SSH authentication keys are needed when re-starting the server. 
+  This section will demonstrate the proper set-up required for securing an elastic (or static) IP address, which is needed so that no new SSH authentication keys are needed when re-starting the server. 
   
    <details>
     <summary>:bulb: What is an SSH key?</summary>
@@ -360,7 +360,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
   
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   
-  Enable the new file.
+  Enable the new file:
   ```console
   $ ln -s /etc/jupyterhub/jupyterhub.service /etc/systemd/system/jupyterhub.service
 
@@ -369,16 +369,16 @@ Continue reading the “Anaconda” section to download the distribution onto th
   $ systemctl start jupyterhub.service
   ```
   JupyterHub is now set up on the server.
-  Check its status (optional).
+  Check its status (optional):
   ```console
   $ systemctl status jupyterhub.service
   ```
   
   #### (Important) First Time Login <a name="1st-login"></a>
 
-  Specification of the system user as an admin is needed in the beginning of the set up so that the user is able to access the JupyterHub server from a web-browser for the first time only. Users can then be created manually. Alternitively, the [GitHub Authentication](#github-authentication) provides a guide to giving students the ability to login to the server with their GitHub credientials. This alternitive technique is more difficult to integrate and requires additional security precautions. 
+  Specification of the system user as an admin is needed in the beginning of the set up so that the user is able to access the JupyterHub server from a web browser for the first time only. Users can then be created manually. Alternatively, the [GitHub Authentication](#github-authentication) provides a guide to giving students the ability to login to the server with their GitHub credentials. This alternitive technique is more difficult to integrate and requires additional security precautions. 
   
-  Create a user. The example code below adds a user `admin1`.
+  Create a user. The example code below adds a user `admin1`:
   
   ```console
   $ adduser admin1
@@ -529,7 +529,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
 
 ## (Optional) GitHub Extensions and Packages <a name="packages"></a>
 
-The optional packages showcased below personalize your server to expidite online instruction. 
+The optional packages showcased below personalize your server to streamline online instruction. 
 
  <details>
     <summary>Expand</summary>
@@ -567,7 +567,7 @@ The optional packages showcased below personalize your server to expidite online
   
 ## (Optional) GitHub Integration <a name="github-authentication"></a>
 
-  This section provides a guide to allowing the server to use GitHub credidentials in the log-in process. By entering in their GitHub log-in information, students can access and use the server, without the instructor having to manually enter each user and admin. As a reminder, a student can set up a GitHub account for free. An advanced understanding of the command line is recommended before attempting.
+  This section provides a guide to allowing the server to use GitHub credidentials in the log-in process. By entering in their GitHub log-in information, students can access and use the server without the instructor having to manually enter each user and admin. As a reminder, a student can set up a GitHub account for free. An advanced understanding of the command line is recommended before attempting.
 
  <details>
     <summary>Expand</summary>
@@ -582,7 +582,7 @@ Contents
 The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
 
  #### Generate Cookie Secret <a name="cookie-secret"></a>
-Encrypt the your lab's [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) for security purposes.
+Encrypt the your lab's [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) for security purposes:
 ```console
 # Create a new directory
 $ mkdir /srv/jupyterhub
