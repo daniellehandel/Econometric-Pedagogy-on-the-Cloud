@@ -271,7 +271,7 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to down
   ```
   
   <p align="center">
-    <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20anaconda%20path.png" width = "350" height = "400" />
+    <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20anaconda%20path.png" width = "350" height = "370" />
   </p>
   
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
