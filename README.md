@@ -37,13 +37,13 @@ ________________________________________________________________________________
 
 ## Overview 
 
-The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
+The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in [Amazon Web Service Educate](https://aws.amazon.com/education/awseducate/), i.e., the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
 The demonstration concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is optional, and is recommended for those with an advanced uderstanding of the command line. 
 
 The following section, [Functionality](#functionality), showcases a fully operational server both with and without the optional GitHub integration.
 
-This demonstration corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
+This demonstration corresponds to workflow 3 outlined in “*_Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists_*,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
 ## Functionality
 
@@ -52,7 +52,7 @@ This demonstration corresponds to workflow 3 outlined in “Econometric Pedagogy
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/base_functionality.gif" width="800" height="370" />|
 |---|
 
-After entering the lab with a pre-assigned username and password, students may generate new Jupyter Notebooks using R, Python, or Stata. They also may upload notebooks from their local machine or clone repositories from GitHub and work on those. None of this requires installation of any software on the local machine.
+After entering the lab with a pre-assigned username and password, students may generate new Jupyter Notebooks using R, Python, or Stata. They also may upload notebooks from their local machine or clone repositories from [GitHub](https://github.com) and work on those. None of this requires installation of any software on the local machine.
 
 #### (Optional) GitHub Integrated Functionality <a name="github-func"></a>
 
@@ -462,7 +462,7 @@ Continue reading the “Anaconda” section to download the distribution onto th
  $ mkdir /home/ubuntu/stata_source
   ```
   
- Place your Stata for Linux installation file into this folder:
+ Place your Stata for Linux installation file into this folder (using [BitVise](https://www.bitvise.com/) SSH Client's SFTP interface for example):
  ```console
  $ cd /usr/local
  $ mkdir stata16
@@ -479,12 +479,12 @@ Continue reading the “Anaconda” section to download the distribution onto th
  $ ./stinit
  ```
  
- Ubuntu users will be need to enter the following.
+ Ubuntu users will need to enter the following.
  ```console
  $ apt install libtinfo5
   ```
  
- To add a path to Stata, open profile with nano:
+ To add a path to Stata, open the profile file with nano:
  ```console
  $ nano /etc/profile
  ```
@@ -539,7 +539,7 @@ The optional packages showcased below personalize your server to streamline onli
 
   ###### GitHub Extension <a name="extension"></a>
   
-  This extension will allow a GitHub icon to appear on the side bar of students' interface. When clicked, students can gain access to public repositories, such as notebook based assignments.
+  This extension will allow a GitHub icon to appear on the side bar of students' interface. When clicked, students can gain access to public repositories, such as notebook-based assignments.
   
   ```console
   # Install the extension for JupyterLab
@@ -553,7 +553,7 @@ The optional packages showcased below personalize your server to streamline onli
   ```
   ###### nbgrader
   
-  The package [nbgrader](https://nbgrader.readthedocs.io/en/stable/) helps streamline the grading process for instructors using jupyter notebooks. Notebook based assignments can be created, collected, and returned with little hassle. 
+  The package [nbgrader](https://nbgrader.readthedocs.io/en/stable/) helps streamline the grading process for instructors using Jupyter notebooks. Notebook based assignments can be created, collected, and returned with little hassle. 
   
   ```console
   $ conda install -c conda-forge nbgrader
@@ -577,7 +577,7 @@ Contents
 3. [Secure Your Lab](#secure-lab)
 4. [Add GitHub Authentication](#authentication-final)
 
-The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+The following directions are for use in the Bitvise (or other SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
 
  #### Generate Cookie Secret <a name="cookie-secret"></a>
 Encrypt the your lab's [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) for security purposes:
@@ -662,13 +662,13 @@ Navigate to the AWS Console. Go to the Security Groups settings and select your 
 # Add this line so you do not need to shut down the server before proceeding
 $ certbot certonly --nginx
 ```
-You will be prompted to enter an email and a domain (the newly added custom domain, for example: "jupyterlab.professorx.com")
+You will be prompted to enter an email and a domain (the newly added custom domain, for example: "YOUR-DOMAIN")
 
 You should see:
  - Congratulations! Your certificate and chain have been sav
-   /etc/letsencrypt/live/your-domain/fullchain.pem
+   /etc/letsencrypt/live/YOUR-DOMAIN/fullchain.pem
    Your key file has been saved at:
-   /etc/letsencrypt/live/your-domain/privkey.pem
+   /etc/letsencrypt/live/YOUR-DOMAIN/privkey.pem
 
 Install nginx so you do not have to type ":8000" at the end of the URL: 
 ```console
@@ -807,7 +807,7 @@ $ systemctl restart jupyterhub.service
 
 ## Disclaimer 
 
-This instructional guide is part of a demonstration used for “*Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists*”. There is no guarantee this methodology works for others. For specific needs or troubleshooting, independent research may be necessary. 
+This instructional guide is part of a demonstration used for “*Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists.*” There is no guarantee this methodology works for others or using a different cloud service vender. For specific needs or troubleshooting, independent research may be necessary. 
 
 **AWS Educate** and corresponding services are trademark of **[Amazon Web Services](https://aws.amazon.com/).**
 
