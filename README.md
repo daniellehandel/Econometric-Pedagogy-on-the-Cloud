@@ -94,7 +94,9 @@ To begin launching an instance, the following pre-requisites are required:
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />|
 |---|
 
-  Log into your **AWS Educate** account. The "My Classrooms" tab on the top banner in the interface directs to the complete list of classrooms created on the account. From there, select the desired classroom by clicking the blue "Go to classroom" button. The third-party application, Vocareum, will launch, showing an overview of the classroom. To manage, select "AWS console." To launch the proper instance, select **EC2** from the dropdown menu labeled "All services". 
+  Log into your AWS Educate account. The "My Classrooms" tab on the top banner in the interface directs to the complete list of classrooms created on the account. From there, select the desired classroom by clicking the blue "Go to classroom" button. The third-party application, Vocareum, will launch, showing an overview of the classroom. To manage, select "AWS console." To launch the proper instance, select EC2 from the dropdown menu labeled "All services". 
+  
+   :warning: Your browser may block pop-ups from Vocareum. :warning:
   
   <details>
     <summary>:bulb: What is an instance?</summary>
@@ -103,28 +105,26 @@ To begin launching an instance, the following pre-requisites are required:
   An instance in AWS is a type of virtual envirnoment. There are several types that AWS provides depending on the intended purpose; this demonstration walks through the launching of a free-tier EC2 instance. More information can be found in the [EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) on the AWS website.
      
   </details>
-  
-  :warning: Your browser may block pop-ups from Vocareum. :warning:
  
   <br>
   
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/2_start_instance.gif" width="800" height="370" />|
 |---|
 
-  Select an Ubuntu server as the desired Amazon Machine Image (AMI). This demonstration selects **Ubuntu 20.4**, though other Ubuntu servers will also be suitable. 
+  Select an Ubuntu server as the desired Amazon Machine Image (AMI). This demonstration selects Ubuntu 20.4, though other Ubuntu servers will also be suitable. 
 
-  Select the "general purpose" instance type, which is available with AWS's free tier. Click **"Next: Configure Image"** to continue.
+  Select the "general purpose" instance type, which is available with AWS's free tier. Click "Next: Configure Image" to continue.
  
-  Immediately continue to **"Next: Add Storage."**
+  Immediately continue to "Next: Add Storage."
 
   <br>
   
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/3_security_group.gif"  width="800" height="370" />|
 |---|
   
-Change the storage from the default to the maximum the free tier provides, **30 GB**. Continue to **“Next: Add Tags”.**
+Change the storage from the default to the maximum the free tier provides, 30 GB. Continue to “Next: Add Tags”.
 
-Tags are optional metadata that describe the instance for categorization and organization purposes. To add a tag, the "Add a tag" button is located on the bottom left. Otherwise, continue to **"Next: Configure Security Groups".** 
+Tags are optional metadata that describe the instance for categorization and organization purposes. To add a tag, the "Add a tag" button is located on the bottom left. Otherwise, continue to "Next: Configure Security Groups".
 
 The default SSH rule will have the standard port range of 22 and a “Custom” source. Change the source to “Anywhere” to allow students to access the instance. Add a second custom TCP security rule by clicking the “Add Rule” button. Modify the rule to have a port range of 8000. Add a description of “JupyterHub.” Continue to the final stage by clicking the blue “Review and Launch” button. 
 
@@ -411,8 +411,6 @@ Continue reading the “Anaconda” section to download the distribution onto th
   $ R
   ```
   
-  <br>
-  
   #### Update and Install R Kernel <a name="update-and-install-r-kernel"></a>
   
   Update all packages in the current environment to the latest version, without prompts for permission:
@@ -541,7 +539,7 @@ The optional packages showcased below personalize your server to streamline onli
 
   ###### GitHub Extension <a name="extension"></a>
   
-  This extension will show up on a side bar of the students interface. When clicked, students can gain access to public repositories, such as notebook based assignments.
+  This extension will allow a GitHub icon to appear on the side bar of students' interface. When clicked, students can gain access to public repositories, such as notebook based assignments.
   
   ```console
   # Install the extension for JupyterLab
@@ -627,8 +625,6 @@ Navigate to the "Domain Name Servers," then to "Custom resource records." Enter 
 
 #### Secure Your Lab <a name="secure-lab"></a>
 The following instructions will allow the inclusion of "https://" in your lab address, ensuring the security needed to utilize GitHub authorizations and sign-ins.
-
-:warning: By allowing students to log in with their GitHub credientials, the server is much more vulnerable. It is highly recommended the following steps are followed so "https://" can be included in your lab address to protect against outside threats. :warning:
 
 ```console
 
