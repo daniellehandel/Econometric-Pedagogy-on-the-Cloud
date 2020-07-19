@@ -209,8 +209,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   $ adduser student
   ```
   
-  You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move.  
-  :bulb: To avoid having to add users and admin individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
+  You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move. To avoid having to add users and admin individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
 
 The instance is now launched and hosted on a client. 
 Continue reading the “Anaconda” section to download the distribution onto the newly created instance. 
