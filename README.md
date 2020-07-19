@@ -809,17 +809,17 @@ $ systemctl restart jupyterhub.service
 
 This instructional guide is part of a demonstration used for “*Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists*”. There is no guarantee this methodology works for others. For specific needs or troubleshooting, independent research may be necessary. 
 
-**AWS Educate and corresponding services are trademark of [Amazon Web Services](https://aws.amazon.com/).**
+**AWS Educate** and corresponding services are trademark of **[Amazon Web Services](https://aws.amazon.com/).**
 
-**Stata is trademark of [Stata Corporation](https://www.stata.com/).**
+**Stata** is trademark of **[Stata Corporation](https://www.stata.com/).**
 
-**Google Domain is trademark of [Google](https://www.google.com/).**
+**Google Domain** is trademark of **[Google](https://www.google.com/).**
 
-**Python is developed on an open source license distributed by the [Python Software Foundation](https://www.python.org/psf/).**
+**Python** is developed on an open source license distributed by the **[Python Software Foundation](https://www.python.org/psf/).**
 
-**R is offered on an open source license distributed by the [R Foundation](https://www.r-project.org/foundation/).**
+**R** is offered on an open source license distributed by the **[R Foundation](https://www.r-project.org/foundation/).**
 
-**JupyterHub is an open source platform developed and maintained by [Project Jupyter](https://jupyter.org/).**
+**JupyterHub** is an open source platform developed and maintained by **[Project Jupyter](https://jupyter.org/).**
 
 
 [Back to Top](#econometric-pedagogy)
