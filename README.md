@@ -13,25 +13,27 @@ ________________________________________________________________________________
 
 ## Table of Contents
 1. [Overview](#overview)
-   1. [Functionality](#functionality)
-2. [Pre-requisites](#pre-requisites)
-3. [AWS: Instance Launching](#lauching-instance)
+2. [Functionality](#functionality)
+   1. [Standard Functionality](#std-func)
+   2. [(Optional) GitHub Integrated Functionality](#github-func)
+3. [Pre-requisites](#pre-requisites)
+4. [AWS: Instance Launching](#lauching-instance)
    1. [Customizing an Instance](#seven-steps)
    2. [(Important) Elastic IP Address Assignment](#elastic-ip)
    3. [Navigating Bitvise](#navigating-bitvise)
-4. [Anaconda](#anaconda)
+5. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
    2. [JupyterHub Installation and Configuration](#jupyterhub)
    3. [(Important) First Time Login](#1st-login)
-5. [R](#r)
+6. [R](#r)
    1. [R Installation](#adding-r)
    2. [Update and Install R Kernel](#update-and-install-r-kernel)
-6. [Stata](#stata)
+7. [Stata](#stata)
    1. [Stata Installation](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
-7. [(Optional) GitHub Extensions and Packages](#packages)
-8. [(Optional) GitHub Authentication](#github-authentication)
-9. [Disclaimer](#disclaimer)
+8. [(Optional) GitHub Extensions and Packages](#packages)
+9. [(Optional) GitHub Authentication](#github-authentication)
+10. [Disclaimer](#disclaimer)
 
 ## Overview 
 
@@ -39,18 +41,20 @@ The following demonstration documents a step-by-step guide to setting up a virtu
 
 The demonstration concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is optional, and is recommended for those with an advanced uderstanding of the command line. 
 
-The demonstration corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
+The following section, [Functionality](#functionality), showcases a fully operational server both with and without the optional GitHub integration.
 
-#### Functionality
+This demonstration corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
-###### Standard Functionality
+## Functionality
+
+#### Standard Functionality <a name="std-func"></a>
 
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/base_functionality.gif" width="800" height="370" />|
 |---|
 
 After entering the lab with a pre-assigned username and password, students may generate new Jupyter Notebooks using R, Python, or Stata. They also may upload notebooks from their local machine and work on those. None of this requires installation of any software on the local machine.
 
-###### (Optional) GitHub Integrated Functionality
+#### (Optional) GitHub Integrated Functionality <a name="github-func"></a>
 
 Below demonstrates the functionality granted by following the optional sections, [GitHub Extensions and Packages](#packages) and [GitHub Authentication](#github-authentication).
 
