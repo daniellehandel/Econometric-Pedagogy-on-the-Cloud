@@ -13,6 +13,7 @@ ________________________________________________________________________________
 
 ## Table of Contents
 1. [Overview](#overview)
+   1. [Functionality](#functionality)
 2. [Pre-requisites](#pre-requisites)
 3. [AWS: Instance Launching](#lauching-instance)
    1. [Customizing an Instance](#seven-steps)
@@ -40,6 +41,11 @@ The demonstration concludes with a method of integrating GitHub so that students
 
 The demonstration corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
+#### Functionality
+
+
+
+[Back to Top](#econometric-pedagogy)
 
 ## Pre-requisites
  
