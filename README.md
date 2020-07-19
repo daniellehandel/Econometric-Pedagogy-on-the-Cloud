@@ -43,7 +43,11 @@ The demonstration corresponds to workflow 3 outlined in “Econometric Pedagogy 
 
 #### Functionality
 
-Below demonstrates the functionality granted by following the optional sections, [GitHub Extensions and Packages](#packages) and [GitHub Authentication](#github-authentication). 
+###### Standard Functionality
+
+###### (Optional) GitHub Integrated Functionality
+
+Below demonstrates the functionality granted by following the optional sections, [GitHub Extensions and Packages](#packages) and [GitHub Authentication](#github-authentication).
 
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/loginGitHubDemo.gif" width="800" height="370" />|
 |---|
