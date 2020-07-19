@@ -35,13 +35,18 @@ ________________________________________________________________________________
 
 ## Overview 
 
-The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
+The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
 The demonstration concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is optional, and is recommended for those with an advanced uderstanding of the command line. 
 
 The demonstration corresponds to workflow 3 outlined in “Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
 #### Functionality
+
+|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/base_functionality.gif" width="800" height="370" />|
+|---|
+
+After entering the lab with a pre-assigned username and password, students may generate new Jupyter Notebooks using R, Python, or Stata. They also may upload notebooks from their local machine and work on those. None of this requires installation of any software on the local machine.
 
 ###### Standard Functionality
 
