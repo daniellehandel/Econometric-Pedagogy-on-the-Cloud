@@ -209,14 +209,14 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   
   To create a new administrator or student, respectively:
   ```console
-  $ adduser admin
+  $ adduser admin1
   $ adduser student
   ```
   
-  You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move. To avoid having to add users and admin individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
+  You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move. To avoid having to add users individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
 
 The instance is now launched and hosted on a client. 
-Continue reading the “Anaconda” section to download the distribution onto the newly created instance. 
+Continue reading the “[Anaconda](https://www.anaconda.com/)” section to download the distribution onto the newly created instance. 
 
 [Back to Top](#econometric-pedagogy)
 
