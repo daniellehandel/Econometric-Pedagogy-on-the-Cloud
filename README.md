@@ -49,7 +49,7 @@ This demonstration corresponds to workflow 3 outlined in “*_Econometric Pedago
 
 #### Standard Functionality <a name="std-func"></a>
 
-|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/base_functionality.gif" width="800" height="370" />|
+|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/base_functionality.gif" width="800" height="400" />|
 |---|
 
 After entering the lab with a pre-assigned username and password, students may generate new Jupyter Notebooks using R, Python, or Stata. They also may upload notebooks from their local machine or clone repositories from [GitHub](https://github.com) and work on those. None of this requires installation of any software on the local machine.
