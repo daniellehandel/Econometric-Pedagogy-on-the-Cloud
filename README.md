@@ -43,7 +43,17 @@ The demonstration corresponds to workflow 3 outlined in “Econometric Pedagogy 
 
 #### Functionality
 
+Below demonstrates the functionality granted by following the optional sections, [GitHub Extensions and Packages](#packages) and [GitHub Authentication](#github-authentication). 
 
+|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/loginGitHubDemo.gif" width="800" height="370" />|
+|---|
+
+A student with their free GitHub account setup can select the "Sign in with GitHub" to be prompted to authorize the server to use GitHub when logging in. After selecting the button to authorize, the student will be directed to the JupyterHub interface and begin working.
+
+|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/djachocGitHubDemo.gif" width="800" height="370" />|
+|---|
+
+The GitHub extension allows the student to access repositories as demonstrated above. By typing in a username, the student will be granted access to all of the *puplic* repositories that person has. A students can gain access to assignments directly from their instructor's GitHub.
 
 [Back to Top](#econometric-pedagogy)
 
