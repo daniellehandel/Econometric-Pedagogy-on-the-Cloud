@@ -165,6 +165,8 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   
   Enter "ubuntu" as the username. Change the following line “Initial method” to publickey. Select the key associated with the elastic IP in the “client key” line. Click "Log In" to selct the key downloaded earlier. An optional comment can be left for organization purposes if desired.
   
+  :warning: <b>Ensure that the address copied and entered into the host field corresponds with the new elastic IP address.</b> :warning:
+  
   The following directions are for use in the Bitvise (or other choice SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
   To request root access:
