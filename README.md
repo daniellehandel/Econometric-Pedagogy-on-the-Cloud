@@ -56,12 +56,12 @@ After entering the lab with a pre-assigned username and password, students may g
 
 #### (Optional) GitHub Integrated Functionality <a name="github-func"></a>
 
-Below demonstrates the functionality granted by following the optional sections, [GitHub Extensions and Packages](#packages) and [GitHub Authentication](#github-authentication).
+Demonstrated below is the additional functionality granted by following the optional sections, [GitHub Extensions and Packages](#packages) and [GitHub Authentication](#github-authentication).
 
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/loginGitHubDemo.gif" width="800" height="370" />|
 |---|
 
-A student with their free GitHub account setup can select the "Sign in with GitHub" to be prompted to authorize the server to use GitHub when logging in. After selecting the button to authorize, the student will be directed to the JupyterHub interface and begin working.
+A student with their free GitHub account setup can select the "Sign in with GitHub" to be prompted to authorize the server to use GitHub when logging in. After selecting the button to authorize, the student will be directed to the JupyterHub interface and may begin working.
 
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/djachocGitHubDemo.gif" width="800" height="370" />|
 |---|
