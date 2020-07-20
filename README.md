@@ -76,7 +76,7 @@ To begin launching an instance, the following pre-requisites are required:
 
 1. Hardware: Personal computer with internet connection.
 2. Software:
-   1. SSH Client (BitVise recommended).
+   1. SSH Client.
    2. Stata license (contact your department's IT service).
 3. Cloud Service:
    1. A classroom in AWS Educate.
@@ -438,7 +438,7 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to down
 
   The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
   
-  :bulb: Instructors should contact Stata to discuss the best licensing options. A Stata Labs license may be best for this workflow, with the lab size corresponding to the number of students in the lab.
+  :bulb: Instructors should contact Stata to discuss the best licensing options. A Stata Lab license may be best for this workflow, with the lab size corresponding to the number of students in the lab.
   
   #### Stata Installation <a name="adding-stata"></a>
   Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux  
@@ -448,7 +448,7 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to down
  $ mkdir /home/ubuntu/stata_source
   ```
   
- Place your Stata for Linux installation file into this folder (using [BitVise](https://www.bitvise.com/) SSH Client's SFTP interface for example):
+ Place your Stata for Linux installation file into this folder (using BitVise SSH Client's SFTP interface for example):
  ```console
  $ cd /usr/local
  $ mkdir stata16
