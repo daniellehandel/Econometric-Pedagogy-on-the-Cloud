@@ -207,7 +207,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   $ apt-get upgrade
   ```
   
-  To create a new administrator or student, respectively:
+  To create new users, say "admin1" (this is important, see below) and "student", write:
   ```console
   $ adduser admin1
   $ adduser student
@@ -323,7 +323,7 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to down
   c.JupyterHub.admin_access = True
   
   # Specify system user as administrator
-  c.Authenticator.admin_users = {'admin'}
+  c.Authenticator.admin_users = {'admin1'}
   
   # Shutdown user servers on logout
   c.JupyterHub.shutdown_on_logout = True
@@ -374,19 +374,7 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to down
   
   #### (Important) First Time Login <a name="1st-login"></a>
 
-  Specification of the system user as an admin is needed in the beginning of the set up so that the user is able to access the JupyterHub server from a web browser for the first time only. Users can then be created manually. Alternatively, the [GitHub Authentication](#github-authentication) provides a guide to giving students the ability to login to the server with their GitHub credentials. This alternitive technique is more difficult to integrate and requires additional security precautions. 
-  
-  Create a user. The example code below adds a user `admin1`:
-  
-  ```console
-  $ adduser admin1
-  $ nano jupyterhub_config.py
-  ```
-  
-  Add this user to the list of authorized administrators to be the JupyterHub administrator in the JupyterHub configuration file using nano.
-  ```
-  c.Authenticator.admin_users = {'admin1'}
-  ```
+  Specification of the system user, "admin1" above, as an admin is needed in the beginning of the set up so that the user is able to access the JupyterHub server from a web browser for the first time only. Users can then be created manually. Alternatively, the [GitHub Authentication](#github-authentication) provides a guide to giving students the ability to login to the server with their GitHub credentials. This alternitive technique is more difficult to integrate and requires additional security precautions. 
   
   [Back to Top](#econometric-pedagogy)
   
