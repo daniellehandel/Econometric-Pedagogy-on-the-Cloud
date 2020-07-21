@@ -19,8 +19,8 @@ ________________________________________________________________________________
 3. [Pre-requisites](#pre-requisites)
 4. [AWS: Instance Launching](#lauching-instance)
    1. [Customizing an Instance](#seven-steps)
-   2. [(Important) Elastic IP Address Assignment](#elastic-ip)
-   3. [Navigating Bitvise](#navigating-bitvise)
+   2. [Assigning an Elastic IP Address](#elastic-ip)
+   3. [Connecting to Your Cloud](#navigating-bitvise)
 5. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
    2. [JupyterHub Installation and Configuration](#jupyterhub)
@@ -144,36 +144,36 @@ Since JupyterHub uses port 8000 as default for connecting to the internet, it ha
    </details>
 
 Now, “Launch”.
+  
+  <br>
 
-#### (Important) Elastic IP Address Assignment <a name="elastic-ip"></a>
-
-  This section will demonstrate the proper set-up required for securing an elastic (or static) IP address, which is needed so that no new SSH authentication keys are needed when re-starting the server. 
+|<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/5_launch_and_key.gif"  width="800" height="370" />|
+|---|
+  
+  Selecting “Launch” will prompt the user to select an existing SSH key pair or create a new one. A key pair serves as a password for a SSH client to connect the AWS instance. Name and download your key pair.
   
    <details>
     <summary>:bulb: What is an SSH key?</summary>
     <br>
  
-   An SSH key serves as the "password" which connects the server to the SSH client. This demonstration suggests the use of Bitvise, although other clients, such as the Terminus App for Mac users, can serve as substitutions. 
-   
-   :warning: It is important to keep the key private and safe on your local computer. Losing the key will prevent the server from functioning. Sharing the key could leave the server vulnerable :warning:
+   An SSH key serves as the "password" which connects the server to the SSH client. This demonstration suggests the use of Bitvise, although other clients, such as PuTTY for Windows/Unix users or the Terminus App for Mac users, can serve as substitutions. 
    
    </details>
 
-|<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/5_launch_and_key.gif"  width="800" height="370" />|
-|---|
+   :warning: It is important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave the server vulnerable :warning:
+
+#### Assigning an Elastic IP Address <a name="elastic-ip"></a>
+
+  In case your instance is stopped or failed, restarting or relaunching your instance will end up with a different public IP address. This becomes inconvenient for users to keep changing the address they need for accessing JupyterHub. This section will demonstrate the proper set-up for allocating a static IP address to your AWS instance. For this purpose, an [Elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html) can be allocated to your account and asociated with an instance, so that users can always access your JupyterHub with the same IP.
   
-  Selecting “Launch” will prompt the user to select an existing SSH key pair or create a new one. A key pair serves as a password to connect the instance to a SSH server or client. Name and download your key pair. 
-
-  An instructor may choose to turn off the server periodically to avoid billing when little to no traffic is expected. An [elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html) ensures the original SSH key will function after the server is re-started.
-
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/allocate_elastic.gif"  width="800" height="370" />|
 |---|
 
-Navigate to the Elastic IP configuration on the Amazon EC2 Console. Opt to allocate an elastic IP address from Amazon's pool of IPv4 addresses. Then, choose to associate this new address and select your instance. You will now have a different IP address for your lab. 
+Navigate to the Elastic IP configuration on the AWS EC2 Console. Opt to allocate an elastic IP address from Amazon's pool of IPv4 addresses. Then, choose to associate this new address and select your instance. Th Elastic IP is now your instance's public IP. 
 
 :bulb: Typing this new IP address appended with ":8000" into your browser will bring you to your lab. It may be useful to do this to check the functionality of your lab after each step.
   
-#### Navigating Bitvise <a name="navigating-bitvise"></a>
+#### Connecting to Your Cloud <a name="navigating-bitvise"></a>
   
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/4_IP_into_bitvise.gif"  width="800" height="370" />|
 |---|
