@@ -392,9 +392,15 @@ The instance is now launched and up-to-date. Continue reading the “[Anaconda](
 
 ## R
   
-  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  The following directions are for use on Ubuntu servers. Administrative rights are required. Unless otherwise specified, type and run each line individually. 
   
   #### R Installation <a name="adding-r"></a>
+  
+  Obtain administrative rights by requesting root access:
+  ```console
+  $ sudo -i
+  ```
+  
   To install R through Bitvise:
   ```console
   $ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
@@ -447,7 +453,7 @@ The instance is now launched and up-to-date. Continue reading the “[Anaconda](
 
 ## Stata
 
-  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  The following directions are for use on Ubuntu servers. Administrative rights are required. Unless otherwise specified, type and run each line individually.
   
   :bulb: Instructors should contact Stata to discuss the best licensing options. A Stata Lab license may be best for this workflow, with the lab size corresponding to the number of students in the lab.
   
@@ -465,6 +471,11 @@ The instance is now launched and up-to-date. Continue reading the “[Anaconda](
  $ mkdir stata16
  $ cd stata16
  ```
+ 
+  Obtain administrative rights by requesting root access:
+  ```console
+  $ sudo -i
+  ```
  
  Install Stata. Enter licensing information when prompted:
  ```console
@@ -499,6 +510,11 @@ The instance is now launched and up-to-date. Continue reading the “[Anaconda](
  
  #### Stata Kernel for Jupyter <a name="stata-kernel"></a>
  
+  Obtain administrative rights by requesting root access:
+  ```console
+  $ sudo -i
+  ```
+  
  Allow Jupyter users to create and run Stata files in Jupyter Notebooks with a Stata kernel:
  ```console
  $ pip install stata_kernel
