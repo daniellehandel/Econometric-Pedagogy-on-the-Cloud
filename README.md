@@ -37,15 +37,15 @@ ________________________________________________________________________________
 
 ## Overview 
 
-The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in [Amazon Web Service](https://aws.amazon.com/), one of the many cloud providers. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
+The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted by [Amazon Web Service (AWS)](https://aws.amazon.com/), one of the many cloud providers. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
 The demonstration concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is optional, and is recommended for those with an advanced uderstanding of the command line. 
-
-The following section, [Functionality](#functionality), showcases a fully operational server both with and without the optional GitHub integration.
 
 This demonstration corresponds to workflow 3 outlined in “*_Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists_*,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
 ## Functionality
+
+This section showcases a fully operational server and the optional GitHub integration.
 
 #### Standard Functionality <a name="std-func"></a>
 
@@ -131,7 +131,7 @@ Change the storage from the default to 30 GB. *_This should be chosen based on c
 
 Tags are optional metadata that describe the instance for categorization and organization purposes. To add a tag, the "Add a tag" button is located on the bottom left. Otherwise, continue to "Next: Configure Security Groups".
 
-The default SSH rule will use the standard port 22. Change the source to “Anywhere” to allow the Ubuntu system adminstrator to access the instance. (Optional) For improved security, change the setting to specific IP. 
+The default SSH rule will use the standard port 22. Change the source to “Anywhere” to allow the Ubuntu system adminstrator with any IP address to access the instance. For improved security, one can change the source to only allow specific IP. 
 
 Since JupyterHub uses port 8000 as default for connecting to the internet, it has to be included in the security group. Add a second custom TCP security rule by clicking the “Add Rule” button. Modify the rule to include port 8000. Add an optional description of “JupyterHub.” Continue to the final stage by clicking the blue “Review and Launch” button. 
 
@@ -150,21 +150,21 @@ Now, “Launch”.
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/5_launch_and_key.gif"  width="800" height="370" />|
 |---|
   
-  Selecting “Launch” will prompt the user to select an existing SSH key pair or create a new one. A key pair serves as a password for a SSH client to connect the AWS instance. Name and download your key pair.
-  
+  Selecting “Launch” will prompt the user to select an existing SSH key pair or create a new one. Name and download your key pair.
+
+   :warning: It is important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave the server vulnerable :warning:
+
    <details>
     <summary>:bulb: What is an SSH key?</summary>
     <br>
  
-   An SSH key serves as the "password" which connects the server to the SSH client. This demonstration suggests the use of Bitvise, although other clients, such as PuTTY for Windows/Unix users or the Terminus App for Mac users, can serve as substitutions. 
+   An SSH key pair serves as the "password" which connects a SSH client to the server. This demonstration suggests the use of Bitvise, although other clients, such as PuTTY for Windows/Unix users or the Terminus App for Mac users, can serve as substitutions. 
    
    </details>
 
-   :warning: It is important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave the server vulnerable :warning:
-
 #### Assigning an Elastic IP Address <a name="elastic-ip"></a>
 
-  In case your instance is stopped or failed, restarting or relaunching your instance will end up with a different public IP address. This becomes inconvenient for users to keep changing the address they need for accessing JupyterHub. This section will demonstrate the proper set-up for allocating a static IP address to your AWS instance. For this purpose, an [Elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html) can be allocated to your account and asociated with an instance, so that users can always access your JupyterHub with the same IP.
+  In case your instance is stopped or failed, restarting or relaunching your instance will end up with a different public IP address. This becomes inconvenient if users have to change the address for accessing JupyterHub. This section will demonstrate the proper set-up for allocating a static IP address to your AWS instance. For this purpose, an [Elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html) can be allocated to your account and asociated with an instance, so that users can always access your JupyterHub with the same IP.
   
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/allocate_elastic.gif"  width="800" height="370" />|
 |---|
