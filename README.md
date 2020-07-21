@@ -178,17 +178,15 @@ Navigate to the Elastic IP configuration on the AWS EC2 Console. Opt to allocate
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/4_IP_into_bitvise.gif"  width="800" height="370" />|
 |---|
 
-Download [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) (Windows) or [Terminus App](https://termius.com/) (MacOS). 
+The instance will now be visible in the EC2 homepage. The description of the instance and the IP address can be found at the bottom of the instance page. Open [Bitvise](https://www.bitvise.com/ssh-client-download) as an SSH client. Copy the IPv4 Public IP address from the instance page in EC2 and paste it into “Host” on Bitvise. Insert 22 as the port. 
 
    <details>
     <summary>:bulb: What is an SSH Client?</summary>
     <br>
  
-   An SSH client, such as Bitvise, allows nerwork services to operate securely over an insecure network. 
+   An SSH client allows establishing a secure and authenticated SSH connections to SSH server. Download [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) or [PuTTY](https://www.putty.org/) for Windows or [Terminus App](https://termius.com/) for MacOS.
    
    </details>
-
-The instance will now be visible in the EC2 homepage. The description of the instance and the IP address can be found at the bottom of the instance page. Open Bitvise as an SSH client. Copy the IPv4 Public IP address from the instance page in EC2 and paste it into “Host” on Bitvise. Insert 22 as the port. 
 
   <br>
   
