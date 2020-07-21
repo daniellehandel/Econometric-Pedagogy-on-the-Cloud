@@ -37,7 +37,7 @@ ________________________________________________________________________________
 
 ## Overview 
 
-The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in [Amazon Web Service Educate](https://aws.amazon.com/education/awseducate/), i.e., the cloud. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
+The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted in [Amazon Web Service](https://aws.amazon.com/), one of the many cloud providers. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
 The demonstration concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is optional, and is recommended for those with an advanced uderstanding of the command line. 
 
@@ -66,7 +66,7 @@ A student with their free GitHub account setup can select the "Sign in with GitH
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/djachocGitHubDemo.gif" width="800" height="400" />|
 |---|
 
-The GitHub extension allows the student to access repositories as demonstrated above. By typing in a username, the student will be granted access to all of the *puplic* repositories that person has. A students can gain access to assignments directly from their instructor's GitHub.
+The GitHub extension allows the student to access repositories as demonstrated above. By typing in a username, the student will be granted access to all of the *public* repositories that person has. A students can gain access to assignments directly from their instructor's GitHub.
 
 [Back to Top](#econometric-pedagogy)
 
@@ -79,7 +79,7 @@ To begin launching an instance, the following pre-requisites are required:
    1. SSH Client.
    2. Stata license (contact your department's IT service).
 3. Cloud Service:
-   1. A classroom in AWS Educate.
+   1. AWS account.
    2. GitHub account (optional).
 
 [Back to Top](#econometric-pedagogy)
@@ -111,9 +111,9 @@ To begin launching an instance, the following pre-requisites are required:
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/2_start_instance.gif" width="800" height="370" />|
 |---|
 
-  Select an Ubuntu server as the desired Amazon Machine Image (AMI). This demonstration selects Ubuntu 20.4, though other Ubuntu servers will also be suitable. 
+  Select a Linux server as the desired Amazon Machine Image (AMI). This demonstration selects Ubuntu 20.4 LTS, though other Linux servers will also be suitable. 
 
-  Select the "general purpose" instance type, which is available with AWS's free tier. Click "Next: Configure Image" to continue.
+  Select an instance type. *_This should be chosen based on class size and computational needs_*. For AWS's free tier, choose "General purpose" family and "t2.micro" type. Click "Next: Configure Image" to continue.
  
   Immediately continue to "Next: Add Storage."
 
@@ -122,17 +122,19 @@ To begin launching an instance, the following pre-requisites are required:
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/3_security_group.gif"  width="800" height="370" />|
 |---|
   
-Change the storage from the default to the maximum the free tier provides, 30 GB. Continue to “Next: Add Tags”.
+Change the storage from the default to 30 GB. *_This should be chosen based on class size and computational needs_*. Continue to “Next: Add Tags”.
 
 Tags are optional metadata that describe the instance for categorization and organization purposes. To add a tag, the "Add a tag" button is located on the bottom left. Otherwise, continue to "Next: Configure Security Groups".
 
-The default SSH rule will have the standard port range of 22 and a “Custom” source. Change the source to “Anywhere” to allow students to access the instance. Add a second custom TCP security rule by clicking the “Add Rule” button. Modify the rule to have a port range of 8000. Add a description of “JupyterHub.” Continue to the final stage by clicking the blue “Review and Launch” button. 
+The default SSH rule will use the standard port 22. Change the source to “Anywhere” to allow the Ubuntu system adminstrator to access the instance. (Optional) For improved security, change the setting to specific IP. 
+
+Since JupyterHub uses port 8000 as default for connecting to the internet, it has to be included in the security group. Add a second custom TCP security rule by clicking the “Add Rule” button. Modify the rule to include port 8000. Add an optional description of “JupyterHub.” Continue to the final stage by clicking the blue “Review and Launch” button. 
 
    <details>
     <summary>:bulb: What is port range?</summary>
     <br>
  
-   A port is a designated number that specifies a network service for operating systems. These are tied to the IP address and comunicate the purpose of the network. A port range of 22 is standard for use with an SSH (Secure Shell) client, which will be utilized in this demonstration. The TCP (Transmission Control Protocol) port range of 8000 relates users who attempt to find the server to the appropiate designated space. 
+   A port is a designated number that specifies a network service for operating systems. E.g. Port 80 is assigned to HTTP (Hypertext Transfer Protocol). These are tied to the IP address and communicate the purpose of the network. The TCP (Transmission Control Protocol) port 22 is the default for SSH (Secure Shell). TCP Port 8000 is the default for JupyterHub. 
    
    </details>
 
@@ -188,23 +190,23 @@ The instance will now be visible in the EC2 homepage. The description of the ins
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/6_put in key.gif"  width="800" height="370" />|
 |---|
   
-  Enter "ubuntu" as the username. Change the following line “Initial method” to publickey. Select the key associated with the elastic IP in the “client key” line. Click "Log In" to selct the key downloaded earlier. An optional comment can be left for organization purposes if desired.
+  Enter "ubuntu" as the AWS default username. Change the following line “Initial method” to publickey. For first-time log in, select "Client key manager" and import the SSH key downloaded earlier (named as Global 1 in this example). An optional comment can be left for organization purposes if desired. Select the key just imported in the “client key” line. Click "Log In" to connect. 
   
   :warning: <b>Ensure that the address copied and entered into the host field corresponds with the new elastic IP address.</b> :warning:
   
   <br>
   
-  The following directions are for use in the Bitvise (or other choice SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  The following directions are for use on Ubuntu servers. Unless otherwise specified, type and run each line individually. 
   
-  To request root access:
+  Obtain administrative rights by requesting root access:
   ```console
   $ sudo -i
   ```
   
-  After launching an instance with your selected cloud service provider, update the Ubuntu repository and upgrade packages with:
+  Update the Ubuntu repository and upgrade packages with:
   ```console
-  $ apt-get update
-  $ apt-get upgrade
+  $ apt update
+  $ apt upgrade
   ```
   
   To create new users, say "admin1" (this is important, see below) and "student", write:
@@ -535,7 +537,7 @@ The optional packages showcased below personalize your server to streamline onli
   $ systemctl restart jupyterhub.service
   
   # Fully enable the GitHub viewing extension
-  $ conda install -c conda install -c conda-forge jupyter-github
+  $ conda install -c conda-forge jupyter-github
   ```
   ###### nbgrader
   
@@ -795,7 +797,7 @@ $ systemctl restart jupyterhub.service
 
 This instructional guide is part of a demonstration used for “*Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists.*” There is no guarantee this methodology works for others or using a different cloud service vender. For specific needs or troubleshooting, independent research may be necessary. 
 
-**AWS Educate** and corresponding services are trademark of **[Amazon Web Services](https://aws.amazon.com/).**
+**AWS** and corresponding services are trademark of **[Amazon Web Services](https://aws.amazon.com/).**
 
 **Stata** is trademark of **[Stata Corporation](https://www.stata.com/).**
 
