@@ -21,6 +21,7 @@ ________________________________________________________________________________
    1. [Customizing an Instance](#seven-steps)
    2. [Assigning an Elastic IP Address](#elastic-ip)
    3. [Connecting to Your Cloud](#navigating-bitvise)
+   4. [Adding New Users to Your Virtual Machine](#server-basics)
 5. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
    2. [JupyterHub Installation and Configuration](#jupyterhub)
@@ -152,7 +153,7 @@ Now, “Launch”.
   
   Selecting “Launch” will prompt the user to select an existing SSH key pair or create a new one. Name and download your key pair.
 
-   :warning: It is important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave the server vulnerable :warning:
+   :warning: <b>It is important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave the server vulnerable <\b>:warning:
 
    <details>
     <summary>:bulb: What is an SSH key?</summary>
@@ -193,14 +194,12 @@ The instance will now be visible in the EC2 homepage. The description of the ins
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/6_put in key.gif"  width="800" height="370" />|
 |---|
   
-  Enter "ubuntu" as the AWS default username. Change the following line “Initial method” to publickey. For first-time log in, select "Client key manager" and import the SSH key downloaded earlier (named as Global 1 in this example). An optional comment can be left for organization purposes if desired. Select the key just imported in the “client key” line. Click "Log In" to connect. 
+  Enter "ubuntu" as the default username. Change the following line “Initial method” to publickey. For first-time log in, select "Client key manager" and import the SSH key downloaded earlier (named as Global 1 in this example). An optional comment can be left for organization purposes if desired. Select the key just imported in the “client key” line. Click "Log In" to connect. 
   
-  :warning: <b>Ensure that the address copied and entered into the host field corresponds with the new elastic IP address.</b> :warning:
-  
-  <br>
-  
-  The following directions are for use on Ubuntu servers. Unless otherwise specified, type and run each line individually. 
-  
+#### Adding New Users to Your Virtual Machine <a name="server-basics"></a>
+
+:warning: The following directions are for use on Ubuntu servers. Unless otherwise specified, type and run each line individually. :warning:
+ 
   Obtain administrative rights by requesting root access:
   ```console
   $ sudo -i
@@ -223,7 +222,6 @@ The instance will now be visible in the EC2 homepage. The description of the ins
 Now you have created an administrator (admin1) and a user (student) for your JupyterHub. Continue reading the “[Anaconda](https://www.anaconda.com/)” section to download the distribution onto the newly created instance. 
 
 [Back to Top](#econometric-pedagogy)
-
 
 ## Anaconda
 
