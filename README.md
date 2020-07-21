@@ -87,17 +87,8 @@ To begin launching an instance, the following pre-requisites are required:
 
 ## AWS: Instance Launching <a name="lauching-instance"></a>
   
-  This section details a method of launching an instance on AWS Educate's EC2 server. Written instruction can be found below the corresponding demonstrational gif.
-  
-  #### Customizing an Instance <a name="seven-steps"></a>
- 
-|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />|
-|---|
+  This section details a method of launching an instance on AWS EC2 (Elastic Compute Cloud). Written instruction can be found below the corresponding demonstrational gif.
 
-  Log into your AWS Educate account. The "My Classrooms" tab on the top banner in the interface directs to the complete list of classrooms created on the account. From there, select the desired classroom by clicking the blue "Go to classroom" button. The third-party application, Vocareum, will launch, showing an overview of the classroom. To manage, select "AWS console." To launch the proper instance, select EC2 from the dropdown menu labeled "All services". 
-  
-   :warning: Your browser may block pop-ups from Vocareum. :warning:
-  
   <details>
     <summary>:bulb: What is an instance?</summary>
     <br>
@@ -105,12 +96,26 @@ To begin launching an instance, the following pre-requisites are required:
   An instance in AWS is a type of virtual envirnoment. There are several types that AWS provides depending on the intended purpose; this demonstration walks through the launching of a free-tier EC2 instance. More information can be found in the [EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html) on the AWS website.
      
   </details>
- 
-  <br>
+
+  #### Customizing an Instance <a name="seven-steps"></a>
+<!--- 
+|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/1_nav_to_console_.gif" width="800" height="370" />|
+|---|
+--->
+
+<!---
+  Log into your AWS Educate account. The "My Classrooms" tab on the top banner in the interface directs to the complete list of classrooms created on the account. From there, select the desired classroom by clicking the blue "Go to classroom" button. The third-party application, Vocareum, will launch, showing an overview of the classroom. To manage, select "AWS console." To launch the proper instance, select EC2 from the dropdown menu labeled "All services". 
+--->
+
+<!---
+   :warning: Your browser may block pop-ups from Vocareum. :warning:
+--->  
   
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/2_start_instance.gif" width="800" height="370" />|
 |---|
 
+  Log into your AWS account. To launch the proper instance, select EC2 from the dropdown menu labeled "All services".
+  
   Select a Linux server as the desired Amazon Machine Image (AMI). This demonstration selects Ubuntu 20.4 LTS, though other Linux servers will also be suitable. 
 
   Select an instance type. *_This should be chosen based on class size and computational needs_*. For AWS's free tier, choose "General purpose" family and "t2.micro" type. Click "Next: Configure Image" to continue.
