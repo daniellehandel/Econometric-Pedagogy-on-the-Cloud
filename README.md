@@ -153,7 +153,7 @@ Now, “Launch”.
   
   Selecting “Launch” will prompt the user to select an existing SSH key pair or create a new one. Name and download your key pair.
 
-   :warning: <b>It is important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave the server vulnerable <\b>:warning:
+   :warning: <b>It is important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave the server vulnerable </b>:warning:
 
    <details>
     <summary>:bulb: What is an SSH key?</summary>
