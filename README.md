@@ -231,9 +231,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
    
   </details>
 
-Now you have created an administrator (admin1) and a user (student) for your JupyterHub. 
-
-Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set up Anaconda on the instance. 
+Now you have created your designated administrator (admin1) and a user (student) for your JupyterHub. Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set up Anaconda on the instance. 
 
 [Back to Top](#econometric-pedagogy)
 
