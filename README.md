@@ -213,7 +213,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   $ apt upgrade
   ```
   
-  To create new users, say "admin1" (this is important, see [below](#jupyterhub)) and "student", write:
+  Create new system users, say, designated JupyterHub administrator "admin1" and JupyterHub user "student", write:
   ```console
   $ adduser admin1
   $ adduser student
@@ -222,7 +222,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move. 
   
   <details>
-    <summary>:bulb: Why do I need to add new users?</summary>
+    <summary>:bulb: Why do I need to add new users? Is there other ways? </summary>
     <br>
  
    By default, JupyterHub uses PAM (Pluggable Authentication Module) to authenticate system users with their username and password, i.e. any user with an account and password on the Ubuntu system will be allowed to login. To avoid having to add users individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
@@ -231,7 +231,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
    
   </details>
 
-Now you have created your designated administrator (admin1) and a user (student) for your JupyterHub. Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set up Anaconda on the instance. 
+Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set up Anaconda on the instance. 
 
 [Back to Top](#econometric-pedagogy)
 
