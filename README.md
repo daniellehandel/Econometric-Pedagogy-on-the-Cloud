@@ -222,7 +222,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   
   You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move. To avoid having to add users individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
 
-The instance is now launched and up-to-date. Continue reading the “[Anaconda](https://www.anaconda.com/)” section to download the distribution onto the newly created instance. 
+Now you have created an administrator (admin1) and a user (student) for your JupyterHub. Continue reading the “[Anaconda](https://www.anaconda.com/)” section to download the distribution onto the newly created instance. 
 
 [Back to Top](#econometric-pedagogy)
 
@@ -301,14 +301,19 @@ The instance is now launched and up-to-date. Continue reading the “[Anaconda](
   
   #### JupyterHub Installation and Configuration <a name="jupyterhub"></a>
   
-  To install [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/quickstart.html), first make sure conda is up to date: 
+  Obtain administrative rights by requesting root access:
+  ```console
+  $ sudo -i
+  ```  
+  
+  To install [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/quickstart.html), make sure conda is up to date and update all packages to the latest version:: 
   ```console
   $ conda update -n root conda
+  $ conda update --all
   ```
 
-  Update all packages in the current environment to the latest version:
+  Install the package for JupyterHub
   ```console
-  $ conda update --all
   $ conda install -c conda-forge jupyterhub
   ```
   
@@ -325,9 +330,8 @@ The instance is now launched and up-to-date. Continue reading the “[Anaconda](
   ```
   
   Copy and paste the following into the configuration file:
-  
   ```
-  # Allow JupyterHub to be accessed by typing "lab" into the command line.
+  # Allow Jupyter Lab to be accessed by typing "lab" into the command line.
   c.Spawner.default_url = '/lab'
   
   # Allow admin to access other users' accounts
