@@ -21,7 +21,7 @@ ________________________________________________________________________________
    1. [Customizing an Instance](#seven-steps)
    2. [Assigning an Elastic IP Address](#elastic-ip)
    3. [Connecting to Your Cloud](#navigating-bitvise)
-5. [Updating Your Virtual Machine and Adding New Users](#server-basics)
+5. [Updating Your Server and Adding New Users](#server-basics)
 6. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
    2. [JupyterHub Installation and Configuration](#jupyterhub)
@@ -198,7 +198,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   
 [Back to Top](#econometric-pedagogy)
   
-## Updating Your Virtual Machine and Adding New Users <a name="server-basics"></a>
+## Updating Your Server and Adding New Users <a name="server-basics"></a>
 
 :warning: The following directions are for use on Ubuntu servers. Unless otherwise specified, type and run each line individually. :warning:
  
@@ -213,23 +213,27 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   $ apt upgrade
   ```
   
-  To create new users, say "admin1" (this is important, see below) and "student", write:
+  To create new users, say "admin1" (this is important, see [below](#jupyterhub)) and "student", write:
   ```console
   $ adduser admin1
   $ adduser student
   ```
   
-  You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move. To avoid having to add users individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
-
-Now you have created an administrator (admin1) and a user (student) for your JupyterHub. Continue reading the “[Anaconda](https://www.anaconda.com/)” section to download the distribution onto the newly created instance. 
-
-<details>
-    <summary>:bulb: What is an SSH Client?</summary>
+  You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move. 
+  
+  <details>
+    <summary>:bulb: Why do I need to add new users?</summary>
     <br>
  
-   An SSH client allows establishing a secure and authenticated SSH connections to SSH server. Download [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) or [PuTTY](https://www.putty.org/) for Windows or [Terminus App](https://termius.com/) for MacOS.
+   By default, JupyterHub uses PAM (Pluggable Authentication Module) to authenticate system users with their username and password, i.e. any user with an account and password on the Ubuntu system will be allowed to login. To avoid having to add users individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
    
-   </details>
+   :warning: JupyterHub administrator (we will assign [below](#jupyterhub)) does not need to have Ubuntu system administrative rights :warning:
+   
+  </details>
+
+Now you have created an administrator (admin1) and a user (student) for your JupyterHub. 
+
+Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set up Anaconda on the instance. 
 
 [Back to Top](#econometric-pedagogy)
 
