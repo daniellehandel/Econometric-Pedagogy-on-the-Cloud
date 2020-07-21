@@ -21,20 +21,20 @@ ________________________________________________________________________________
    1. [Customizing an Instance](#seven-steps)
    2. [Assigning an Elastic IP Address](#elastic-ip)
    3. [Connecting to Your Cloud](#navigating-bitvise)
-   4. [Adding New Users to Your Virtual Machine](#server-basics)
-5. [Anaconda](#anaconda)
+5. [Updating Your Virtual Machine and Adding New Users](#server-basics)
+6. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
    2. [JupyterHub Installation and Configuration](#jupyterhub)
    3. [(Important) First Time Login](#1st-login)
-6. [R](#r)
+7. [R](#r)
    1. [R Installation](#adding-r)
    2. [Update and Install R Kernel](#update-and-install-r-kernel)
-7. [Stata](#stata)
+8. [Stata](#stata)
    1. [Stata Installation](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
-8. [(Optional) GitHub Extensions and Packages](#packages)
-9. [(Optional) GitHub Authentication](#github-authentication)
-10. [Disclaimer](#disclaimer)
+9. [(Optional) GitHub Extensions and Packages](#packages)
+10. [(Optional) GitHub Authentication](#github-authentication)
+11. [Disclaimer](#disclaimer)
 
 ## Overview 
 
@@ -196,7 +196,9 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   
   Enter "ubuntu" as the default username. Change the following line “Initial method” to publickey. For first-time log in, select "Client key manager" and import the SSH key downloaded earlier (named as Global 1 in this example). An optional comment can be left for organization purposes if desired. Select the key just imported in the “client key” line. Click "Log In" to connect. 
   
-#### Adding New Users to Your Virtual Machine <a name="server-basics"></a>
+[Back to Top](#econometric-pedagogy)
+  
+## Updating Your Virtual Machine and Adding New Users <a name="server-basics"></a>
 
 :warning: The following directions are for use on Ubuntu servers. Unless otherwise specified, type and run each line individually. :warning:
  
@@ -220,6 +222,14 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move. To avoid having to add users individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
 
 Now you have created an administrator (admin1) and a user (student) for your JupyterHub. Continue reading the “[Anaconda](https://www.anaconda.com/)” section to download the distribution onto the newly created instance. 
+
+<details>
+    <summary>:bulb: What is an SSH Client?</summary>
+    <br>
+ 
+   An SSH client allows establishing a secure and authenticated SSH connections to SSH server. Download [Bitvise SSH Client](https://www.bitvise.com/ssh-client-download) or [PuTTY](https://www.putty.org/) for Windows or [Terminus App](https://termius.com/) for MacOS.
+   
+   </details>
 
 [Back to Top](#econometric-pedagogy)
 
