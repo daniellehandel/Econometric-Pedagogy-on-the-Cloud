@@ -222,17 +222,21 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   
   You will be prompted to enter a password and information for each new user. Note: when typing the password, the cursor will not appear to move. To avoid having to add users individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
 
-The instance is now launched and hosted on a client. 
-Continue reading the “[Anaconda](https://www.anaconda.com/)” section to download the distribution onto the newly created instance. 
+The instance is now launched and up-to-date. Continue reading the “[Anaconda](https://www.anaconda.com/)” section to download the distribution onto the newly created instance. 
 
 [Back to Top](#econometric-pedagogy)
 
 
 ## Anaconda
 
-  The following directions are for use in the Bitvise (or other choise SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
+  The following directions are for use on Ubuntu servers. Administrative rights are required. Unless otherwise specified, type and run each line individually. 
   
   #### Anaconda Installation <a name="loading-anaconda"></a>
+  
+  Obtain administrative rights by requesting root access:
+  ```console
+  $ sudo -i
+  ```  
   
   To install Anaconda:
   ```console
