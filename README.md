@@ -38,7 +38,7 @@ ________________________________________________________________________________
 
 ## Overview 
 
-The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted by [Amazon Web Service (AWS)](https://aws.amazon.com/), one of the many cloud providers. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
+The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted by [AWS Educate](https://aws.amazon.com/education/awseducate/) which is part of [Amazon Web Service (AWS)](https://aws.amazon.com/), one the many cloud computing providers. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
 <!---
 The demonstration concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is optional, and is recommended for those with an advanced uderstanding of the command line. 
