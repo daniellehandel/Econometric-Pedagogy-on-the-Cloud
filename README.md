@@ -267,12 +267,7 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   $ /usr/anaconda3
   ```
  
-  Anaconda is now installed. Refresh the paths to include Anaconda by typing:
-  ```console
-  $ source .bashrc
-  ```
- 
-  Edit the Ubuntu system paths to include Anaconda for all users. Open the profile in [nano](https://www.nano-editor.org/).
+  Anaconda is now installed. Edit the Ubuntu system paths to include Anaconda for all users. Open the profile in [nano](https://www.nano-editor.org/):
   ```console
   $ nano /etc/profile
   ```
@@ -297,6 +292,11 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   Enter the following into the bottom of the document as shown below.
   ```
   export PATH="/usr/anaconda3/bin:$PATH
+  ```
+  
+  Refresh the paths to include Anaconda by typing:
+  ```console
+  $ source /etc/profile
   ```
   
   <p align="center">
@@ -324,7 +324,7 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   $ conda install -c conda-forge jupyterhub
   ```
   
-  Generate a JupyterHub configuration file in /etc by:
+  Generate a JupyterHub configuration file in `/etc` by:
   ```console
   $ mkdir /etc/jupyterhub/
   $ cd /etc/jupyterhub/
@@ -380,7 +380,7 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   
-  Link the newly created service file to the /etc/systemd/system directory:
+  Link the newly created service file to the `/etc/systemd/system` directory:
   ```console
   $ ln -s /etc/jupyterhub/jupyterhub.service /etc/systemd/system/jupyterhub.service
   ```
@@ -451,7 +451,8 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   ```
 
  <details>
-  <summary>:bulb: Example: tidyverse and other packages</summary>
+  <summary>:bulb: Install tidyverse and other packages </summary>
+  <br>
 
 Additional Ubuntu linux packages are needed for 'tidyverse' in R. In Ubuntu terminal:
   ```bash
@@ -469,53 +470,62 @@ There are other useful R packages that one can install, for example:
   install.packages("knitr", lib = '/usr/local/lib/R/site-library', dependencies = TRUE, INSTALL_opts = '--no-lock')
   ```
   
-  </details>
+  </details>  
     
   [Back to Top](#econometric-pedagogy)
 
-
 ## Stata
 
-  :warning: The following directions are for use on Ubuntu servers. Administrative rights are required. :warning:
+  :warning: The following directions are for use on Ubuntu servers. Administrative rights are required.
   
-  :bulb: Instructors should contact Stata to discuss the best licensing options. A Stata Lab license may be best for this workflow, with the lab size corresponding to the number of students in the lab.
+  :bulb: Stata license is required. Instructors should contact Stata to discuss licensing options. 
   
   #### Stata Installation <a name="adding-stata"></a>
-  Download [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) for Linux  
  
- To upload Stata, create a folder for your Stata installation file:
-  ```console
- $ mkdir /home/ubuntu/stata_source
-  ```
-  
- Place your Stata for Linux installation file into this folder (using BitVise SSH Client's SFTP interface for example):
+ Create a folder for your Stata installation file:
  ```console
- $ cd /usr/local
- $ mkdir stata16
- $ cd stata16
+ $ mkdir /home/ubuntu/stata_source
  ```
- 
-  Obtain administrative rights by requesting root access:
+ Download the [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) tar file for Linux  
+
+ Upload the tar file to the `/home/ubuntu/stata_source` folder just created (using BitVise SSH Client's SFTP interface for example)
+
+ :warning: Obtain administrative rights by requesting root access:
   ```console
   $ sudo -i
   ```
- 
+
+ Unzip the tar file in the `/tmp/statafiles` folder:
+ ```bash
+ $ cd /tmp/
+ $ mkdir statafiles
+ $ cd statafiles
+ $ tar -zxf /home/ubuntu/stata_source/Stata16Linux64.tar.gz
+ ````
+
+ Create `/usr/local/stata16` directory for installing Stata for all users
+ ```console
+ $ cd /usr/local
+ $ mkdir stata16
+ ```
+
  Install Stata. Enter licensing information when prompted:
  ```console
- $ /home/ubuntu/stata_source/install
+ $ cd /usr/local/stata16
+ $ /tmp/statafiles/install
  ```
  
- During installation, you will be prompted to run the following. 
+ After installation, you will be prompted to initialize Stata: 
  ```console
  $ ./stinit
  ```
  
- Ubuntu users will need to enter the following.
+ Ubuntu users will need an additional package for Stata to work:
  ```console
  $ apt install libtinfo5
   ```
  
- To add a path to Stata, open the profile file with nano:
+ Edit the Ubuntu system paths to include Anaconda for all users. Open the profile in [nano](https://www.nano-editor.org/):
  ```console
  $ nano /etc/profile
  ```
@@ -531,23 +541,25 @@ There are other useful R packages that one can install, for example:
  
  Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
  
+  Refresh the paths to include Anaconda by typing:
+  ```console
+  $ source /etc/profile
+  ```
+ 
  #### Stata Kernel for Jupyter <a name="stata-kernel"></a>
  
-  Obtain administrative rights by requesting root access:
-  ```console
-  $ sudo -i
-  ```
-  
- Allow Jupyter users to create and run Stata files in Jupyter Notebooks with a Stata kernel:
+ Install Stata kernel to allow Jupyter users to create and run Stata files in Jupyter Notebooks:
  ```console
  $ pip install stata_kernel
  $ python -m stata_kernel.install
  ```
+ 
  Ensure that the stata_kernel is installed correctly:
  ```console
  $ nano .stata_kernel.conf
  ```
- You should see:
+ 
+ :warning: Make sure that `stata_path` is pointing to the correct executable. *It can be different depending on your Stata version*.
  
   <p align="center">
    <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/stata_kernel.PNG" width = "400" height = "400" />
@@ -557,7 +569,6 @@ There are other useful R packages that one can install, for example:
  ```console
  $ cp .stata_kernel.conf /etc/stata_kernel.conf 
  ```
- 
   
   [Back to Top](#econometric-pedagogy)
 
