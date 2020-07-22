@@ -916,17 +916,17 @@ $ systemctl restart jupyterhub.service
 
 ## Disclaimer 
 
-This instructional guide is part of a demonstration used for “*Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists.*” There is no guarantee this methodology works for others or using a different cloud service vender. For specific needs or troubleshooting, independent research may be necessary. 
+This instructional guide is part of a demonstration used for “*Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists.*” There is no guarantee this methodology works for others or using a different cloud service vendor. For specific needs or troubleshooting, independent research may be necessary. 
 
-**AWS** and corresponding services are trademark of **[Amazon Web Services](https://aws.amazon.com/).**
+**[AWS Educate](https://aws.amazon.com/education/awseducate/)** and corresponding services are trademark of **[Amazon Web Services](https://aws.amazon.com/).**
 
-**Stata** is trademark of **[Stata Corporation](https://www.stata.com/).**
+**[Stata](https://www.stata.com)** is trademark of **[Stata Corporation](https://www.stata.com/company).**
 
-**Google Domain** is trademark of **[Google](https://www.google.com/).**
+**[Google Domains](https://domains.google/)** is trademark of **[Google](https://www.google.com/).**
 
-**Python** is developed on an open source license distributed by the **[Python Software Foundation](https://www.python.org/psf/).**
+**[Python](https://www.python.org)** is developed on an open source license distributed by the **[Python Software Foundation](https://www.python.org/psf/).**
 
-**R** is offered on an open source license distributed by the **[R Foundation](https://www.r-project.org/foundation/).**
+**[R](https://www.r-project.org)** is offered on an open source license distributed by the **[R Foundation](https://www.r-project.org/foundation/).**
 
 **[JupyterHub](https://jupyterhub.readthedocs.io/en/stable/)** is an open source platform developed and maintained by **[Project Jupyter](https://jupyter.org/).**
 
