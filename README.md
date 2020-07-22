@@ -25,7 +25,6 @@ ________________________________________________________________________________
 6. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
    2. [JupyterHub Installation and Configuration](#jupyterhub)
-   3. [(Important) First Time Login](#1st-login)
 7. [R](#r)
    1. [R Installation](#adding-r)
    2. [Update and Install R Kernel](#update-and-install-r-kernel)
@@ -225,7 +224,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
     <summary>:bulb: Why do I need to add new users? Is there other ways? </summary>
     <br>
  
-   By default, JupyterHub uses PAM (Pluggable Authentication Module) to authenticate system users with their username and password, i.e. any user with an account and password on the Ubuntu system will be allowed to login. To avoid having to add users individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
+   By default, JupyterHub uses PAM (Pluggable Authentication Module) to authenticate system users with their username and password, i.e. any user with an account and password on the Ubuntu system will be allowed to login. Alternatively, GitHub Authentication provides a guide to giving students the ability to login to the server with their GitHub credentials. View the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
    
    :warning: JupyterHub administrator (we will assign [below](#jupyterhub)) does not need to have Ubuntu system administrative rights
    
@@ -292,17 +291,17 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   export PATH="/usr/anaconda3/bin:$PATH
   ```
   
-  Refresh the paths to include Anaconda by typing:
-  ```console
-  $ source /etc/profile
-  ```
-  
   <p align="center">
     <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/enter%20anaconda%20path.png" width = "350" height = "370" />
   </p>
   
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   <br>
+  
+  Refresh the paths to include Anaconda by typing:
+  ```console
+  $ source /etc/profile
+  ```
   
   Make sure conda is up to date and update all packages to the latest version:: 
   ```console
@@ -353,6 +352,8 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   ```
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   
+  :bulb: For having access to the JupyterHub admin interface, at least _one_ JupyterHub administrator has to be specified in the configuration file. Additional JupyterHub administrators can be assigned/removed from the JupyterHub admin interface by existing administrator, e.g. `admin1`.
+  
   Make JupyterHub as a system service, so that JupyterHub will run at system startup and continue to run after the system administrator logs out. To do so, create a service file:
   ```console
   $ nano /etc/jupyterhub/jupyterhub.service
@@ -395,15 +396,12 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   $ systemctl status jupyterhub.service
   ```
   
-  :bulb: <b>Your JupyterHub server should be up and running at <code> http://&lt;your instance IP address&gt;:8000 </code>. </b>
+  :bulb: <b>Your JupyterHub server should be up and running at <code>http://&lt;your instance IP address&gt;:8000</code>.</b> Make sure that `:8000` is included in your address.
   
-  #### (Important) First Time Login <a name="1st-login"></a>
-
-  Specification of the system user, "admin1" above, as an admin is needed in the beginning of the set up so that the user is able to access the JupyterHub server from a web browser for the first time only. Users can then be created manually. Alternatively, the [GitHub Authentication](#github-authentication) provides a guide to giving students the ability to login to the server with their GitHub credentials. This alternitive technique is more difficult to integrate and requires additional security precautions. 
+  :warning: You are running an unsecured instance of JupyterHub. For network setup and security, see [below](#github-authentication).
   
   [Back to Top](#econometric-pedagogy)
   
-
 ## R
   
   :warning: The following directions are for use on Ubuntu servers. Administrative rights are required. :warning: 
