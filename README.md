@@ -476,8 +476,6 @@ There are other useful R packages that one can install, for example:
 
 ## Stata
 
-  :warning: The following directions are for use on Ubuntu servers. Administrative rights are required.
-  
   :bulb: Stata license is required. Instructors should contact Stata to discuss licensing options. 
   
   #### Stata Installation <a name="adding-stata"></a>
@@ -486,9 +484,9 @@ There are other useful R packages that one can install, for example:
  ```console
  $ mkdir /home/ubuntu/stata_source
  ```
- Download the [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) tar file for Linux  
+ Download the [Stata](https://www.stata.com/support/faqs/unix/install-download-on-linux/) tar file for Linux.
 
- Upload the tar file to the `/home/ubuntu/stata_source` folder just created (using BitVise SSH Client's SFTP interface for example)
+ Upload the tar file to the `/home/ubuntu/stata_source` folder just created (using BitVise's SFTP interface for example).
 
  :warning: Obtain administrative rights by requesting root access:
   ```console
@@ -503,7 +501,7 @@ There are other useful R packages that one can install, for example:
  $ tar -zxf /home/ubuntu/stata_source/Stata16Linux64.tar.gz
  ````
 
- Create `/usr/local/stata16` directory for installing Stata for all users
+ Create `/usr/local/stata16` directory for installing Stata for all users:
  ```console
  $ cd /usr/local
  $ mkdir stata16
@@ -586,24 +584,30 @@ The optional packages showcased below personalize your server to streamline onli
 
   ###### GitHub Extension <a name="extension"></a>
   
-  This extension will allow a GitHub icon to appear on the side bar of students' interface. When clicked, students can gain access to public repositories, such as notebook-based assignments.
+  This [GitHub Extension](https://github.com/jupyterlab/jupyterlab-github) allows a GitHub icon to appear on the side bar of students' interface. When clicked, students can gain access to public repositories, such as notebook-based assignments.
   
+  Install the extension for JupyterLab:
   ```console
-  # Install the extension for JupyterLab
   $ jupyter labextension install @jupyterlab/github
-  
-  # Restart to ensure recognition of the new extension
-  $ systemctl restart jupyterhub.service
-  
-  # Fully enable the GitHub viewing extension
-  $ conda install -c conda-forge jupyter-github
   ```
+  
+  Restart to ensure recognition of the new extension:
+  ```bash
+  $ systemctl restart jupyterhub.service
+  ```
+  
   ###### nbgrader
   
-  The package [nbgrader](https://nbgrader.readthedocs.io/en/stable/) helps streamline the grading process for instructors using Jupyter notebooks. Notebook based assignments can be created, collected, and returned with little hassle. 
+  The package [nbgrader](https://nbgrader.readthedocs.io/en/stable/) helps streamline the grading process for instructors using Jupyter notebooks. 
   
+  Install the extension for JupyterLab:
   ```console
   $ conda install -c conda-forge nbgrader
+  ```
+  
+  Restart to ensure recognition of the new extension:
+  ```bash
+  $ systemctl restart jupyterhub.service
   ```
   
   [Back to Top](#econometric-pedagogy)
@@ -612,7 +616,9 @@ The optional packages showcased below personalize your server to streamline onli
   
 ## (Optional) GitHub Integration <a name="github-authentication"></a>
 
-  This section provides a guide to allowing the server to use GitHub credidentials in the log-in process. By entering in their GitHub log-in information, students can access and use the server without the instructor having to manually enter each user and admin. As a reminder, a student can set up a GitHub account for free. An advanced understanding of the command line is recommended before attempting.
+  This section provides a guide to allowing the server to use GitHub authentication (OAuth) in the log-in process. By entering in their GitHub log-in information, students can access and use the server without the instructor having to manually enter each user and admin. As a reminder, a student can set up a GitHub account for free. An advanced understanding of the command line is recommended before attempting.
+
+:warning: Before proceeding, setting up the site to run on HTTPS with SSL security is strongly recommended.
 
  <details>
     <summary>Expand</summary>
