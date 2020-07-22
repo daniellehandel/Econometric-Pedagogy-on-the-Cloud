@@ -397,9 +397,9 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   $ systemctl status jupyterhub.service
   ```
   
-  :bulb: <b>Your JupyterHub server should be up and running at <code>http://&lt;your instance IP address&gt;:8000</code>.</b> Make sure that `:8000` is included in your address.
+  :bulb: <b>Your JupyterHub server should be up and running at <code>http://&lt;your instance IP address&gt;:8000</code>.</b> Make sure that `:8000` is included in your address. See [Add a Custom Domain](#custom-url) to attach your JupyterHub to a registered domain name.
   
-  :warning: You are running an unsecured instance of JupyterHub. For network setup and security, see [below](#github-authentication).
+  :warning: You are running an unsecured instance of JupyterHub. For network security, see [below](#github-authentication).
   
   [Back to Top](#econometric-pedagogy)
   
@@ -611,7 +611,7 @@ The optional packages showcased below personalize your server to streamline onli
   
  </details>
  
-## Add a Custom Domain <a name="custom-url"></a>
+## (Optional) Add a Custom Domain <a name="custom-url"></a>
 
 Instructors may use Amazon Web Services, a university domain, or any other domain service to add a custom domain. 
 
