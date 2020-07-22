@@ -397,7 +397,7 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   $ systemctl status jupyterhub.service
   ```
   
-  :bulb: <b>Your JupyterHub server should be up and running at <code>http://&lt;your instance IP address&gt;:8000</code>.</b> Make sure that `:8000` is included in your address. See [Add a Custom Domain](#custom-url) to attach your JupyterHub to a registered domain name.
+  :bulb: <b>Your JupyterHub server should be up and running at <code>http://&lt;your instance IP address&gt;:8000</code>.</b> Make sure that `:8000` is included in your address. See [Add a Custom Domain](#custom-url) to attach your JupyterHub to a registered domain name instead.
   
   :warning: You are running an unsecured instance of JupyterHub. For network security, see [below](#github-authentication).
   
@@ -553,7 +553,8 @@ There are other useful R packages that one can install, for example:
  ```console
  $ nano .stata_kernel.conf
  ```
- 
+ Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
+
  :warning: Make sure `stata_path` is pointing to the correct executable. *It can be different depending on your Stata version*.
  
   <p align="center">
@@ -672,7 +673,7 @@ Contents
     <summary>Expand</summary>
 
  #### Generate Cookie Secret <a name="cookie-secret"></a>
-Encrypt the your lab's [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) for security purposes:
+Encrypt your lab's [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) for security purposes:
 
 :warning: Obtain administrative rights by requesting root access:
 ```console
@@ -698,6 +699,8 @@ Copy the following and add it to the file:
 ```
 c.JupyterHub.cookie_secret_file = '/srv/jupyterhub/jupyterhub_cookie_secret'
 ```
+
+Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
 
 Ensure that only the system administrator can read and write the cookie secret:
 ```console
@@ -835,8 +838,9 @@ server {
     }
 }
 ```
+Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
 
-Unlink the exisitng default file:
+Unlink the existing default file:
 ```console
 $ unlink /etc/nginx/sites-enabled/default
 ```
@@ -860,6 +864,8 @@ Add the following to force JupyterHub to only listen to local connections (127.0
 ```console
 $ c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
 ```
+
+Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
 
 Restart JupyterHub:
 ```console
@@ -904,6 +910,8 @@ It should look like this:
 </p>
 
 :warning: Notice that you may also change the admin username to your GitHub username to allow administrative access.
+
+Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
 
 Reboot the server:
 ```console
