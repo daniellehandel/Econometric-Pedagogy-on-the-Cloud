@@ -583,6 +583,11 @@ The optional packages showcased below personalize your server to streamline onli
   
   This [GitHub Extension](https://github.com/jupyterlab/jupyterlab-github) allows a GitHub icon to appear on the side bar of students' interface. When clicked, students can gain access to public repositories, such as notebook-based assignments.
   
+  :warning: Obtain administrative rights by requesting root access:
+  ```console
+  $ sudo -i
+  ```
+  
   Install the extension for JupyterLab:
   ```console
   $ jupyter labextension install @jupyterlab/github
@@ -596,6 +601,11 @@ The optional packages showcased below personalize your server to streamline onli
   ###### nbgrader
   
   The package [nbgrader](https://nbgrader.readthedocs.io/en/stable/) helps streamline the grading process for instructors using Jupyter notebooks. 
+  
+  :warning: Obtain administrative rights by requesting root access:
+  ```console
+  $ sudo -i
+  ```
   
   Install the extension for JupyterLab:
   ```console
@@ -664,6 +674,11 @@ Contents
  #### Generate Cookie Secret <a name="cookie-secret"></a>
 Encrypt the your lab's [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) for security purposes:
 
+:warning: Obtain administrative rights by requesting root access:
+```console
+$ sudo -i
+```
+  
 Create a new directory for the cookie secret:
 ```console
 $ mkdir /srv/jupyterhub
@@ -697,6 +712,18 @@ $ systemctl restart jupyterhub.service
 #### Secure Your JupyterHub <a name="secure-lab"></a>
 The following instructions will allow the use fo HTTPS in your lab address.
 
+Navigate to the AWS Console. Go to the Security Groups settings and select your instance. Edit the inbound rules to include `HTTP` and `HTTPS`, then save. 
+
+|<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/http_security.gif"  width="800" height="370" />|
+|---|
+
+<br>
+
+:warning: Obtain administrative rights on your Ubuntu server by requesting root access:
+  ```console
+  $ sudo -i
+  ```
+  
 Create a DH parameter for OpenSSL:
 ```console
 $ openssl dhparam -out /etc/jupyterhub/dhparam.pem 2048
@@ -712,30 +739,20 @@ Link this file to the system folder:
 $ ln -s /etc/jupyterhub/dhparam.pem /etc/ssl/certs/dhparam.pem
 ```
 
-Generate an SSL Certificate using Certbot:
-```console
-$ apt-get update
-$ apt-get install software-properties-common
-$ add-apt-repository universe
-$ apt-get update
-```
-
 Install [Certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx):
 ```console
+$ apt update
+$ apt install software-properties-common
+$ add-apt-repository universe
+$ apt update
 $ apt install certbot python3-certbot-nginx
-$ certbot certonly --nginx
-$ certbot renew --dry-run
 ```
 
-Navigate to the AWS Console. Go to the Security Groups settings and select your instance. Edit the inbound rules. Add "HTTP" and save. 
-
-|<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/http_security.gif"  width="800" height="370" />|
-|---|
-
+Generate an SSL Certificate using Certbot:
 ```console
-# Add this line so you do not need to shut down the server before proceeding
 $ certbot certonly --nginx
 ```
+
 You will be prompted to enter an email and a domain (the newly added custom domain, for example: "YOUR-DOMAIN")
 
 You should see:
@@ -744,15 +761,17 @@ You should see:
    Your key file has been saved at:
    /etc/letsencrypt/live/YOUR-DOMAIN/privkey.pem
 
-Install nginx so you do not have to type ":8000" at the end of the URL: 
+Install nginx to set up a reverse proxy, so you do not have to type ":8000" at the end of the URL: 
 ```console
 $ apt install nginx
 ```
-Create a new configuration file to create the certificate on the nginx server:
+
+Create a configuration file for nginx:
 ```console
 $ nano /etc/nginx/sites-available/jupyterhub.conf
 ```
-Copy and paste the following code into this file, being careful to modify the text to include your domain wherever "YOUR-DOMAIN" is present.
+
+Copy and paste the following code, based on [Mozilla Configuration Generator](https://ssl-config.mozilla.org/), into this file. Be careful to modify the text to include your domain wherever "YOUR-DOMAIN" is present.
 ```
 # top-level http config for websocket headers
 # If Upgrade is defined, Connection = upgrade
@@ -827,9 +846,24 @@ Link the new nginx file for JupyterHub:
 $ ln -s /etc/nginx/sites-available/jupyterhub.conf /etc/nginx/sites-enabled/jupyterhub.conf
 ```
 
-Restart nginx:
+Start nginx:
 ```console
-$ systemctl restart nginx.service
+$ systemctl start nginx.service
+```
+
+Edit JupyterHub configuration file:
+```console
+$ nano /etc/jupyterhub/jupyterhub_config.py
+```
+
+Add the following to force JupyterHub to only listen to local connections (127.0.0.1):
+```console
+$ c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
+```
+
+Restart JupyterHub:
+```console
+$ systemctl restart jupyterhub.service
 ```
 
 #### Add GitHub Authentication <a name="authentication-final"></a>
@@ -840,13 +874,16 @@ From your GitHub account, navigate to the Developer Settings. Choose OAth Apps a
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/github_oath.gif" width="800" height="370" />|
 |---|
 
+On your Ubuntu server, install GitHub OAuth: 
 ```console
-# Install GitHub OAuth 
 $ conda install -c conda-forge oauthenticator
+```
 
-# Open the JupyterHub configuration file
+Open the JupyterHub configuration file
+```bash
 $ nano /etc/jupyterhub/jupyterhub_config.py
 ```
+
 Copy and paste the following into the file, being careful to replace the URL, Client ID, and Client Secret with your own. The Client ID and Client Secret can be found on the page of the GitHub "app" created above.
 
 ```
@@ -858,16 +895,15 @@ c.LocalGitHubOAuthenticator.client_secret = 'YOUR CLIENT SECRET'
 
 # This line means that it will no longer be necessary to manually add new users.
 c.LocalGitHubOAuthenticator.create_system_users = True
-
-c.JupyterHub.bind_url = 'http://127.0.0.1:8000'
 ```
+
 It should look like this:
 
 <p align="center">
     <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/oath_editor.png" width = "500" height = "500" />
 </p>
 
-:warning: Notice that you may also change the admin username to your GitHub username to allow administrative access. :warning:
+:warning: Notice that you may also change the admin username to your GitHub username to allow administrative access.
 
 Reboot the server:
 ```console
