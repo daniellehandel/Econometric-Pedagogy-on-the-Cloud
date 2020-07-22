@@ -21,7 +21,7 @@ ________________________________________________________________________________
    1. [Customizing an Instance](#seven-steps)
    2. [Assigning an Elastic IP Address](#elastic-ip)
    3. [Connecting to Your Cloud](#navigating-bitvise)
-5. [Updating Your Server and Adding New Users](#server-basics)
+5. [Ubuntu: Server Update and Add Users](#server-basics)
 6. [Anaconda](#anaconda)
    1. [Anaconda Installation](#loading-anaconda)
    2. [JupyterHub Installation and Configuration](#jupyterhub)
@@ -198,7 +198,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   
 [Back to Top](#econometric-pedagogy)
   
-## Updating Your Server and Adding New Users <a name="server-basics"></a>
+## Ubuntu: Server Update and Add Users <a name="server-basics"></a>
 
 :bulb: The following directions are for use on Ubuntu servers.
 
