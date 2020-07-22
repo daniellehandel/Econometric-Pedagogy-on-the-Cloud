@@ -231,12 +231,22 @@ The instance will now be visible in the EC2 homepage. The description of the ins
    
   </details>
 
-Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set up Anaconda on the instance. 
+Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on the instance. 
 
 [Back to Top](#econometric-pedagogy)
 
 ## Anaconda
 
+  [Anaconda](https://www.anaconda.com/) is a popular python distribution which comes with many packages needed for data science along with the open-source package management system, conda. 
+  
+  <details>
+    <summary>:bulb: Why is conda important?</summary>
+    <br>
+ 
+  The installation of Conda will allow the downloading and managment of packages through use of the command `conda`. This command will appear throughout the guide and facilitate the remainder of the set-up. 
+   
+  </details>
+  
   :warning: The following directions are for use on Ubuntu servers. Administrative rights are required. :warning: 
   
   #### Anaconda Installation <a name="loading-anaconda"></a>
@@ -246,23 +256,23 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set 
   $ sudo -i
   ```  
   
-  To install Anaconda:
+  To download and install [Anaconda](https://www.anaconda.com/):
   ```console
   $ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
   $ bash Anaconda3-2020.02-Linux-x86_64.sh
   ```
-  When prompted with `[/root/anaconda3] >>>`, enter:
   
+  Specify the location where Anaconda should be installed. When prompted with `[/root/anaconda3] >>>`, enter path:
   ```console
   $ /usr/anaconda3
   ```
  
-  In order for Anaconda to operate, refresh:
+  Anaconda is now installed. Refresh the paths to include Anaconda by typing:
   ```console
   $ source .bashrc
   ```
  
-  Open the profile in [nano](https://www.nano-editor.org/).
+  Edit the Ubuntu system paths to include Anaconda for all users. Open the profile in [nano](https://www.nano-editor.org/).
   ```console
   $ nano /etc/profile
   ```
@@ -296,16 +306,11 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set 
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   <br>
   
-  Anaconda is now installed. Anaconda is a popular python distribution which comes with many packages needed for data science along with the open-source package managemnet system, conda. 
-  
-  <details>
-    <summary>:bulb: Why is conda important?</summary>
-    <br>
- 
-  The installation of Conda will allow the downloading and managment of packages through use of the command `conda`. This command will appear throughout the guide and facilitate the remainder of the set-up. 
-   
-  </details>
-  
+  Make sure conda is up to date and update all packages to the latest version:: 
+  ```console
+  $ conda update -n root conda
+  $ conda update --all
+  ```
   
   #### JupyterHub Installation and Configuration <a name="jupyterhub"></a>
   
@@ -314,38 +319,32 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set 
   $ sudo -i
   ```  
   
-  To install [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/quickstart.html), make sure conda is up to date and update all packages to the latest version:: 
-  ```console
-  $ conda update -n root conda
-  $ conda update --all
-  ```
-
-  Install the package for JupyterHub
+  Install the package for [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/quickstart.html)
   ```console
   $ conda install -c conda-forge jupyterhub
   ```
   
-  Create the JupyterHub configuration file:
+  Generate a JupyterHub configuration file in /etc by:
   ```console
   $ mkdir /etc/jupyterhub/
   $ cd /etc/jupyterhub/
   $ jupyterhub --generate-config
   ```
   
-  Using nano, access the newly created configuration file:
+  Use nano to edit the newly created configuration file:
   ```console
-  $ nano jupyterhub_config.py
+  $ nano /etc/jupyterhub/jupyterhub_config.py
   ```
   
   Copy and paste the following into the configuration file:
   ```
-  # Allow Jupyter Lab to be accessed by typing "lab" into the command line.
+  # Allow Jupyter Lab as the default interface
   c.Spawner.default_url = '/lab'
   
   # Allow admin to access other users' accounts
   c.JupyterHub.admin_access = True
   
-  # Specify system user as administrator
+  # Specify JupyterHub administrators
   c.Authenticator.admin_users = {'admin1'}
   
   # Shutdown user servers on logout
