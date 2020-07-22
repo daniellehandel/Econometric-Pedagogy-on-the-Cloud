@@ -686,34 +686,37 @@ Navigate to the "Domain Name Servers," then to "Custom resource records." Enter 
 
 :bulb: It is still necessary to add `:8000` to the address of your jupyter Hub. It is also feasible to use a reverse proxy, e.g. nginx, to reroute network traffics to your URL to the JupyterHub, see [below](#secure-lab).
 
-#### Secure Your Lab <a name="secure-lab"></a>
-The following instructions will allow the inclusion of "https://" in your lab address, ensuring the security needed to utilize GitHub authorizations and sign-ins.
+#### Secure Your JupyterHub <a name="secure-lab"></a>
+The following instructions will allow the use fo HTTPS in your lab address.
 
+Create a DH parameter for OpenSSL:
 ```console
-
-# Create a key 
 $ openssl dhparam -out /etc/jupyterhub/dhparam.pem 2048
-
-# Make it so that only the administrator can edit
-$ chmod 600 /etc/jupyterhub/dhparam.pem
-
-# Link this file to the system folder
-$ ln -s /etc/jupyterhub/dhparam.pem /etc/ssl/certs/dhparam.pem
-
 ```
+
+Change access to the system administrator only:
+```console
+$ chmod 600 /etc/jupyterhub/dhparam.pem
+```
+
+Link this file to the system folder:
+```console
+$ ln -s /etc/jupyterhub/dhparam.pem /etc/ssl/certs/dhparam.pem
+```
+
 Generate an SSL Certificate using Certbot:
 ```console
-
-# Update Ubuntu and install the necessary software
 $ apt-get update
 $ apt-get install software-properties-common
 $ add-apt-repository universe
 $ apt-get update
 ```
-Install [Certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx):
 
+Install [Certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx):
 ```console
-$ apt-get install certbot python3-certbot-nginx
+$ apt install certbot python3-certbot-nginx
+$ certbot certonly --nginx
+$ certbot renew --dry-run
 ```
 
 Navigate to the AWS Console. Go to the Security Groups settings and select your instance. Edit the inbound rules. Add "HTTP" and save. 
@@ -754,7 +757,7 @@ map $http_upgrade $connection_upgrade {
 # HTTP server to redirect all 80 traffic to SSL/HTTPS
 server {
     listen 80;
-    #listen [::]:80;
+    listen [::]:80;
     server_name YOUR-DOMAIN;
 
     # Tell all requests to port 80 to be 302 redirected to HTTPS
@@ -764,21 +767,19 @@ server {
 # HTTPS server to handle JupyterHub
 server {
     listen 443 ssl http2;
-    #listen [::]:443 ssl http2;
+    listen [::]:443 ssl http2;
     server_name YOUR-DOMAIN;
 
     ssl_certificate YOUR-DOMAIN;
     ssl_certificate_key YOUR-DOMAIN;
     ssl_session_timeout 1d;
     ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
-#    ssl_session_cache shared:SSL:50m;
     ssl_session_tickets off;
 
     ssl_dhparam /etc/ssl/certs/dhparam.pem;
 
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
-#    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
     ssl_prefer_server_ciphers on;
 
     # HSTS (ngx_http_headers_module is required) (63072000 seconds)
@@ -808,17 +809,19 @@ server {
 }
 ```
 
-Link this new configuration file:
+Unlink the exisitng default file:
 ```console
-# Unlink the default file
 $ unlink /etc/nginx/sites-enabled/default
+```
 
-# Link the new file
+Link the new nginx file for JupyterHub:
+```console
 $ ln -s /etc/nginx/sites-available/jupyterhub.conf /etc/nginx/sites-enabled/jupyterhub.conf
+```
 
-# Restart nginx
+Restart nginx:
+```console
 $ systemctl restart nginx.service
-
 ```
 
 #### Add GitHub Authentication <a name="authentication-final"></a>
