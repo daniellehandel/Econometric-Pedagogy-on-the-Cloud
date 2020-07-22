@@ -31,7 +31,7 @@ ________________________________________________________________________________
 8. [Stata](#stata)
    1. [Stata Installation](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
-9. [(Optional) GitHub Extensions and Packages](#packages)
+9. [(Optional) GitHub Extension and Packages](#packages)
 10. [(Optional) Add a Custom Domain](#custom-url)
 11. [(Optional) GitHub Authentication](#github-authentication)
 12. [Disclaimer](#disclaimer)
@@ -567,7 +567,7 @@ There are other useful R packages that one can install, for example:
   
   [Back to Top](#econometric-pedagogy)
 
-## (Optional) GitHub Extensions and Packages <a name="packages"></a>
+## (Optional) GitHub Extension and Packages <a name="packages"></a>
 
 The optional packages showcased below personalize your server to streamline online instruction. 
 
@@ -662,14 +662,14 @@ Navigate to the "Domain Name Servers," then to "Custom resource records." Enter 
 
 :warning: Setting up the site to run on HTTPS with SSL security is strongly recommended. In HTTPS, the communication protocol is encrypted using (TLS) Transport Layer Security or, formerly, SSL (Secure Sockets Layer).
 
- <details>
-    <summary>Expand</summary>
-    <br>
 Contents
  
 1. [Generate Cookie Secret](#cookie-secret)
 2. [Secure Your Lab](#secure-lab)
-4. [Add GitHub Authentication](#authentication-final)
+3. [Add GitHub Authentication](#authentication-final)
+
+ <details>
+    <summary>Expand</summary>
 
  #### Generate Cookie Secret <a name="cookie-secret"></a>
 Encrypt the your lab's [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) for security purposes:
