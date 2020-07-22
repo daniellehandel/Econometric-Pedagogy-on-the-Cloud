@@ -32,8 +32,9 @@ ________________________________________________________________________________
    1. [Stata Installation](#adding-stata)
    2. [Stata Kernel for Jupyter](#stata-kernel)
 9. [(Optional) GitHub Extensions and Packages](#packages)
-10. [(Optional) GitHub Authentication](#github-authentication)
-11. [Disclaimer](#disclaimer)
+10. [(Optional) Add a Custom Domain](#custom-url)
+11. [(Optional) GitHub Authentication](#github-authentication)
+12. [Disclaimer](#disclaimer)
 
 ## Overview 
 
@@ -609,6 +610,41 @@ The optional packages showcased below personalize your server to streamline onli
   [Back to Top](#econometric-pedagogy)
   
  </details>
+ 
+## Add a Custom Domain <a name="custom-url"></a>
+
+Instructors may use Amazon Web Services, a university domain, or any other domain service to add a custom domain. 
+
+:bulb: Adding your JupyterHub to a registered domain is necessary for running it in HTTPS.
+
+ <details>
+    <summary>Expand</summary>
+    <br>
+ 
+This demonstration uses [Google Domains](https://domains.google/). If you have an existing custom domain, you may add the lab as a sub-domain as done below. This tutorial assumes an existing domain has been registered with Google Domains. Visit the [Google Domains Learning Center](https://domains.google/learning-center/) for more information on this. 
+
+  <details>
+    <summary>:bulb: What is a sub-domain?</summary>
+    <br>
+ 
+  A sub-domain is an additional section of a domain that can help organize, specify, or navigate to different websites under a single primary domain.
+  
+  For example, while navigating from a website `www.example.com` to its store, you may see the domain change to `store.example.com`. This shortens the domain and makes it easier for you and your students to remember. The following method requires a domain to aquire the proper safety features.
+   
+  </details>
+
+|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/domain_assign.gif" width="800" height="370" />|
+|---|
+
+Navigate to the "Domain Name Servers," then to "Custom resource records." Enter the desired name (jupyterlab, econlab, etc.). Then enter the IP4 address of your instance.
+
+:bulb: This will take up to 48 hours to update and begin serving as a functioning URL.
+
+:bulb: It is still necessary to add `:8000` to the address of your jupyter Hub. It is also feasible to use a reverse proxy, e.g. nginx, to reroute network traffics to your URL to the JupyterHub, see [below](#secure-lab).
+
+</details>
+
+[Back to Top](#econometric-pedagogy)
   
 ## (Optional) GitHub Integration <a name="github-authentication"></a>
 
@@ -659,32 +695,7 @@ Restart to ensure recognition of the new extension:
 $ systemctl restart jupyterhub.service
 ```
 
-#### Add a Custom Domain <a name="custom-url"></a>
 
-Instructors may use Amazon Web Services, a university domain, or any other domain service to add a custom domain. 
-
-:bulb: Adding your JupyterHub to a registered domain is necessary for running it in HTTPS.
-
-This demonstration uses [Google Domains](https://domains.google/). If you have an existing custom domain, you may add the lab as a sub-domain as done below. This tutorial assumes an existing domain has been registered with Google Domains. Visit the [Google Domains Learning Center](https://domains.google/learning-center/) for more information on this. 
-
-  <details>
-    <summary>:bulb: What is a sub-domain?</summary>
-    <br>
- 
-  A sub-domain is an additional section of a domain that can help organize, specify, or navigate to different websites under a single primary domain.
-  
-  For example, while navigating from a website `www.example.com` to its store, you may see the domain change to `store.example.com`. This shortens the domain and makes it easier for you and your students to remember. The following method requires a domain to aquire the proper safety features.
-   
-  </details>
-
-|<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/domain_assign.gif" width="800" height="370" />|
-|---|
-
-Navigate to the "Domain Name Servers," then to "Custom resource records." Enter the desired name (jupyterlab, econlab, etc.). Then enter the IP4 address of your instance.
-
-:bulb: This will take up to 48 hours to update and begin serving as a functioning URL.
-
-:bulb: It is still necessary to add `:8000` to the address of your jupyter Hub. It is also feasible to use a reverse proxy, e.g. nginx, to reroute network traffics to your URL to the JupyterHub, see [below](#secure-lab).
 
 #### Secure Your JupyterHub <a name="secure-lab"></a>
 The following instructions will allow the use fo HTTPS in your lab address.
