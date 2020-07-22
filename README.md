@@ -646,7 +646,7 @@ Navigate to the "Domain Name Servers," then to "Custom resource records." Enter 
 
 [Back to Top](#econometric-pedagogy)
   
-## (Optional) GitHub Integration <a name="github-authentication"></a>
+## (Optional) GitHub Authentication <a name="github-authentication"></a>
 
   This section provides a guide to allowing the server to use GitHub authentication (OAuth) in the log-in process. By entering in their GitHub log-in information, students can access and use the server without the instructor having to manually enter each user and admin. As a reminder, a student can set up a GitHub account for free. An advanced understanding of the command line is recommended before attempting.
 
@@ -658,8 +658,7 @@ Navigate to the "Domain Name Servers," then to "Custom resource records." Enter 
 Contents
  
 1. [Generate Cookie Secret](#cookie-secret)
-2. [Add a Custom Domain](#custom-url)
-3. [Secure Your Lab](#secure-lab)
+2. [Secure Your Lab](#secure-lab)
 4. [Add GitHub Authentication](#authentication-final)
 
  #### Generate Cookie Secret <a name="cookie-secret"></a>
@@ -694,8 +693,6 @@ Restart to ensure recognition of the new extension:
 ```bash
 $ systemctl restart jupyterhub.service
 ```
-
-
 
 #### Secure Your JupyterHub <a name="secure-lab"></a>
 The following instructions will allow the use fo HTTPS in your lab address.
