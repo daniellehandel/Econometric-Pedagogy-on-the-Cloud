@@ -40,7 +40,9 @@ ________________________________________________________________________________
 
 The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted by [Amazon Web Service (AWS)](https://aws.amazon.com/), one of the many cloud providers. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
+<!---
 The demonstration concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is optional, and is recommended for those with an advanced uderstanding of the command line. 
+--->
 
 This demonstration corresponds to workflow 3 outlined in “*_Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists_*,” though the instructions may be modified to suit different teaching styles and classroom needs.
 
@@ -153,7 +155,7 @@ Now, “Launch”.
   
   Selecting “Launch” will prompt the user to select an existing SSH key pair or create a new one. Name and download your key pair.
 
-   :warning: <b>It is important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave the server vulnerable to unauthorized access. </b>:warning:
+   :warning: Important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave your instance vulnerable to unauthorized access.
 
    <details>
     <summary>:bulb: What is an SSH key?</summary>
@@ -171,8 +173,6 @@ Now, “Launch”.
 |---|
 
 Navigate to the Elastic IP configuration on the AWS EC2 Console. Opt to allocate an elastic IP address from Amazon's pool of IPv4 addresses. Then, choose to associate this new address and select your instance. Th Elastic IP is now your instance's public IP. 
-
-:bulb: Typing this new IP address appended with ":8000" into your browser will bring you to your lab. It may be useful to do this to check the functionality of your lab after each step.
   
 #### Connecting to Your Cloud <a name="navigating-bitvise"></a>
   
@@ -200,9 +200,9 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   
 ## Updating Your Server and Adding New Users <a name="server-basics"></a>
 
-:warning: The following directions are for use on Ubuntu servers. Administrative rights are required. :warning:
- 
-  Obtain administrative rights by requesting root access:
+:bulb: The following directions are for use on Ubuntu servers.
+
+  :warning: Obtain administrative rights by requesting root access:
   ```console
   $ sudo -i
   ```
@@ -227,7 +227,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
  
    By default, JupyterHub uses PAM (Pluggable Authentication Module) to authenticate system users with their username and password, i.e. any user with an account and password on the Ubuntu system will be allowed to login. To avoid having to add users individually, view the section [GitHub Authentication](#github-authentication) to determine whether it is right for your server.
    
-   :warning: JupyterHub administrator (we will assign [below](#jupyterhub)) does not need to have Ubuntu system administrative rights :warning:
+   :warning: JupyterHub administrator (we will assign [below](#jupyterhub)) does not need to have Ubuntu system administrative rights
    
   </details>
 
@@ -247,11 +247,9 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
    
   </details>
   
-  :warning: The following directions are for use on Ubuntu servers. Administrative rights are required. :warning: 
-  
   #### Anaconda Installation <a name="loading-anaconda"></a>
   
-  Obtain administrative rights by requesting root access:
+  :warning: Obtain administrative rights by requesting root access:
   ```console
   $ sudo -i
   ```  
@@ -396,6 +394,8 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   ```console
   $ systemctl status jupyterhub.service
   ```
+  
+  :bulb: <b>Your JupyterHub server should be up and running at <code> http://&lt;your instance IP address&gt;:8000 </code>. </b>
   
   #### (Important) First Time Login <a name="1st-login"></a>
 
