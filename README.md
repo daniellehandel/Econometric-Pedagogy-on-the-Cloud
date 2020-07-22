@@ -38,7 +38,7 @@ ________________________________________________________________________________
 
 ## Overview 
 
-The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted by [AWS Educate](https://aws.amazon.com/education/awseducate/) which is part of [Amazon Web Service (AWS)](https://aws.amazon.com/), one the many cloud computing providers. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
+The following demonstration documents a step-by-step guide to setting up a virtual “Econometrics Lab” hosted by [Amazon Web Service (AWS)](https://aws.amazon.com/), one the many cloud computing providers. Ultimately, students will be able to connect to an environment to preform live coding on [Jupyter Notebooks](https://jupyter.org/) with [Python](https://www.python.org/psf/), [R](https://www.r-project.org/foundation/), and [Stata](https://www.stata.com/) kernels.
 
 <!---
 The demonstration concludes with a method of integrating GitHub so that students may sign in with their GitHub accounts. This method is optional, and is recommended for those with an advanced uderstanding of the command line. 
@@ -55,7 +55,7 @@ This section showcases a fully operational server and the optional GitHub integr
 |<img src="https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/base_functionality.gif" width="800" height="400" />|
 |---|
 
-After entering the lab with a pre-assigned username and password, students may generate new Jupyter Notebooks using R, Python, or Stata. They also may upload notebooks from their local machine or clone repositories from [GitHub](https://github.com) and work on those. None of this requires installation of any software on the local machine.
+After entering the lab with a pre-assigned username and password, students may generate new Jupyter Notebooks using Python, R, or Stata. They also may upload notebooks from their local machine or clone repositories from [GitHub](https://github.com) and work on those. None of this requires installation of any software on the local machine.
 
 #### (Optional) GitHub Integrated Functionality <a name="github-func"></a>
 
@@ -172,7 +172,7 @@ Now, “Launch”.
 |<img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/allocate_elastic.gif"  width="800" height="370" />|
 |---|
 
-Navigate to the Elastic IP configuration on the AWS EC2 Console. Opt to allocate an elastic IP address from Amazon's pool of IPv4 addresses. Then, choose to associate this new address and select your instance. Th Elastic IP is now your instance's public IP. 
+Navigate to the Elastic IP configuration on the AWS EC2 Console. Opt to allocate an elastic IP address from Amazon's pool of IPv4 addresses. Then, choose to associate this new address and select your instance. The Elastic IP is now your instance's public IP. 
   
 #### Connecting to Your Cloud <a name="navigating-bitvise"></a>
   
@@ -926,7 +926,7 @@ $ systemctl restart jupyterhub.service
 
 This instructional guide is part of a demonstration used for “*Econometric Pedagogy and Cloud Computing: Training the Next Generation of Economists and Data Scientists.*” There is no guarantee this methodology works for others or using a different cloud service vendor. For specific needs or troubleshooting, independent research may be necessary. 
 
-**[AWS Educate](https://aws.amazon.com/education/awseducate/)** and corresponding services are trademark of **[Amazon Web Services](https://aws.amazon.com/).**
+**[AWS](https://aws.amazon.com)** and corresponding services are trademark of **[Amazon Web Services](https://aws.amazon.com/).**
 
 **[Stata](https://www.stata.com)** is trademark of **[Stata Corporation](https://www.stata.com/company).**
 
