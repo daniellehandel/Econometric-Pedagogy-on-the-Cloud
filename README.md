@@ -153,7 +153,7 @@ Now, “Launch”.
   
   Selecting “Launch” will prompt the user to select an existing SSH key pair or create a new one. Name and download your key pair.
 
-   :warning: <b>It is important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave the server vulnerable </b>:warning:
+   :warning: <b>It is important to keep the key private and safe. Losing the key will render your instance inaccessible. Sharing the key could leave the server vulnerable to unauthorized access. </b>:warning:
 
    <details>
     <summary>:bulb: What is an SSH key?</summary>
@@ -200,7 +200,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   
 ## Updating Your Server and Adding New Users <a name="server-basics"></a>
 
-:warning: The following directions are for use on Ubuntu servers. Unless otherwise specified, type and run each line individually. :warning:
+:warning: The following directions are for use on Ubuntu servers. Administrative rights are required. :warning:
  
   Obtain administrative rights by requesting root access:
   ```console
@@ -213,7 +213,7 @@ The instance will now be visible in the EC2 homepage. The description of the ins
   $ apt upgrade
   ```
   
-  Create new system users, say, designated JupyterHub administrator "admin1" and JupyterHub user "student", write:
+  Create new Ubuntu system users, say, designated JupyterHub administrator "admin1" and JupyterHub user "student", write:
   ```console
   $ adduser admin1
   $ adduser student
@@ -237,7 +237,7 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set 
 
 ## Anaconda
 
-  The following directions are for use on Ubuntu servers. Administrative rights are required. Unless otherwise specified, type and run each line individually. 
+  :warning: The following directions are for use on Ubuntu servers. Administrative rights are required. :warning: 
   
   #### Anaconda Installation <a name="loading-anaconda"></a>
   
@@ -404,7 +404,7 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set 
 
 ## R
   
-  The following directions are for use on Ubuntu servers. Administrative rights are required. Unless otherwise specified, type and run each line individually. 
+  :warning: The following directions are for use on Ubuntu servers. Administrative rights are required. :warning: 
   
   #### R Installation <a name="adding-r"></a>
   
@@ -465,7 +465,7 @@ Continue reading the “[Anaconda](https://www.anaconda.com/)” section to set 
 
 ## Stata
 
-  The following directions are for use on Ubuntu servers. Administrative rights are required. Unless otherwise specified, type and run each line individually.
+  :warning: The following directions are for use on Ubuntu servers. Administrative rights are required. :warning:
   
   :bulb: Instructors should contact Stata to discuss the best licensing options. A Stata Lab license may be best for this workflow, with the lab size corresponding to the number of students in the lab.
   
