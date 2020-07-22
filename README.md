@@ -355,7 +355,7 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   ```
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   
-  In nano, create and open a file to configure JupyterHub's functionality.
+  Make JupyterHub as a system service, so that JupyterHub will run at system startup and continue to run after the system administrator logs out. To do so, create a service file:
   ```console
   $ nano /etc/jupyterhub/jupyterhub.service
   ```
@@ -380,16 +380,19 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   
-  Enable the new file:
+  Link the newly created service file to the /etc/systemd/system directory:
   ```console
   $ ln -s /etc/jupyterhub/jupyterhub.service /etc/systemd/system/jupyterhub.service
+  ```
 
+  Reload the system daemon and run JupyterHub as a system service:
+  ```console
   $ systemctl daemon-reload
   $ systemctl enable jupyterhub.service
   $ systemctl start jupyterhub.service
   ```
-  JupyterHub is now set up on the server.
-  Check its status (optional):
+
+  Check JupyterHub status (optional):
   ```console
   $ systemctl status jupyterhub.service
   ```
