@@ -352,9 +352,9 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   ```
   Use <kbd>CTRL</kbd>+<kbd>O</kbd> then <kbd>enter</kbd> to overwrite the document and <kbd>CTRL</kbd>+<kbd>X</kbd> to exit.
   
-  :bulb: For having access to the JupyterHub admin interface, at least _one_ JupyterHub administrator has to be specified in the configuration file. Additional JupyterHub administrators can be assigned/removed from the JupyterHub admin interface by existing administrator, e.g. `admin1`.
+  :bulb: For having access to the JupyterHub admin interface, at least _one_ administrator has to be specified in the configuration file, e.g. `admin1`. Additional administrators can be assigned/removed from the JupyterHub admin interface by existing administrator.
   
-  Make JupyterHub as a system service, so that JupyterHub will run at system startup and continue to run after the system administrator logs out. To do so, create a service file:
+  Make JupyterHub a system service, so that JupyterHub will run at system startup and continue to run after the system administrator logs out. To do so, create a service file:
   ```console
   $ nano /etc/jupyterhub/jupyterhub.service
   ```
@@ -404,11 +404,9 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   
 ## R
   
-  :warning: The following directions are for use on Ubuntu servers. Administrative rights are required. :warning: 
-  
   #### R Installation <a name="adding-r"></a>
   
-  Obtain administrative rights by requesting root access:
+  :warning: Obtain administrative rights by requesting root access:
   ```bash
   $ sudo -i
   ```
@@ -555,13 +553,13 @@ There are other useful R packages that one can install, for example:
  $ nano .stata_kernel.conf
  ```
  
- :warning: Make sure that `stata_path` is pointing to the correct executable. *It can be different depending on your Stata version*.
+ :warning: Make sure `stata_path` is pointing to the correct executable. *It can be different depending on your Stata version*.
  
   <p align="center">
    <img src= "https://github.com/daniellehandel/Econometric-Pedagogy/blob/master/img/stata_kernel.PNG" width = "400" height = "400" />
  </p>
  
-  Copy configuration file to system configuration for all users:
+  Copy the configuration file to system configuration for all users:
  ```console
  $ cp .stata_kernel.conf /etc/stata_kernel.conf 
  ```
@@ -616,7 +614,7 @@ The optional packages showcased below personalize your server to streamline onli
 
   This section provides a guide to allowing the server to use GitHub authentication (OAuth) in the log-in process. By entering in their GitHub log-in information, students can access and use the server without the instructor having to manually enter each user and admin. As a reminder, a student can set up a GitHub account for free. An advanced understanding of the command line is recommended before attempting.
 
-:warning: Before proceeding, setting up the site to run on HTTPS with SSL security is strongly recommended.
+:warning: Setting up the site to run on HTTPS with SSL security is strongly recommended. In HTTPS, the communication protocol is encrypted using (TLS) Transport Layer Security or, formerly, SSL (Secure Sockets Layer).
 
  <details>
     <summary>Expand</summary>
@@ -628,18 +626,21 @@ Contents
 3. [Secure Your Lab](#secure-lab)
 4. [Add GitHub Authentication](#authentication-final)
 
-The following directions are for use in the Bitvise (or other SSH software) terminal console. Unless otherwise specified, type and run each line individually. 
-
  #### Generate Cookie Secret <a name="cookie-secret"></a>
 Encrypt the your lab's [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) for security purposes:
+
+Create a new directory for the cookie secret:
 ```console
-# Create a new directory
 $ mkdir /srv/jupyterhub
+```
 
-# Generate a random number and save it as the cookie secret
+Generate a random number and save it as the cookie secret:
+```console
 $ openssl rand -hex 32 > /srv/jupyterhub/jupyterhub_cookie_secret
+```
 
-$ Open JupyterHub's configuration file
+Edit JupyterHub's configuration file:
+```console
 $ nano /etc/jupyterhub/jupyterhub_config.py
 ```
 
@@ -648,14 +649,23 @@ Copy the following and add it to the file:
 c.JupyterHub.cookie_secret_file = '/srv/jupyterhub/jupyterhub_cookie_secret'
 ```
 
-Ensure that only the administrator can read and write the cookie secret:
+Ensure that only the system administrator can read and write the cookie secret:
 ```console
 $ chmod 600 /srv/jupyterhub/jupyterhub_cookie_secret
 ```
 
+Restart to ensure recognition of the new extension:
+```bash
+$ systemctl restart jupyterhub.service
+```
+
 #### Add a Custom Domain <a name="custom-url"></a>
 
-Instructors may use Amazon Web Services, a university domain, or any other domain service to add a custom domain, which is necessary for setting up GitHub authentication. This demonstration uses [Google Domains](https://domains.google/). With an existing custom domain, you may add the lab as a sub-domain as done below. This tutorial assumes an existing domain has been registered with Google Domains. Visit the [Google Domains Learning Center](https://domains.google/learning-center/) for more information on this. 
+Instructors may use Amazon Web Services, a university domain, or any other domain service to add a custom domain. 
+
+:bulb: Adding your JupyterHub to a registered domain is necessary for running it in HTTPS.
+
+This demonstration uses [Google Domains](https://domains.google/). If you have an existing custom domain, you may add the lab as a sub-domain as done below. This tutorial assumes an existing domain has been registered with Google Domains. Visit the [Google Domains Learning Center](https://domains.google/learning-center/) for more information on this. 
 
   <details>
     <summary>:bulb: What is a sub-domain?</summary>
@@ -672,7 +682,9 @@ Instructors may use Amazon Web Services, a university domain, or any other domai
 
 Navigate to the "Domain Name Servers," then to "Custom resource records." Enter the desired name (jupyterlab, econlab, etc.). Then enter the IP4 address of your instance.
 
-:warning: This will take up to 48 hours to update and begin serving as a functioning URL. :warning:
+:bulb: This will take up to 48 hours to update and begin serving as a functioning URL.
+
+:bulb: It is still necessary to add `:8000` to the address of your jupyter Hub. It is also feasible to use a reverse proxy, e.g. nginx, to reroute network traffics to your URL to the JupyterHub, see [below](#secure-lab).
 
 #### Secure Your Lab <a name="secure-lab"></a>
 The following instructions will allow the inclusion of "https://" in your lab address, ensuring the security needed to utilize GitHub authorizations and sign-ins.
