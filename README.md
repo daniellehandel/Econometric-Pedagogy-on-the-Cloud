@@ -910,10 +910,9 @@ Reboot the server:
 $ systemctl restart jupyterhub.service
 ```
   
-  [Back to Top](#econometric-pedagogy)
-  
   </details>
   
+  [Back to Top](#econometric-pedagogy)
 
 ## Disclaimer 
 
