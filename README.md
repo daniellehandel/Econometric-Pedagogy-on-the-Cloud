@@ -411,11 +411,11 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   #### R Installation <a name="adding-r"></a>
   
   Obtain administrative rights by requesting root access:
-  ```console
+  ```bash
   $ sudo -i
   ```
   
-  To install R through Bitvise:
+  To install R version 4.0 or later on Ubuntu, add the CRAN (Comprehensive R Archive Network) repository to Ubuntu and install the R packages:
   ```console
   $ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
   $ add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
@@ -424,44 +424,53 @@ Continue reading the “[Anaconda](#anaconda)” section to set up Anaconda on t
   ```
   
   Start R:
-  ```console
+  ```bash
   $ R
   ```
   
-  #### Update and Install R Kernel <a name="update-and-install-r-kernel"></a>
+  #### Update and Install IR Kernel <a name="update-and-install-r-kernel"></a>
   
   Update all packages in the current environment to the latest version, without prompts for permission:
   ```r
   update.packages(ask = FALSE)
+  ```
+  
+  Install IRkernel for all users:
+  ```r
   install.packages('IRkernel', lib = '/usr/local/lib/R/site-library')
   ```
   
-  Make Jupyter see the newly installed R kernel by installing a kernel spec. For system-wide installation, set user to False in the installspec command:
+  Make the IRkernel available to Jupyter. For system-wide installation, set user to False in the installspec command:
   ```r
   IRkernel::installspec(user = FALSE)
   ```
 
-  Additional Ubuntu linux packages are needed for 'tidyverse' in R. Then install tidyverse for all users:
+  When ready, quit:
   ```r
+  q()
+  ```
+
+ <details>
+  <summary>:bulb: Example: tidyverse and other packages</summary>
+
+Additional Ubuntu linux packages are needed for 'tidyverse' in R. In Ubuntu terminal:
+  ```bash
   apt install libcurl4-openssl-dev libssl-dev libxml2-dev
+  ```
+  
+In R, install tidyverse for all users:
+  ```r
   install.packages("tidyverse", dependencies = TRUE, INSTALL_opts = '--no-lock')
   ```
- 
- <details>
-  <summary>:bulb: Examples of other packages</summary>
- 
+
+There are other useful R packages that one can install, for example:
   ```r
   install.packages("openxlsx", lib = '/usr/local/lib/R/site-library', dependencies = TRUE, INSTALL_opts = '--no-lock')
   install.packages("knitr", lib = '/usr/local/lib/R/site-library', dependencies = TRUE, INSTALL_opts = '--no-lock')
   ```
   
   </details>
-  
-  When ready, quit:
-  ```r
-  q()
-  ```
-  
+    
   [Back to Top](#econometric-pedagogy)
 
 
@@ -846,7 +855,7 @@ This instructional guide is part of a demonstration used for “*Econometric Ped
 
 **R** is offered on an open source license distributed by the **[R Foundation](https://www.r-project.org/foundation/).**
 
-**JupyterHub** is an open source platform developed and maintained by **[Project Jupyter](https://jupyter.org/).**
+**[JupyterHub](https://jupyterhub.readthedocs.io/en/stable/)** is an open source platform developed and maintained by **[Project Jupyter](https://jupyter.org/).**
 
 
 [Back to Top](#econometric-pedagogy)
